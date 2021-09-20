@@ -13,3 +13,8 @@ class InputTypes(enum.Enum):
 class BoxTypes(enum.Enum):
     Variable = 0
     Executable = 1
+
+class ConfigModes(enum.Enum):
+    line_mode = 0
+    box_mode = 1
+    normal = 2

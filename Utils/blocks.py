@@ -1,6 +1,6 @@
 from .exceptions import *
 from .enums import *
-from .functions import setOptions
+from Utils import enums
 
 class Option:
     def __init__(self,text: str,Type: Types):
@@ -23,7 +23,7 @@ class Function:
 
 class Box:
     def __init__(self,Type=BoxTypes.Executable,inputs=[],outputs=[]):
-        self.function = setOptions
+        self.function = None
         self.function_args = None
         self.function_argvs = None
         if Type == BoxTypes.Variable:
@@ -67,3 +67,9 @@ class Box:
             self.function(self.variables,self.options,*self.function_args,**self.function_argvs)
         else:
             raise FunctionError("Variable Type Box Can Not Have Block Function")
+
+class Config:
+    def __init__(self,mode=ConfigModes.normal):
+        self.mode = mode
+
+conf = Config()
