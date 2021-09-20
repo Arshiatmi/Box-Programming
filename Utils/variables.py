@@ -1,15 +1,17 @@
 from .enums import *
-
+from .global_vars import varaibles
 
 class Variable:
     def __init__(self,name: str,Type: Types):
+        global varaibles
+        varaibles["name"] = self
         self.name = name
         self.type = Type
         if self.type == Types.boolean:
             self._value = False
         elif self.type == Types.number:
             self._value = 0
-        elif self.type == Types.string:
+        elif self.type == Types.text:
             self._value = ""
     
     # Value Property

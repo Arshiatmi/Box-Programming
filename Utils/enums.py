@@ -2,8 +2,10 @@ import enum
 
 class Types(enum.Enum):
     boolean = bool
-    string = str
+    text = str
     number = float
+    empty = None
+    executable = 1
 
 class InputTypes(enum.Enum):
     checkbox = 0
@@ -13,6 +15,8 @@ class InputTypes(enum.Enum):
 class BoxTypes(enum.Enum):
     Variable = 0
     Executable = 1
+    Start = 2
+    End = 3
 
 class ConfigModes(enum.Enum):
     line_mode = 0
