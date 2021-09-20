@@ -1,5 +1,5 @@
 from Utils.enums import ConfigModes
-from .blocks import conf
+from .blocks import conf,Line
 import tkinter as tk
 
 
@@ -12,40 +12,9 @@ def make_menu(app,ls: list):
 def draw_blocks(app,block,x,y):
     pass
 
-
 # Line Variables
 lines = {}
 closest_line_tag = ""
-
-# Line Stuff
-class Line:
-    def __init__(self,start=[-1,-1],end=[-1,-1],is_drawing=False,index=0) -> None:
-        self.start = start
-        self.end = end
-        self.is_drawing = is_drawing
-        self.index = index
-        self.tag = f"Line{self.index}"
-        self.removed = False
-    
-    def draw_new(self,canvas,width=4,force=False):
-        if force:
-            canvas.delete(self.tag)
-            canvas.create_line(self.start[0],self.start[1],self.end[0],self.end[1],tags=self.tag,width=width)
-        else:
-            if not self.removed:
-                canvas.delete(self.tag)
-                canvas.create_line(self.start[0],self.start[1],self.end[0],self.end[1],tags=self.tag,width=width)
-    
-    def draw(self,canvas,width=4,force=False):
-        if force:
-            canvas.create_line(self.start[0],self.start[1],self.end[0],self.end[1],tags=self.tag,width=width)
-        else:
-            if not self.removed:
-                canvas.create_line(self.start[0],self.start[1],self.end[0],self.end[1],tags=self.tag,width=width)
-    
-    def remove(self,canvas):
-        canvas.delete(self.tag)
-        self.removed = True
 
 current_line = Line()
 
