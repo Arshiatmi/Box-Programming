@@ -123,6 +123,10 @@ class Line:
         self.tag = f"Line{self.index}"
         self.removed = False
         self.line_color = color
+        self.start_image = None
+        self.end_image = None
+        self.start_locked = False
+        self.end_locked = False
     
     def draw_new(self,canvas,width=4,force=False):
         if force:

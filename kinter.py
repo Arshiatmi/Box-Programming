@@ -44,7 +44,7 @@ app.full_execute_image = image
 app.bind("<Button-3>", do_popup)
 app.bind("<B1-Motion>", lambda event:movingMousePressed(event,my_canvas,app))
 app.bind("<Motion>", lambda event:movingMouse(event,my_canvas,app))
-app.bind("<ButtonRelease-1>", lambda event:endMoving(event,my_canvas))
+app.bind("<ButtonRelease-1>", lambda event:endMoving(event,my_canvas,app))
 app.bind("<Double-Button-1>", lambda event:doubleClickHandler(event,my_canvas))
 app.bind("<Key>", lambda event:keyHandler(event,my_canvas,app))
 app.bind("<MouseWheel>", lambda event:do_zoom(event,my_canvas))
