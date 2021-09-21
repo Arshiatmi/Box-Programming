@@ -50,10 +50,18 @@ def clickHandler(event,canvas):
     is_dbl_click = False
 
 # Double Click Event
-def doubleClickHandler(event,canvas):
+def doubleClickHandler(event,canvas,app):
     global current_line,is_dbl_click
     if conf.mode == ConfigModes.line_mode:
         lines[closest_line_tag].remove(canvas)
+        lines[closest_line_tag].start_locked = False
+        lines[closest_line_tag].end_locked = False
+        locked_image_objects.remove(lines[closest_line_tag].start_image)
+        locked_image_objects.remove(lines[closest_line_tag].end_image)
+        start_img = canvas.gettags(lines[closest_line_tag].start_image)[0]
+        end_img = canvas.gettags(lines[closest_line_tag].end_image)[0]
+        canvas.itemconfig(images[start_img],image=app.empty_execute_image)
+        canvas.itemconfig(images[end_img],image=app.empty_execute_image)
     is_dbl_click = True
 
 # Moving Mouse When Button 1 Pressed Event
@@ -68,18 +76,23 @@ def movingMousePressed(event,canvas,app):
     try:
         if closest[0] not in locked_image_objects:
             if len(closest_tag[0]) != "temp":
-                try:
-                    canvas.itemconfig(images[closest_tag[0]],image=app.full_execute_image)
-                    closest_line_tag = closest_tag[0]
-                    can_draw_line = True
-                    draw_line_object = images[closest_tag[0]]
-                except:
+                if "exe" in closest_tag[0]:
                     try:
-                        canvas.itemconfig(images[closest_tag[0]],image=app.empty_execute_image)
-                        can_draw_line = False
-                        draw_line_object = None
+                        canvas.itemconfig(images[closest_tag[0]],image=app.full_execute_image)
+                        closest_line_tag = closest_tag[0]
+                        can_draw_line = True
+                        draw_line_object = images[closest_tag[0]]
                     except:
-                        pass
+                        try:
+                            canvas.itemconfig(images[closest_tag[0]],image=app.empty_execute_image)
+                            can_draw_line = False
+                            draw_line_object = None
+                        except:
+                            pass
+                else:
+                    for i in images:
+                        if i not in locked_image_objects:
+                            canvas.itemconfig(images[closest_tag[0]],image=app.empty_execute_image)
             else:
                 try:
                     canvas.itemconfig(images[closest_tag[0]],image=app.empty_execute_image)
@@ -92,8 +105,8 @@ def movingMousePressed(event,canvas,app):
                         draw_line_object = None
                     except:
                         pass
-        else:
-            canvas.itemconfig(images[closest_tag[0]],image=app.full_execute_image)
+        # else:
+        #     canvas.itemconfig(images[closest_tag[0]],image=app.full_execute_image)
     except:
         pass
     if current_line.is_drawing:
@@ -107,7 +120,10 @@ def set_all_lines_width(canvas,width=1):
 
 # Set A Line Width By Tag
 def set_line_width(canvas,line_tag,width=4):
-    lines[line_tag].draw_new(canvas,width)
+    try:
+        lines[line_tag].draw_new(canvas,width)
+    except KeyError:
+        pass
 
 # Mouse Move Event
 def movingMouse(event,canvas,app):
@@ -132,7 +148,7 @@ def movingMouse(event,canvas,app):
         try:
             if closest[0] not in locked_image_objects:
                 if len(closest_tag) == 2:
-                    if closest_tag[1] == 'current':
+                    if closest_tag[1] == 'current' and "exe" in closest_tag[0]:
                         try:
                             canvas.itemconfig(images[closest_tag[0]],image=app.full_execute_image)
                             closest_line_tag = closest_tag[0]
@@ -145,49 +161,25 @@ def movingMouse(event,canvas,app):
                                 draw_line_object = None
                             except:
                                 pass
+                    else:
+                        for i in images:
+                            var = canvas.find_withtag(i)
+                            if var[0] not in locked_image_objects:
+                                canvas.itemconfig(images[closest_tag[0]],image=app.empty_execute_image)
                 else:
                     try:
-                        canvas.itemconfig(images[closest_tag[0]],image=app.empty_execute_image)
+                        for i in images:
+                            var = canvas.find_withtag(i)
+                            if var[0] not in locked_image_objects:
+                                canvas.itemconfig(images[i],image=app.empty_execute_image)
                         can_draw_line = False
                         draw_line_object = None
                     except:
-                        try:
-                            canvas.itemconfig(images[closest_tag[0]],image=app.empty_execute_image)
-                            can_draw_line = False
-                            draw_line_object = None
-                        except:
-                            pass
-            else:
-                canvas.itemconfig(images[closest_tag[0]],image=app.full_execute_image)
-            # print(locked_image_objects)
+                        pass
+            # else:
+                # canvas.itemconfig(images[closest_tag[0]],image=app.full_execute_image)
         except:
             pass
-        # if len(closest_tag) == 2:
-        #     if closest_tag[1] == 'current':
-        #         try:
-        #             canvas.itemconfig(images[closest_tag[0]],image=app.full_execute_image)
-        #             closest_line_tag = closest_tag[0]
-        #             can_draw_line = True
-        #             draw_line_object = images[closest_tag[0]]
-        #         except:
-        #             try:
-        #                 canvas.itemconfig(images[closest_line_tag],image=app.empty_execute_image)
-        #                 can_draw_line = False
-        #                 draw_line_object = None
-        #             except:
-        #                 pass
-        # else:
-        #     try:
-        #         canvas.itemconfig(images[closest_tag[0]],image=app.empty_execute_image)
-        #         can_draw_line = False
-        #         draw_line_object = None
-        #     except:
-        #         try:
-        #             canvas.itemconfig(images[closest_line_tag],image=app.empty_execute_image)
-        #             can_draw_line = False
-        #             draw_line_object = None
-        #         except:
-        #             pass
 
 
 # Key Pressed Event
@@ -210,6 +202,8 @@ def keyHandler(event,canvas,app=None):
 # Mouse Button 1 Release Event
 def endMoving(event,canvas,app):
     global current_line,can_draw_line,locked_image_objects
+    for i in locked_image_objects:
+        canvas.itemconfig(i,image=app.full_execute_image)
     if not is_dbl_click:
         if conf.mode == ConfigModes.normal:
             if can_draw_line:
@@ -225,5 +219,3 @@ def endMoving(event,canvas,app):
                 canvas.create_line(current_line.start[0],current_line.start[1],current_line.end[0],current_line.end[1],tags=current_line.tag,width=4,fill='white')
                 lines[current_line.tag] = (current_line)
                 current_line = Line(index=current_line.index + 1)
-    for i in locked_image_objects:
-        canvas.itemconfig(i,image=app.full_execute_image)
