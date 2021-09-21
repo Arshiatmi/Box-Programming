@@ -3,8 +3,8 @@ from Utils.tkinter_helpers import make_menu
 import tkinter as tk
 from Utils.tkinter_helpers import *
 from Utils.functions import getExecutableFunctions,getVariableFunctions,getAllFunctions,_from_rgb
-import Utils.builtins
 from PIL import Image,ImageTk
+from Utils.global_vars import ALL_GLOBALS
 
 app = tk.Tk()
 
@@ -12,6 +12,7 @@ app.title("Box Programming")
 app.geometry("1080x720")
 app.resizable(0, 0)
 
+ALL_GLOBALS["app"] = app
 
 back = tk.Frame(master=app,bg='black')
 back.pack(fill=tk.BOTH, expand=1)
@@ -23,7 +24,11 @@ allFunctions = getAllFunctions()
 my_canvas = tk.Canvas(back,bg=_from_rgb((33,33,33)))
 my_canvas.pack(fill=tk.BOTH,expand=1,padx=20,pady=30)
 
+ALL_GLOBALS["canvas"] = my_canvas
+
 m = make_menu(app,allFunctions)
+
+init_builtins()
 
 def do_popup(event):
     try:

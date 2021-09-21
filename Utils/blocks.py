@@ -35,11 +35,11 @@ class Box:
         global boxes
         if Type == BoxTypes.Start:
             boxes["start"] = self
-            name = "Start"
+            name = "start"
             function = Function("start",lambda x:x,[],[Option("Execute",Types.executable)])
         elif Type == BoxTypes.End:
             boxes["end"] = self
-            name = "Exit"
+            name = "end"
             function = Function("end",lambda x:x,[Option("Execute",Types.executable)],[])
         elif name:
             boxes[name] = self
@@ -49,6 +49,8 @@ class Box:
         self.function = function
         self.function_args = None
         self.function_argvs = None
+        self.canvas = ALL_GLOBALS["canvas"]
+        self.app = ALL_GLOBALS["app"]
         if Type == BoxTypes.Variable:
             if len(self.function.inputs) == 1 and len(self.function.outputs) == 1:
                 self.type = Type
@@ -61,6 +63,9 @@ class Box:
         self.options = []
         self.variables = {}
         self.tag = name
+        self.objects = []
+        self.block_input_connected = [None] * len(self.inputs)
+        self.block_output_connected = [None] * len(self.outputs)
         
     
     def blockOptions(self,option: Option):
@@ -93,23 +98,70 @@ class Box:
         else:
             raise FunctionError("Variable Type Box Can Not Have Block Function")
     
-    def draw_block(self,app,canvas,startpos: list,endpos=[]):
+    def draw_block(self,startpos: list,endpos=[]):
         if not endpos:
             endpos = (startpos[0] + 200,startpos[1] + 100)
-        canvas.create_rectangle(startpos[0],startpos[1],endpos[0],endpos[1] + (max(len(self.inputs),len(self.outputs)) * 100),fill='black',tags=self.name)
+        canvas = self.canvas
+        app = self.app
+        self.block_start_pos = startpos
+        self.block_end_pos = endpos
+        self.objects.append(canvas.create_rectangle(startpos[0],startpos[1],endpos[0],endpos[1] + (max(len(self.inputs),len(self.outputs)) * 100),fill='black',tags=self.name))
         canvas.pack()
-        canvas.create_text(startpos[0] + 80,startpos[1] + 10,fill="white",font="Times 14 italic bold",text=self.name)
+        self.objects.append(canvas.create_text(startpos[0] + 80,startpos[1] + 10,fill="white",font="Times 14 italic bold",text=self.name,tags=self.name + "txt"))
         for i in self.inputs:
             if i.type == Types.executable:
                 images[self.name + "exein"] = (canvas.create_image(startpos[0] + 30,startpos[1] + 30,image=app.empty_execute_image,tags=self.name + "exein"))
+                self.objects.append(images[self.name + "exein"])
         for i in self.outputs:
             if i.type == Types.executable:
                 images[self.name + "exeout"] = (canvas.create_image(endpos[0] - 30,endpos[1] - 70,image=app.empty_execute_image,tags=self.name + "exeout"))
+                self.objects.append(images[self.name + "exeout"])
+    
+    def set_location(self,startpos: list,endpos=[]):
+        if not endpos:
+            endpos = (startpos[0] + 200,startpos[1] + 100)
+        canvas = self.canvas
+        app = self.app
+        self.block_start_pos = startpos
+        self.block_end_pos = endpos
+        for i in self.objects:
+            canvas.delete(i)
+        self.objects.append(canvas.create_rectangle(startpos[0],startpos[1],endpos[0],endpos[1] + (max(len(self.inputs),len(self.outputs)) * 100),fill='black',tags=self.name))
+        canvas.pack()
+        self.objects.append(canvas.create_text(startpos[0] + 80,startpos[1] + 10,fill="white",font="Times 14 italic bold",text=self.name,tags=self.name + "txt"))
+        for i in self.inputs:
+            if i.type == Types.executable:
+                images[self.name + "exein"] = (canvas.create_image(startpos[0] + 30,startpos[1] + 30,image=app.empty_execute_image,tags=self.name + "exein"))
+                self.objects.append(images[self.name + "exein"])
+        for i in self.outputs:
+            if i.type == Types.executable:
+                images[self.name + "exeout"] = (canvas.create_image(endpos[0] - 30,endpos[1] - 70,image=app.empty_execute_image,tags=self.name + "exeout"))
+                self.objects.append(images[self.name + "exeout"])
+    
+    def move_block(self,x,y):
+        canvas = self.canvas
+        app = self.app
+        self.block_start_pos = [self.block_start_pos[0] + x,self.block_start_pos[1] + y]
+        self.block_end_pos = [self.block_end_pos[0] + x,self.block_end_pos[1] + y]
+        for i in self.objects:
+            canvas.delete(i)
+        self.objects.append(canvas.create_rectangle(self.block_start_pos[0],self.block_start_pos[1],self.block_end_pos[0],self.block_end_pos[1] + (max(len(self.inputs),len(self.outputs)) * 100),fill='black',tags=self.name))
+        canvas.pack()
+        self.objects.append(canvas.create_text(self.block_start_pos[0] + 80,self.block_start_pos[1] + 10,fill="white",font="Times 14 italic bold",text=self.name,tags=self.name + "txt"))
+        for i in self.inputs:
+            if i.type == Types.executable:
+                images[self.name + "exein"] = (canvas.create_image(self.block_start_pos[0] + 30,self.block_start_pos[1] + 30,image=app.empty_execute_image,tags=self.name + "exein"))
+                self.objects.append(images[self.name + "exein"])
+        for i in self.outputs:
+            if i.type == Types.executable:
+                images[self.name + "exeout"] = (canvas.create_image(self.block_end_pos[0] - 30,self.block_end_pos[1] - 70,image=app.empty_execute_image,tags=self.name + "exeout"))
+                self.objects.append(images[self.name + "exeout"])
 
-# Configs ( For Now Just Mode Of Program )
+# Configs ( For Now Just Mode & current Of Program )
 class Config:
-    def __init__(self,mode=ConfigModes.normal):
+    def __init__(self,mode=ConfigModes.normal,current=Current.none):
         self.mode = mode
+        self.current = current
 
 conf = Config()
 
@@ -127,6 +179,8 @@ class Line:
         self.end_image = None
         self.start_locked = False
         self.end_locked = False
+        self.start_box = None
+        self.end_box = None
     
     def draw_new(self,canvas,width=4,force=False):
         if force:

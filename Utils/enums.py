@@ -4,7 +4,7 @@ class Types(enum.Enum):
     boolean = bool
     text = str
     number = float
-    empty = None
+    empty = 0
     executable = 1
 
 class InputTypes(enum.Enum):
@@ -22,3 +22,8 @@ class ConfigModes(enum.Enum):
     line_mode = 0
     box_mode = 1
     normal = 2
+
+class Current(enum.Enum):
+    none = 0
+    box = 1
+    line = 2
