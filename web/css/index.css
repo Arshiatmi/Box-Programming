@@ -1,0 +1,177 @@
+@font-face {
+    font-family: 'DynaPuff';
+    src: url('../fonts/DynaPuff/DynaPuff-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'RobotoSlab';
+    src: url('../fonts/RobotoSlab/RobotoSlab-Regular.ttf');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'RobotoSlab';
+}
+
+html{
+    display: block;
+}
+
+:root{
+    --softBlack: #333;
+    --softGray: rgb(82, 82, 82);
+    --softWhite: rgb(219, 214, 214);
+    --white: #fff;
+    --black: #000;
+}
+
+body{
+    background: url('../img/morphing-diamonds.svg');
+    background-color: var(--softBlack);
+    height: 100vh;
+    direction: ltr;
+}
+
+.sec1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.sec1 nav{
+    height: 100%;
+    width: 250px;
+    background-color: var(--softGray);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.sec1 nav .title{
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    background-color: var(--softWhite);
+    position: relative;
+}
+
+.sec1 nav .title::before,
+.sec1 nav .title::after{
+    content: '';
+    position: absolute;
+    bottom: -15px;
+}
+
+.sec1 nav .title::before{
+    left: 0;
+    border-left: 15px solid var(--softWhite);
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+}
+
+.sec1 nav .title::after{
+    right: 0;
+    border-right: 15px solid var(--softWhite);
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid transparent;
+}
+
+.sec1 nav .title h1{
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'DynaPuff';
+}
+
+.sec1 nav .search{
+    width: 85%;
+    position: relative;
+    margin: 40px auto 0 auto;
+}
+
+.sec1 nav .search .inp{
+    width: 100%;
+    padding: 10px;
+    padding-left: 40px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.sec1 nav .search a {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--softBlack);
+    color: #fff;
+    height: 100%;
+    width: 35px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: none;
+}
+
+.sec1 nav .search a i{
+    font-size: 25px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sec1 nav ul{
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
+.sec1 nav ul li{
+    padding: 18px 20px;
+    cursor: pointer;
+    border-top: 1px solid var(--softWhite);
+    font-size: 18px;
+    color: var(--softWhite);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+.sec1 nav ul li i{
+    margin-right: 5px;
+    text-align: center;
+    color: var(--white);
+}
+
+.sec1 nav ul li:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--softBlack);
+    z-index: -1;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+
+.sec1 nav ul li:hover::before{
+    left: 0;
+}
