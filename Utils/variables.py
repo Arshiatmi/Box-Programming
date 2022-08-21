@@ -1,13 +1,13 @@
 from .enums import *
-from .global_vars import varaibles
+from .global_vars import variables
 
 
 class Variable:
     VariableTypes = [Types.number, Types.boolean, Types.text]
 
     def __init__(self, name: str, Type: Types):
-        global varaibles
-        varaibles[name] = self
+        global variables
+        variables[name] = self
         self.name = name
         self.Type = Type
 
@@ -18,19 +18,19 @@ class Variable:
 
     @value.setter
     def value(self, value):
-        if type(value) == self.type.value:
+        if type(value) == self.Type.value:
             self._value = value
         else:
-            raise ValueError(f"Value Must Be Type Of {self.type}")
+            raise ValueError(f"Value Must Be Type Of {self.Type}")
 
     # Type Property
     @property
     def Type(self):
-        return self._value
+        return self._type
 
     @Type.setter
-    def Type(self, value):
-        self._type = value
+    def Type(self, target_type):
+        self._type = target_type
         if self._type == Types.boolean:
             self._value = False
         elif self._type == Types.number:

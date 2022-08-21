@@ -16,5 +16,5 @@ set_can_use = Function("Function Set Can Use ?",
 b1 = Box("Get Boolean Variable", BoxTypes.Variable, get_can_use)
 b2 = Box("Set Boolean Variable", BoxTypes.Variable, set_can_use)
 
-print(b1)
-print(b2)
+b2(True)
+print(b1())

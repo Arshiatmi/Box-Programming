@@ -1,3 +1,4 @@
+from Utils.functions import convert_to_list
 from Utils.variables import Variable, detect_variable_type
 from .exceptions import *
 from .enums import *
@@ -10,17 +11,17 @@ class Option:
     def __init__(self, text: str, Type: Types, Side: Sides = None):
         global options
         options[text] = self
-        self.type = Type
-        self.key = text
+        self.Type = Type
+        self.text = text
         self.side = Side
         self.variable = Variable(text, Type)
-        if self.type == Types.boolean:
+        if self.Type == Types.boolean:
             self.input_model = InputTypes.checkbox
-        elif self.type == Types.number:
+        elif self.Type == Types.number:
             self.input_model = InputTypes.numberField
-        elif self.type == Types.text:
+        elif self.Type == Types.text:
             self.input_model = InputTypes.textField
-        elif self.type == Types.executable:
+        elif self.Type == Types.executable:
             self.input_model = InputTypes.executeButton
 
 # Functions That Are Made Like This To Make Application More Readable
@@ -38,19 +39,19 @@ class Function:
     def get_input_types(self) -> list:
         ans = []
         for i in self.inputs:
-            ans.append(i.type)
+            ans.append(i.Type)
         return ans
 
     def get_output_types(self) -> list:
         ans = []
         for i in self.outputs:
-            ans.append(i.type)
+            ans.append(i.Type)
         return ans
 
     def has_this_inputs(self, input_types: dict) -> bool:
         for i in self.inputs:
-            target_type = i.type
-            if i.type in Variable.VariableTypes:
+            target_type = i.Type
+            if i.Type in Variable.VariableTypes:
                 target_type = Types.variable
             if target_type not in input_types:
                 return False
@@ -62,8 +63,8 @@ class Function:
 
     def has_this_outputs(self, output_types: dict) -> bool:
         for i in self.outputs:
-            target_type = i.type
-            if i.type in Variable.VariableTypes:
+            target_type = i.Type
+            if i.Type in Variable.VariableTypes:
                 target_type = Types.variable
             if target_type not in output_types:
                 return False
@@ -76,7 +77,7 @@ class Function:
     def has_any_inputs(self, option_type=None) -> bool:
         if option_type:
             for i in self.inputs:
-                if i.type == option_type:
+                if i.Type == option_type:
                     return True
             return False
         else:
@@ -85,7 +86,7 @@ class Function:
     def has_any_outputs(self, option_type=None) -> bool:
         if option_type:
             for i in self.outputs:
-                if i.type == option_type:
+                if i.Type == option_type:
                     return True
             return False
         else:
@@ -94,17 +95,17 @@ class Function:
     def has_any(self, option_type=None) -> bool:
         if option_type:
             for i in self.outputs:
-                if i.type == option_type:
+                if i.Type == option_type:
                     return True
             for i in self.inputs:
-                if i.type == option_type:
+                if i.Type == option_type:
                     return True
             return False
         else:
             return len(self.inputs) > 0
 
     def __call__(self, *args: object, **kwds: object) -> None:
-        self.func(*args, **kwds)
+        return self.func(*args, **kwds)
 
 # Boxes ( Core ) Of This Application
 
@@ -126,6 +127,7 @@ class Box:
             boxes[name] = self
         else:
             boxes[function.name] = self
+            name = function.name
         self.name = name
         self.function = function
         self.function_args = None
@@ -135,27 +137,27 @@ class Box:
         if Type == BoxTypes.Variable:
             # Set Variable Box
             if self.function.has_this_outputs({Types.executable: 1}) and self.function.has_this_inputs({Types.variable: 1, Types.executable: 1}):
-                self.type = Type
+                self.Type = Type
             # Get Variable Box
             elif self.function.has_this_outputs({Types.variable: 1}):
-                self.type = Type
+                self.Type = Type
             # Invalid Variable Box
             else:
                 raise IOError("This Format Is Invalid (Should Be Set Or Get).")
         elif Type == BoxTypes.Operator:
             # Normal Operator Functions
             if not self.function.has_any(Types.executable):
-                self.type = Type
+                self.Type = Type
             else:
                 raise IOError("You Should Not Have Any Executable Options.")
         elif Type == BoxTypes.Event:
             # Common Events That Does Not Have Any Inputs
             if not self.function.has_any_inputs():
-                self.type = Type
+                self.Type = Type
             else:
                 raise IOError("Event Boxes Must Not Have Any Inputs.")
         else:
-            self.type = Type
+            self.Type = Type
         self.inputs = self.function.inputs
         self.outputs = self.function.outputs
         self.tag = name
@@ -163,7 +165,7 @@ class Box:
         self.block_output_connected = [None] * len(self.outputs)
 
     def addOption(self, option: Option):
-        if self.type == BoxTypes.Executable:
+        if self.Type == BoxTypes.Executable:
             if option.side == Sides.left:
                 self.inputs.append(option)
             elif option.side == Sides.right:
@@ -175,7 +177,7 @@ class Box:
             raise OptionError("Variable Type Box Can Not Have Options")
 
     def setFunction(self, func, *args, **argvs):
-        if self.type == BoxTypes.Executable:
+        if self.Type == BoxTypes.Executable:
             self.function = func
             self.function_args = args
             self.function_argvs = argvs
@@ -193,14 +195,17 @@ class Box:
         return True
 
     def __call__(self, *args):
-        if self.type == BoxTypes.Executable:
+        if self.Type in [BoxTypes.Executable, BoxTypes.Variable]:
             if self.check_types(self.inputs, args):
                 self.function_inputs = args
-                ans = self.function(self.inputs, self.outputs,
+                ans = self.function(self.function.name, self.inputs, self.outputs,
                                     *args)
+                ans = convert_to_list(ans)
                 if self.check_types(self.outputs, ans):
                     self.function_outputs = ans
-                    return ans
+                    if len(ans) == 1:
+                        return ans[0].value
+                    return list(map(lambda x: x.value, self.function_outputs))
                 raise FunctionError(
                     "Function Outputs Are Not Defined In Correct Type.")
             else:
