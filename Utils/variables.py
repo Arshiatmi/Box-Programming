@@ -1,10 +1,11 @@
 from .enums import *
 from .global_vars import varaibles
 
+
 class Variable:
-    def __init__(self,name: str,Type: Types):
+    def __init__(self, name: str, Type: Types):
         global varaibles
-        varaibles["name"] = self
+        varaibles[name] = self
         self.name = name
         self.type = Type
         if self.type == Types.boolean:
@@ -13,19 +14,19 @@ class Variable:
             self._value = 0
         elif self.type == Types.text:
             self._value = ""
-    
+
     # Value Property
     @property
     def value(self):
         return self._value
 
     @value.setter
-    def value(self,value):
+    def value(self, value):
         if type(value) == self.type.value:
             self._value = value
         else:
             raise ValueError(f"Value Must Be Type Of {self.type}")
-    
+
     # ==
     def __eq__(self, o: object) -> bool:
         if o.__class__ == Variable:
@@ -37,7 +38,7 @@ class Variable:
         else:
             if self.value == o:
                 return True
-    
+
     # <
     def __lt__(self, o: object) -> bool:
         if o.__class__ == Variable:
@@ -47,7 +48,7 @@ class Variable:
             else:
                 raise ValueError(f"Value Must Be Type Of {self.type}")
         else:
-            if self.value == o:
+            if self.value < o:
                 return True
 
     # >
@@ -59,7 +60,7 @@ class Variable:
             else:
                 raise ValueError(f"Value Must Be Type Of {self.type}")
         else:
-            if self.value == o:
+            if self.value > o:
                 return True
 
     # <=
@@ -71,7 +72,7 @@ class Variable:
             else:
                 raise ValueError(f"Value Must Be Type Of {self.type}")
         else:
-            if self.value == o:
+            if self.value <= o:
                 return True
 
     # >=
@@ -83,5 +84,5 @@ class Variable:
             else:
                 raise ValueError(f"Value Must Be Type Of {self.type}")
         else:
-            if self.value == o:
+            if self.value >= o:
                 return True
