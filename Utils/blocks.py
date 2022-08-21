@@ -1,3 +1,4 @@
+from Utils.variables import Variable
 from .exceptions import *
 from .enums import *
 from .global_vars import *
@@ -6,11 +7,13 @@ from .global_vars import *
 
 
 class Option:
-    def __init__(self, text: str, Type: Types):
+    def __init__(self, text: str, Type: Types, Side: Sides = None):
         global options
         options[text] = self
         self.type = Type
         self.key = text
+        self.side = Side
+        self.variable = Variable(text, Type)
         if self.type == Types.boolean:
             self.input_model = InputTypes.checkbox
         elif self.type == Types.number:
@@ -68,8 +71,6 @@ class Box:
             self.type = Type
         self.inputs = self.function.inputs
         self.outputs = self.function.outputs
-        self.options = []
-        self.variables = {}
         self.tag = name
         self.objects = []
         self.block_input_connected = [None] * len(self.inputs)
@@ -77,16 +78,15 @@ class Box:
 
     def addOption(self, option: Option):
         if self.type == BoxTypes.Executable:
-            self.options.append(option)
+            if option.side == Sides.left:
+                self.inputs.append(option)
+            elif option.side == Sides.right:
+                self.outputs.append(option)
+            else:
+                raise OptionError(
+                    "You Must Define Which Side The Option Is.")
         else:
             raise OptionError("Variable Type Box Can Not Have Options")
-
-    def blockVariables(self, variable: Option):
-        if self.type == BoxTypes.Executable:
-            self.variables[variable.name] = (variable)
-        else:
-            self.variables = []
-            self.variables[variable.name] = (variable)
 
     def setFunction(self, func, *args, **argvs):
         if self.type == BoxTypes.Executable:
@@ -97,12 +97,9 @@ class Box:
             raise FunctionError(
                 "Variable Type Box Can Not Have A Customize Function")
 
-    def setVariable(self, name, value):
-        self.variables[name] = value
-
     def run(self):
         if self.type == BoxTypes.Executable:
-            self.function(self.variables, self.options, *
+            self.function(self.variables, self.inputs, self.outputs, *
                           self.function_args, **self.function_argvs)
         else:
             raise FunctionError(
@@ -124,18 +121,10 @@ class Box:
 
 
 class Line:
-    def __init__(self, start=[-1, -1], end=[-1, -1], is_drawing=False, index=0, color='white') -> None:
-        self.start = start
-        self.end = end
+    def __init__(self, is_drawing=False, index=0) -> None:
         self.is_drawing = is_drawing
         self.index = index
         self.tag = f"Line{self.index}"
-        self.removed = False
-        self.line_color = color
-        self.start_image = None
-        self.end_image = None
-        self.start_locked = False
-        self.end_locked = False
         self.start_box = None
         self.end_box = None
 

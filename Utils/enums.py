@@ -21,3 +21,7 @@ class BoxTypes(enum.Enum):
     Executable = 1
     Start = 2
     End = 3
+
+class Sides(enum.Enum):
+    left = 0
+    right = 1
