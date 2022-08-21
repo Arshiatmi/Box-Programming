@@ -35,6 +35,74 @@ class Function:
         self.inputs = inputs
         self.outputs = outputs
 
+    def get_input_types(self) -> list:
+        ans = []
+        for i in self.inputs:
+            ans.append(i.type)
+        return ans
+
+    def get_output_types(self) -> list:
+        ans = []
+        for i in self.outputs:
+            ans.append(i.type)
+        return ans
+
+    def has_this_inputs(self, input_types: dict) -> bool:
+        for i in self.inputs:
+            target_type = i.type
+            if i.type in Variable.VariableTypes:
+                target_type = Types.variable
+            if target_type not in input_types:
+                return False
+            input_types[target_type] -= 1
+            input_types = {k: v for k, v in input_types.items() if v > 0}
+        if not input_types:
+            return False
+        return True
+
+    def has_this_outputs(self, output_types: dict) -> bool:
+        for i in self.outputs:
+            target_type = i.type
+            if i.type in Variable.VariableTypes:
+                target_type = Types.variable
+            if target_type not in output_types:
+                return False
+            output_types[target_type] -= 1
+            output_types = {k: v for k, v in output_types.items() if v > 0}
+        if not output_types:
+            return False
+        return True
+
+    def has_any_inputs(self, option_type=None) -> bool:
+        if option_type:
+            for i in self.inputs:
+                if i.type == option_type:
+                    return True
+            return False
+        else:
+            return len(self.inputs) > 0
+
+    def has_any_outputs(self, option_type=None) -> bool:
+        if option_type:
+            for i in self.outputs:
+                if i.type == option_type:
+                    return True
+            return False
+        else:
+            return len(self.inputs) > 0
+
+    def has_any(self, option_type=None) -> bool:
+        if option_type:
+            for i in self.outputs:
+                if i.type == option_type:
+                    return True
+            for i in self.inputs:
+                if i.type == option_type:
+                    return True
+            return False
+        else:
+            return len(self.inputs) > 0
+
     def __call__(self, *args: object, **kwds: object) -> None:
         self.func(*args, **kwds)
 
@@ -63,10 +131,27 @@ class Box:
         self.function_args = None
         self.function_argvs = None
         if Type == BoxTypes.Variable:
-            if len(self.function.inputs) == 1 and len(self.function.outputs) == 1:
+            # Set Variable Box
+            if self.function.has_this_outputs({Types.variable: 1}) and self.function.has_this_inputs({Types.variable: 1, Types.executable: 1}):
+                self.type = Type
+            # Get Variable Box
+            elif self.function.has_this_outputs({Types.variable: 1}):
+                self.type = Type
+            # Invalid Variable Box
+            else:
+                raise IOError("This Format Is Invalid (Should Be Set Or Get).")
+        elif Type == BoxTypes.Operator:
+            # Normal Operator Functions
+            if not self.function.has_any(Types.executable):
                 self.type = Type
             else:
-                raise IOError("You Must Define 1 input And 1 Outputs.")
+                raise IOError("You Should Not Have Any Executable Options.")
+        elif Type == BoxTypes.Event:
+            # Common Events That Does Not Have Any Inputs
+            if not self.function.has_any_inputs():
+                self.type = Type
+            else:
+                raise IOError("Event Boxes Must Not Have Any Inputs.")
         else:
             self.type = Type
         self.inputs = self.function.inputs

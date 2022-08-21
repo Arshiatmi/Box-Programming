@@ -7,6 +7,7 @@ class Types(enum.Enum):
     number = float
     empty = 0
     executable = 1
+    variable = 2
 
 
 class InputTypes(enum.Enum):
@@ -19,8 +20,10 @@ class InputTypes(enum.Enum):
 class BoxTypes(enum.Enum):
     Variable = 0
     Executable = 1
-    Start = 2
-    End = 3
+    Operator = 2
+    Event = 3
+    Start = 4
+    End = 5
 
 class Sides(enum.Enum):
     left = 0

@@ -3,17 +3,13 @@ from .global_vars import varaibles
 
 
 class Variable:
+    VariableTypes = [Types.number, Types.boolean, Types.text]
+
     def __init__(self, name: str, Type: Types):
         global varaibles
         varaibles[name] = self
         self.name = name
-        self.type = Type
-        if self.type == Types.boolean:
-            self._value = False
-        elif self.type == Types.number:
-            self._value = 0
-        elif self.type == Types.text:
-            self._value = ""
+        self.Type = Type
 
     # Value Property
     @property
@@ -26,6 +22,26 @@ class Variable:
             self._value = value
         else:
             raise ValueError(f"Value Must Be Type Of {self.type}")
+
+    # Type Property
+    @property
+    def Type(self):
+        return self._value
+
+    @Type.setter
+    def Type(self, value):
+        self._type = value
+        if self._type == Types.boolean:
+            self._value = False
+        elif self._type == Types.number:
+            self._value = 0.0
+        elif self._type == Types.text:
+            self._value = ""
+        elif self._type == Types.variable:
+            raise ValueError("Variable Type Cannot Be Used As A Value")
+        else:
+            raise ValueError(
+                "Invalid Type. Type Must Be boolean, number or text")
 
     # ==
     def __eq__(self, o: object) -> bool:
