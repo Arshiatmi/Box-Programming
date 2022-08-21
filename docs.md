@@ -7,9 +7,13 @@ Function("name",lambda x:x,[Option("Execute",Types.executable)],[])
 ```
 
 Arguments Are :
+
 **The Name Of Function**,
+
 **The Function You Want To Execute On This Box**,
+
 **All Input Options In Box**,
+
 **All Output Options In Box**,
 
 # Options
@@ -21,15 +25,21 @@ Option("text",Types.executable)
 ```
 
 Arguments Are :
+
 **The Name Of Option**,
+
 **Type Of Option**,
 
 ## Option Types
 
 **Types.boolean**,
+
 **Types.number**,
+
 **Types.text**,
+
 **Types.empty**,
+
 **Types.executable**,
 
 # Boxes
@@ -41,6 +51,9 @@ Box(name="", Type=BoxTypes.Executable, function=Function("pass", lambda x: x))
 ```
 
 Arguments Are :
+
 **The Name Of Box**,
+
 **The Type Of Box**,
+
 **The Function Of Box**

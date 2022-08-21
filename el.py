@@ -7,5 +7,3 @@ eel.start("index.html", size=(1080, 720))
 executableFunctions = getExecutableFunctions()
 variableFunctions = getVariableFunctions()
 allFunctions = getAllFunctions()
-
-print(allFunctions)
