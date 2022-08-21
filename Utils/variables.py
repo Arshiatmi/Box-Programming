@@ -37,6 +37,8 @@ class Variable:
             self._value = 0.0
         elif self._type == Types.text:
             self._value = ""
+        elif self._type == Types.executable:
+            self._value = None
         elif self._type == Types.variable:
             raise ValueError("Variable Type Cannot Be Used As A Value")
         else:
@@ -102,3 +104,25 @@ class Variable:
         else:
             if self.value >= o:
                 return True
+
+
+def detect_variable_type(value: object, return_variable_type=True) -> Types:
+    if value.__class__ == Variable:
+        if value.Type in Variable.VariableTypes or value.Type == Types.variable:
+            return value.Type
+        else:
+            raise ValueError("Invalid Type")
+    if type(value) == bool:
+        if return_variable_type:
+            return Types.variable
+        return Types.boolean
+    elif type(value) == int or type(value) == float:
+        if return_variable_type:
+            return Types.variable
+        return Types.number
+    elif type(value) == str:
+        if return_variable_type:
+            return Types.variable
+        return Types.text
+    else:
+        raise ValueError("Invalid Type")

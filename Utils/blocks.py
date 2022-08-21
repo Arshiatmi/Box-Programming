@@ -1,4 +1,4 @@
-from Utils.variables import Variable
+from Utils.variables import Variable, detect_variable_type
 from .exceptions import *
 from .enums import *
 from .global_vars import *
@@ -57,8 +57,8 @@ class Function:
             input_types[target_type] -= 1
             input_types = {k: v for k, v in input_types.items() if v > 0}
         if not input_types:
-            return False
-        return True
+            return True
+        return False
 
     def has_this_outputs(self, output_types: dict) -> bool:
         for i in self.outputs:
@@ -70,8 +70,8 @@ class Function:
             output_types[target_type] -= 1
             output_types = {k: v for k, v in output_types.items() if v > 0}
         if not output_types:
-            return False
-        return True
+            return True
+        return False
 
     def has_any_inputs(self, option_type=None) -> bool:
         if option_type:
@@ -130,9 +130,11 @@ class Box:
         self.function = function
         self.function_args = None
         self.function_argvs = None
+        self.function_inputs = []
+        self.function_outputs = []
         if Type == BoxTypes.Variable:
             # Set Variable Box
-            if self.function.has_this_outputs({Types.variable: 1}) and self.function.has_this_inputs({Types.variable: 1, Types.executable: 1}):
+            if self.function.has_this_outputs({Types.executable: 1}) and self.function.has_this_inputs({Types.variable: 1, Types.executable: 1}):
                 self.type = Type
             # Get Variable Box
             elif self.function.has_this_outputs({Types.variable: 1}):
@@ -157,7 +159,6 @@ class Box:
         self.inputs = self.function.inputs
         self.outputs = self.function.outputs
         self.tag = name
-        self.objects = []
         self.block_input_connected = [None] * len(self.inputs)
         self.block_output_connected = [None] * len(self.outputs)
 
@@ -182,13 +183,31 @@ class Box:
             raise FunctionError(
                 "Variable Type Box Can Not Have A Customize Function")
 
-    def run(self):
+    def check_types(self, refrence_types: list, types_to_check: list) -> bool:
+        refrence_types = list(filter(lambda x: x.Type in Variable.VariableTypes or x.Type ==
+                                     Types.variable, refrence_types))
+        for i, j in zip(refrence_types, types_to_check):
+            if i.Type == detect_variable_type(j, return_variable_type=False):
+                continue
+            return False
+        return True
+
+    def __call__(self, *args):
         if self.type == BoxTypes.Executable:
-            self.function(self.variables, self.inputs, self.outputs, *
-                          self.function_args, **self.function_argvs)
+            if self.check_types(self.inputs, args):
+                self.function_inputs = args
+                ans = self.function(self.inputs, self.outputs,
+                                    *args)
+                if self.check_types(self.outputs, ans):
+                    self.function_outputs = ans
+                    return ans
+                raise FunctionError(
+                    "Function Outputs Are Not Defined In Correct Type.")
+            else:
+                raise TypeError("Inputs Are Not Valid.")
         else:
             raise FunctionError(
-                "Variable Type Box Can Not Have Block Function")
+                "BoxType Must Be Executable To Be Called")
 
     # It Will Tries To Run A Javascript Code To Draw The Block
     def draw_block(self, startpos: list, endpos=[]):
