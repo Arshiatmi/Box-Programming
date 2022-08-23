@@ -2,7 +2,7 @@ from Utils.blocks import Function
 from Utils.tkinter_helpers import make_menu
 import tkinter as tk
 from Utils.tkinter_helpers import *
-from Utils.functions import getExecutableFunctions,getVariableFunctions,getAllFunctions,_from_rgb
+from Utils.helpers import getExecutableFunctions,getVariableFunctions,getAllFunctions,_from_rgb
 from PIL import Image,ImageTk
 from Utils.global_vars import ALL_GLOBALS
 

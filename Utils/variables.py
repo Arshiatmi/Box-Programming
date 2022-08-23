@@ -1,3 +1,4 @@
+from Utils.functions import make_id_from_name
 from .enums import *
 from .global_vars import variables
 
@@ -8,6 +9,7 @@ class Variable:
     def __init__(self, name: str, Type: Types):
         global variables
         variables[name] = self
+        self.id = make_id_from_name(name)
         self.name = name
         self.Type = Type
 

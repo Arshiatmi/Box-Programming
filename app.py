@@ -1,6 +1,6 @@
 from Utils.variables import *
 from Utils.blocks import *
-from Utils.functions import *
+from Utils.helpers import *
 
 
 def set_value(variable, value):

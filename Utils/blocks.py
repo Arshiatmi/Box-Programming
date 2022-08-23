@@ -1,4 +1,5 @@
-from Utils.functions import convert_to_list
+from Utils.functions import make_id_from_name
+from Utils.helpers import convert_to_list
 from Utils.variables import Variable, detect_variable_type
 from .exceptions import *
 from .enums import *
@@ -11,6 +12,7 @@ class Option:
     def __init__(self, text: str, Type: Types, Side: Sides = None):
         global options
         options[text] = self
+        self.id = make_id_from_name(text)
         self.Type = Type
         self.text = text
         self.side = Side
@@ -28,13 +30,15 @@ class Option:
 
 
 class Function:
-    def __init__(self, name, func, inputs=[], outputs=[]) -> None:
+    def __init__(self, name, func, inputs=[], outputs=[], requirements=[]) -> None:
         global functions
         functions[name] = self
+        self.id = make_id_from_name(name)
         self.name = name
         self.func = func
         self.inputs = inputs
         self.outputs = outputs
+        self.requirements = requirements
 
     def get_input_types(self) -> list:
         ans = []
@@ -129,6 +133,7 @@ class Box:
             boxes[function.name] = self
             name = function.name
         self.name = name
+        self.id = make_id_from_name(name)
         self.function = function
         self.function_args = None
         self.function_argvs = None
