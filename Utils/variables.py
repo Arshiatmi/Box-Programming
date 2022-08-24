@@ -13,14 +13,25 @@ class Variable:
         self.name = name
         self.Type = Type
 
+    @staticmethod
+    def is_number(number):
+        if type(number) in [float, int]:
+            return True
+        return False
+
     # Value Property
     @property
     def value(self):
+        if self.Type.value == float:
+            if int(self._value) == self._value:
+                return int(self._value)
         return self._value
 
     @value.setter
     def value(self, value):
-        if type(value) == self.Type.value:
+        if self.Type.value == float and Variable.is_number(value):
+            self._value = float(value)
+        elif type(value) == self.Type.value:
             self._value = value
         else:
             raise ValueError(f"Value Must Be Type Of {self.Type}")
