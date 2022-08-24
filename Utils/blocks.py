@@ -11,8 +11,19 @@ from .global_vars import *
 class Option:
     def __init__(self, text: str, Type: Types, Side: Sides = None):
         global options
-        options[text] = self
         self.id = make_id_from_name(text)
+        if Type == Types.executable:
+            self.id = "execute_" + self.id
+            if Side == Sides.left:
+                self.id = self.id + "_in"
+            elif Side == Sides.right:
+                self.id = self.id + "_out"
+        try:
+            options[self.id]
+        except:
+            raise ValueError(
+                "This Name Can Not Be Set Because This Option Name Set Before.")
+        options[self.id] = self
         self.Type = Type
         self.text = text
         self.side = Side
@@ -32,8 +43,13 @@ class Option:
 class Function:
     def __init__(self, name, func, inputs=[], outputs=[], requirements=[]) -> None:
         global functions
-        functions[name] = self
         self.id = make_id_from_name(name)
+        try:
+            functions[self.id]
+        except:
+            raise ValueError(
+                "This Name Can Not Be Set Because This Function Defined Before.")
+        functions[self.id] = self
         self.name = name
         self.func = func
         self.inputs = inputs
@@ -128,12 +144,16 @@ class Box:
             function = Function("end", lambda x: x, [
                                 Option("Execute", Types.executable)], [])
         elif name:
-            boxes[name] = self
+            self.id = make_id_from_name(name)
+            try:
+                boxes[self.id]
+            except:
+                raise ValueError(
+                    f"{self.id} Can Not Be Set Because It Used Before.")
+            boxes[self.id] = self
         else:
-            boxes[function.name] = self
-            name = function.name
+            raise ValueError("Box Must Have A Name.")
         self.name = name
-        self.id = make_id_from_name(name)
         self.function = function
         self.function_args = None
         self.function_argvs = None

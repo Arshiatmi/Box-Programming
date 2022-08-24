@@ -3,9 +3,6 @@ from Utils.blocks import *
 from Utils.helpers import *
 
 
-def set_value(variable, value):
-    variable.value = value
-
 ##################################################################
 #                          Boolean Variable                      #
 get_can_use = Function("Function Get Can Use ?",
