@@ -23,37 +23,33 @@ def getAllFunctions():
     return boxes
 
 
-def _from_rgb(rgb):
-    return "#%02x%02x%02x" % rgb
-
-
-def getBooleanVariable(name, inputs, outputs):
-    variable_name = functions[name].outputs[0].text
+def getBooleanVariable(function_id, inputs, outputs):
+    variable_name = functions[function_id].outputs[0].text
     return variables[variable_name]
 
 
-def getNumberVariable(name, inputs, outputs):
-    variable_name = functions[name].outputs[0].text
+def getNumberVariable(function_id, inputs, outputs):
+    variable_name = functions[function_id].outputs[0].text
     return variables[variable_name]
 
 
-def getTextVariable(name, inputs, outputs):
-    variable_name = functions[name].outputs[0].text
+def getTextVariable(function_id, inputs, outputs):
+    variable_name = functions[function_id].outputs[0].text
     return variables[variable_name]
 
 
-def setBooleanVariable(name, inputs, outputs, value):
-    variable_name = functions[name].inputs[1].text
+def setBooleanVariable(function_id, inputs, outputs, value):
+    variable_name = functions[function_id].inputs[1].text
     variables[variable_name].value = value
 
 
-def setNumberVariable(name, inputs, outputs, value):
-    variable_name = functions[name].inputs[1].text
+def setNumberVariable(function_id, inputs, outputs, value):
+    variable_name = functions[function_id].inputs[1].text
     variables[variable_name].value = value
 
 
-def setTextVariable(name, inputs, outputs, value):
-    variable_name = functions[name].inputs[1].text
+def setTextVariable(function_id, inputs, outputs, value):
+    variable_name = functions[function_id].inputs[1].text
     variables[variable_name].value = value
 
 

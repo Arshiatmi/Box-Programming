@@ -20,9 +20,10 @@ class Option:
                 self.id = self.id + "_out"
         try:
             options[self.id]
-        except:
             raise ValueError(
                 "This Name Can Not Be Set Because This Option Name Set Before.")
+        except:
+            pass
         options[self.id] = self
         self.Type = Type
         self.text = text
@@ -37,6 +38,14 @@ class Option:
         elif self.Type == Types.executable:
             self.input_model = InputTypes.executeButton
 
+    @property
+    def value(self):
+        return self.variable.value
+
+    @value.setter
+    def value(self, value):
+        self.variable.value = value
+
 # Functions That Are Made Like This To Make Application More Readable
 
 
@@ -46,9 +55,10 @@ class Function:
         self.id = make_id_from_name(name)
         try:
             functions[self.id]
-        except:
             raise ValueError(
                 "This Name Can Not Be Set Because This Function Defined Before.")
+        except:
+            pass
         functions[self.id] = self
         self.name = name
         self.func = func
@@ -147,9 +157,10 @@ class Box:
             self.id = make_id_from_name(name)
             try:
                 boxes[self.id]
-            except:
                 raise ValueError(
                     f"{self.id} Can Not Be Set Because It Used Before.")
+            except:
+                pass
             boxes[self.id] = self
         else:
             raise ValueError("Box Must Have A Name.")
@@ -185,7 +196,6 @@ class Box:
             self.Type = Type
         self.inputs = self.function.inputs
         self.outputs = self.function.outputs
-        self.tag = name
         self.block_input_connected = [None] * len(self.inputs)
         self.block_output_connected = [None] * len(self.outputs)
 
@@ -223,7 +233,7 @@ class Box:
         if self.Type in [BoxTypes.Executable, BoxTypes.Variable]:
             if self.check_types(self.inputs, args):
                 self.function_inputs = args
-                ans = self.function(self.function.name, self.inputs, self.outputs,
+                ans = self.function(self.function.id, self.inputs, self.outputs,
                                     *args)
                 ans = convert_to_list(ans)
                 if self.check_types(self.outputs, ans):
@@ -255,10 +265,9 @@ class Box:
 
 
 class Line:
-    def __init__(self, is_drawing=False, index=0) -> None:
-        self.is_drawing = is_drawing
+    def __init__(self, index=0) -> None:
         self.index = index
-        self.tag = f"Line{self.index}"
+        self.id = f"Line{self.index}"
         self.start_box = None
         self.end_box = None
 

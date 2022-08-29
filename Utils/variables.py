@@ -1,6 +1,6 @@
 from Utils.functions import make_id_from_name
 from .enums import *
-from .global_vars import variables
+from Utils.global_vars import variables, options
 
 
 class Variable:
