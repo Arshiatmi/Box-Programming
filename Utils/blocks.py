@@ -9,9 +9,14 @@ from .global_vars import *
 
 
 class Option:
-    def __init__(self, text: str, Type: Types, Side: Sides = None):
+    Index = 0
+
+    def __init__(self, text: str, Type: Types, Side: Sides = None, indexing=True):
         global options
-        self.id = make_id_from_name(text)
+        if not indexing:
+            self.id = make_id_from_name(text)
+        else:
+            self.id = make_id_from_name(text) + "_" + str(Option.Index)
         if Type == Types.executable:
             self.id = "execute_" + self.id
             if Side == Sides.left:
@@ -25,10 +30,13 @@ class Option:
         except:
             pass
         options[self.id] = self
+        if indexing:
+            Option.Index += 1
         self.Type = Type
         self.text = text
         self.side = Side
         self.variable = Variable(text, Type)
+        self.target_option = None
         if self.Type == Types.boolean:
             self.input_model = InputTypes.checkbox
         elif self.Type == Types.number:
@@ -45,14 +53,32 @@ class Option:
     @value.setter
     def value(self, value):
         self.variable.value = value
+        if self.side == Sides.left:
+            self.target_option.value = self.value
+
+    def attach(self, option):
+        if self.side != option.side:
+            self.target_option = option
+            if self.side == Sides.right:
+                self.value = self.target_option.value
+        else:
+            raise SideError("Sides Should Not Be Equal :(")
+
+    def detach(self):
+        self.target_option = None
 
 # Functions That Are Made Like This To Make Application More Readable
 
 
 class Function:
-    def __init__(self, name, func, inputs=[], outputs=[], requirements=[]) -> None:
+    Index = 0
+
+    def __init__(self, name, func, inputs=[], outputs=[], requirements=[], indexing=True) -> None:
         global functions
-        self.id = make_id_from_name(name)
+        if not indexing:
+            self.id = make_id_from_name(name)
+        else:
+            self.id = make_id_from_name(name) + "_" + str(Function.Index)
         try:
             functions[self.id]
             raise ValueError(
@@ -60,6 +86,8 @@ class Function:
         except:
             pass
         functions[self.id] = self
+        if indexing:
+            Function.Index += 1
         self.name = name
         self.func = func
         self.inputs = inputs
@@ -141,7 +169,9 @@ class Function:
 
 
 class Box:
-    def __init__(self, name="", Type=BoxTypes.Executable, function=Function("pass", lambda x: x)):
+    Index = 0
+
+    def __init__(self, name="", Type=BoxTypes.Executable, function=Function("pass", lambda x: x), indexing=True):
         global boxes
         if Type == BoxTypes.Start:
             boxes["start"] = self
@@ -152,9 +182,12 @@ class Box:
             boxes["end"] = self
             name = "end"
             function = Function("end", lambda x: x, [
-                                Option("Execute", Types.executable)], [])
+                Option("Execute", Types.executable)], [])
         elif name:
-            self.id = make_id_from_name(name)
+            if not indexing:
+                self.id = make_id_from_name(name)
+            else:
+                self.id = make_id_from_name(name) + "_" + str(Box.Index)
             try:
                 boxes[self.id]
                 raise ValueError(
@@ -162,6 +195,8 @@ class Box:
             except:
                 pass
             boxes[self.id] = self
+            if indexing:
+                Box.Index += 1
         else:
             raise ValueError("Box Must Have A Name.")
         self.name = name
@@ -229,8 +264,24 @@ class Box:
             return False
         return True
 
+    def attach(self, box, self_index, target_index, side=Sides.left):
+        if side == Sides.left:  # Side Of Line
+            self.inputs[self_index].attach(box.outputs[target_index])
+            box.outputs[target_index].attach(self.inputs[self_index])
+        else:
+            self.outputs[self_index].attach(box.inputs[target_index])
+            box.inputs[target_index].attach(self.outputs[self_index])
+
+    def detach(self, box, self_index, target_index, side=Sides.left):
+        if side == Sides.left:  # Side Of Line
+            self.inputs[self_index].detach()
+            box.outputs[target_index].detach()
+        else:
+            self.outputs[self_index].detach()
+            box.inputs[target_index].detach()
+
     def __call__(self, *args):
-        if self.Type in [BoxTypes.Executable, BoxTypes.Variable]:
+        if self.Type in [BoxTypes.Executable, BoxTypes.Variable, BoxTypes.Operator]:
             if self.check_types(self.inputs, args):
                 self.function_inputs = args
                 ans = self.function(self.function.id, self.inputs, self.outputs,
@@ -265,9 +316,11 @@ class Box:
 
 
 class Line:
-    def __init__(self, index=0) -> None:
-        self.index = index
-        self.id = f"Line{self.index}"
+    Index = 0
+
+    def __init__(self) -> None:
+        self.id = f"Line{Line.Index}"
+        Line.Index += 1
         self.start_box = None
         self.end_box = None
 

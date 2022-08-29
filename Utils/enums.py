@@ -25,6 +25,15 @@ class BoxTypes(enum.Enum):
     Start = 4
     End = 5
 
+
 class Sides(enum.Enum):
     left = 0
     right = 1
+
+
+class OperatorBuiltins(enum.Enum):
+    Add_Two_Numbers = 1
+    Add_Two_Text = 2
+    Minus_Two_Numbers = 3
+    AND = 4
+    OR = 5

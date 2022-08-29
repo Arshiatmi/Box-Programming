@@ -1,16 +1,10 @@
-from Utils.helpers import *
-from Utils.enums import BoxTypes, Types, Sides
-from Utils.blocks import Function, Box, Option
-
+from Utils.enums import BoxTypes, OperatorBuiltins
+from Utils.blocks import Box
+from Utils.exceptions import BoxError
+from Utils.operators import *
 
 Box(Type=BoxTypes.Start)
 Box(Type=BoxTypes.End)
-# Box(Type=BoxTypes.Variable,function=Function("Get Number Variable",getNumberVariable,[Types.text],[Types.number]))
-# Box(Type=BoxTypes.Variable,function=Function("Get Boolean Variable",getBooleanVariable,[Types.text],[Types.boolean]))
-# Box(Type=BoxTypes.Variable,function=Function("Get Text Variable",getTextVariable,[Types.text],[Types.text]))
-# Box(Type=BoxTypes.Executable,function=Function("Set Number Variable",setNumberVariable,[Types.text,Types.number],[]))
-# Box(Type=BoxTypes.Executable,function=Function("Set Boolean Variable",setBooleanVariable,[Types.text,Types.boolean],[]))
-# Box(Type=BoxTypes.Executable,function=Function("Set Text Variable",setTextVariable,[Types.text,Types.text],[]))
 
 variable_funcs = {
     Types.boolean: [getBooleanVariable, setBooleanVariable, "Boolean"],
@@ -31,3 +25,19 @@ def define_variable(name, Type):
     box_set_variable = Box(f"Set {variable_funcs[Type][2]} Variable",
                            BoxTypes.Variable, set_variable)
     return box_get_variable, box_set_variable
+
+
+def make_box(builtin_Box_Type, Type):
+    if Type == BoxTypes.Operator:
+        if builtin_Box_Type == OperatorBuiltins.Add_Two_Numbers:
+            return Box("Add Two Numbers", BoxTypes.Operator, add_two_numbers_operator)
+        elif builtin_Box_Type == OperatorBuiltins.Add_Two_Text:
+            return Box("Add Two Text", BoxTypes.Operator, add_two_text_operator)
+        elif builtin_Box_Type == OperatorBuiltins.Minus_Two_Numbers:
+            return Box("Minus Two Numbers", BoxTypes.Operator, minus_two_numbers_operator)
+        elif builtin_Box_Type == OperatorBuiltins.AND:
+            return Box("AND", BoxTypes.Operator, AND_operator)
+        elif builtin_Box_Type == OperatorBuiltins.OR:
+            return Box("OR", BoxTypes.Operator, OR_operator)
+        else:
+            raise BoxError("The Operator Box Type Is Not Defined.")

@@ -1,4 +1,4 @@
-from Utils.helpers import getExecutableFunctions, getVariableFunctions, getAllFunctions, _from_rgb
+from Utils.helpers import getExecutableFunctions, getVariableFunctions, getAllFunctions
 import eel
 
 eel.init("web")
