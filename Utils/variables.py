@@ -8,8 +8,8 @@ class Variable:
 
     def __init__(self, name: str, Type: Types):
         global variables
-        variables[name] = self
         self.id = make_id_from_name(name)
+        variables[self.id] = self
         self.name = name
         self.Type = Type
 

@@ -24,33 +24,33 @@ def getAllFunctions():
 
 
 def getBooleanVariable(function_id, inputs, outputs):
-    variable_name = outputs[0].text
+    variable_name = outputs[0].variable.id
     return variables[variable_name]
 
 
 def getNumberVariable(function_id, inputs, outputs):
-    variable_name = outputs[0].text
+    variable_name = outputs[0].variable.id
     return variables[variable_name]
 
 
 def getTextVariable(function_id, inputs, outputs):
-    variable_name = outputs[0].text
+    variable_name = outputs[0].variable.id
     return variables[variable_name]
 
 
 def setBooleanVariable(function_id, inputs, outputs, value):
-    variable_name = inputs[1].text
-    variables[variable_name].value = value
+    inputs[1].variable.value = value
+    return value
 
 
 def setNumberVariable(function_id, inputs, outputs, value):
-    variable_name = inputs[1].text
-    variables[variable_name].value = value
+    inputs[1].variable.value = value
+    return value
 
 
 def setTextVariable(function_id, inputs, outputs, value):
-    variable_name = inputs[1].text
-    variables[variable_name].value = value
+    inputs[1].variable.value = value
+    return value
 
 
 def add2vars(function_id, inputs, outputs):

@@ -1,3 +1,4 @@
+from typing import Callable
 from Utils.functions import make_id_from_name
 from Utils.helpers import convert_to_list
 from Utils.variables import Variable, detect_variable_type
@@ -11,12 +12,9 @@ from .global_vars import *
 class Option:
     Index = 0
 
-    def __init__(self, text: str, Type: Types, Side: Sides = None, indexing=True):
+    def __init__(self, text: str, Type: Types, Side: Sides = None):
         global options
-        if not indexing:
-            self.id = make_id_from_name(text)
-        else:
-            self.id = make_id_from_name(text) + "_" + str(Option.Index)
+        self.id = make_id_from_name(text)
         if Type == Types.executable:
             self.id = "execute_" + self.id
             if Side == Sides.left:
@@ -29,9 +27,11 @@ class Option:
                 "This Name Can Not Be Set Because This Option Name Set Before.")
         except:
             pass
-        options[self.id] = self
-        if indexing:
+        try:
+            options[self.id]
+        except:
             Option.Index += 1
+            options[self.id + "_" + str(Option.Index)] = self
         self.Type = Type
         self.text = text
         self.side = Side
@@ -48,6 +48,9 @@ class Option:
 
     @property
     def value(self):
+        if self.side == Sides.left:
+            if self.target_option:
+                self.variable.value = self.target_option.value
         return self.variable.value
 
     @value.setter
@@ -55,13 +58,14 @@ class Option:
         self.variable.value = value
         if self.side == Sides.left:
             if self.target_option:
-                self.target_option.value = self.value
+                self.variable.value = self.target_option.value
 
     def attach(self, option):
         if type(option) == type(self):
             if self.side != option.side:
                 self.target_option = option
                 if self.side == Sides.left:
+                    # print("Setting", self.text, self.target_option, self.value)
                     self.value = self.target_option.value
             else:
                 raise SideError("Sides Should Not Be Equal :(")
@@ -83,21 +87,24 @@ class Option:
 class Function:
     Index = 0
 
-    def __init__(self, name, func, inputs=[], outputs=[], requirements=[], indexing=True) -> None:
+    def __init__(self, name: str, func: Callable, inputs: list = [], outputs: list = [], requirements: list = [], is_instance: bool = False) -> None:
         global functions
-        if not indexing:
-            self.id = make_id_from_name(name)
-        else:
-            self.id = make_id_from_name(name) + "_" + str(Function.Index)
+        self.id = make_id_from_name(name)
         try:
             functions[self.id]
             raise ValueError(
                 "This Name Can Not Be Set Because This Function Defined Before.")
         except:
             pass
-        functions[self.id] = self
-        if indexing:
+        try:
+            functions[self.id]
             Function.Index += 1
+            functions[self.id + "_" + str(Function.Index)] = self
+            if not is_instance:
+                logger.warning(
+                    f"The Function With id {self.id} Exists. Box id Changed Too {self.id + '_' + str(Function.Index)}")
+        except:
+            functions[self.id] = self
         self.name = name
         self.func = func
         self.inputs = inputs
@@ -181,7 +188,7 @@ class Function:
 class Box:
     Index = 0
 
-    def __init__(self, name="", Type=BoxTypes.Executable, function=Function("pass", lambda x: x), indexing=True):
+    def __init__(self, name: str = "", Type: BoxTypes = BoxTypes.Executable, function: Function = Function("pass", lambda x: x), is_instance: bool = False):
         global boxes
         if Type == BoxTypes.Start:
             boxes["start"] = self
@@ -194,19 +201,16 @@ class Box:
             function = Function("end", lambda x: x, [
                 Option("Execute", Types.executable)], [])
         elif name:
-            if not indexing:
-                self.id = make_id_from_name(name)
-            else:
-                self.id = make_id_from_name(name) + "_" + str(Box.Index)
+            self.id = make_id_from_name(name)
             try:
                 boxes[self.id]
-                raise ValueError(
-                    f"{self.id} Can Not Be Set Because It Used Before.")
-            except:
-                pass
-            boxes[self.id] = self
-            if indexing:
                 Box.Index += 1
+                boxes[self.id + "_" + str(Box.Index)] = self
+                if not is_instance:
+                    logger.warning(
+                        f"The Box With id {self.id} Exists. Box id Changed Too {self.id + '_' + str(Box.Index)}")
+            except:
+                boxes[self.id] = self
         else:
             raise ValueError("Box Must Have A Name.")
         self.name = name
@@ -344,7 +348,10 @@ class Box:
                 if self.check_types(self.outputs, ans):
                     self.function_outputs = ans
                     if len(ans) == 1:
-                        return ans[0].value
+                        try:
+                            return ans[0].value
+                        except:
+                            return ans[0]
                     return list(map(lambda x: x.value, self.function_outputs))
                 raise FunctionError(
                     "Function Outputs Are Not Defined In Correct Type.")

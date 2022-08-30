@@ -1,6 +1,6 @@
 import os
 import time
-from classes import CrossPlatformer
+from pysha import CrossPlatformer
 
 animation_frames = []
 
