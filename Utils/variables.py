@@ -118,6 +118,12 @@ class Variable:
             if self.value >= o:
                 return True
 
+    def __str__(self) -> str:
+        return f"Variable({self.value})"
+
+    def __repr__(self) -> str:
+        return f"Variable({self.value})"
+
 
 def detect_variable_type(value: object, return_variable_type=True) -> Types:
     if value.__class__ == Variable:

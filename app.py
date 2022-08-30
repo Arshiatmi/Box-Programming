@@ -35,3 +35,10 @@ print(get_name())
 
 #                          String Variable                       #
 ##################################################################
+
+add = make_box(OperatorBuiltins.Add_Two_Numbers, BoxTypes.Operator)
+add.attach(get_age, 0, 0, Sides.left)
+add.attach(None, 1, 20, Sides.left)
+print(add.inputs[0].value)
+print(add.inputs[1].value)
+print(add.outputs[0].value)

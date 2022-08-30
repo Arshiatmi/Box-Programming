@@ -54,18 +54,28 @@ class Option:
     def value(self, value):
         self.variable.value = value
         if self.side == Sides.left:
-            self.target_option.value = self.value
+            if self.target_option:
+                self.target_option.value = self.value
 
     def attach(self, option):
-        if self.side != option.side:
-            self.target_option = option
-            if self.side == Sides.right:
-                self.value = self.target_option.value
+        if type(option) == type(self):
+            if self.side != option.side:
+                self.target_option = option
+                if self.side == Sides.left:
+                    self.value = self.target_option.value
+            else:
+                raise SideError("Sides Should Not Be Equal :(")
         else:
-            raise SideError("Sides Should Not Be Equal :(")
+            self.value = option
 
     def detach(self):
         self.target_option = None
+
+    def __str__(self):
+        return f"Option({self.value})"
+
+    def __repr__(self):
+        return f"Option({self.value})"
 
 # Functions That Are Made Like This To Make Application More Readable
 
@@ -203,8 +213,8 @@ class Box:
         self.function = function
         self.function_args = None
         self.function_argvs = None
-        self.function_inputs = []
-        self.function_outputs = []
+        self._function_inputs = []
+        self._function_outputs = []
         if Type == BoxTypes.Variable:
             # Set Variable Box
             if self.function.has_this_outputs({Types.executable: 1}) and self.function.has_this_inputs({Types.variable: 1, Types.executable: 1}):
@@ -233,6 +243,32 @@ class Box:
         self.outputs = self.function.outputs
         self.block_input_connected = [None] * len(self.inputs)
         self.block_output_connected = [None] * len(self.outputs)
+
+    @property
+    def function_inputs(self):
+        return self._function_inputs
+
+    @function_inputs.setter
+    def function_inputs(self, value):
+        self._function_inputs = value
+        refrence_types = list(filter(lambda x: x.Type in Variable.VariableTypes or x.Type ==
+                                     Types.variable, self.inputs))
+        if len(value) == len(refrence_types):
+            for c, i in enumerate(refrence_types):
+                i.value = value[c]
+
+    @property
+    def function_outputs(self):
+        return self._function_outputs
+
+    @function_outputs.setter
+    def function_outputs(self, value):
+        self._function_outputs = value
+        refrence_types = list(filter(lambda x: x.Type in Variable.VariableTypes or x.Type ==
+                                     Types.variable, self.outputs))
+        if len(value) == len(refrence_types):
+            for c, i in enumerate(refrence_types):
+                i.value = value[c].value
 
     def addOption(self, option: Option):
         if self.Type == BoxTypes.Executable:
@@ -264,21 +300,39 @@ class Box:
             return False
         return True
 
-    def attach(self, box, self_index, target_index, side=Sides.left):
-        if side == Sides.left:  # Side Of Line
-            self.inputs[self_index].attach(box.outputs[target_index])
-            box.outputs[target_index].attach(self.inputs[self_index])
+    def attach(self, box, self_index, target_index_or_value, side=Sides.left):
+        if box == None:
+            if side == Sides.left:  # Side Of Line
+                self.inputs[self_index].attach(target_index_or_value)
+            else:
+                self.outputs[self_index].attach(target_index_or_value)
         else:
-            self.outputs[self_index].attach(box.inputs[target_index])
-            box.inputs[target_index].attach(self.outputs[self_index])
+            if side == Sides.left:  # Side Of Line
+                self.inputs[self_index].attach(
+                    box.outputs[target_index_or_value])
+                box.outputs[target_index_or_value].attach(
+                    self.inputs[self_index])
+            else:
+                self.outputs[self_index].attach(
+                    box.inputs[target_index_or_value])
+                box.inputs[target_index_or_value].attach(
+                    self.outputs[self_index])
+        self()
 
-    def detach(self, box, self_index, target_index, side=Sides.left):
-        if side == Sides.left:  # Side Of Line
-            self.inputs[self_index].detach()
-            box.outputs[target_index].detach()
+    def detach(self, box, self_index, target_index_or_value, side=Sides.left):
+        if box == None:
+            if side == Sides.left:  # Side Of Line
+                self.inputs[self_index].detach()
+            else:
+                self.outputs[self_index].detach()
         else:
-            self.outputs[self_index].detach()
-            box.inputs[target_index].detach()
+            if side == Sides.left:  # Side Of Line
+                self.inputs[self_index].detach()
+                box.outputs[target_index_or_value].detach()
+            else:
+                self.outputs[self_index].detach()
+                box.inputs[target_index_or_value].detach()
+        self()
 
     def __call__(self, *args):
         if self.Type in [BoxTypes.Executable, BoxTypes.Variable, BoxTypes.Operator]:
