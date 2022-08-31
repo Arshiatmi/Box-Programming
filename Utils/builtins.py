@@ -16,10 +16,10 @@ variable_funcs = {
 def define_variable(name, Type):
     target_id = make_id_from_name(name)
     get_variable = Function(f"Function Get {target_id}",
-                            variable_funcs[Type][0], [], [Option(f"{target_id}", Type, Sides.right)])
+                            variable_funcs[Type][0], [], [Option(f"{target_id}", Type, Sides.right, variable_mode=True)])
 
     set_variable = Function(f"Function Set {target_id}",
-                            variable_funcs[Type][1], [Option(f"Execute_{target_id}_in", Types.executable, Sides.left), Option(f"{target_id}", Type, Sides.left)], [Option(f"Execute_{target_id}_out", Types.executable, Sides.right)])
+                            variable_funcs[Type][1], [Option(f"{target_id}", Types.executable, Sides.left), Option(f"{target_id}", Type, Sides.left, variable_mode=True)], [Option(f"{target_id}", Types.executable, Sides.right)])
 
     box_get_variable = Box(f"Get {variable_funcs[Type][2]} Variable ({target_id})",
                            BoxTypes.Variable, get_variable)

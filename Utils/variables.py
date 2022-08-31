@@ -61,62 +61,82 @@ class Variable:
     # ==
     def __eq__(self, o: object) -> bool:
         if o.__class__ == Variable:
-            if type(o) == self.type:
+            if type(o) == self.Type:
+                if o == self.value:
+                    return True
+            elif type(o) == type(self):
                 if o.value == self.value:
                     return True
             else:
-                raise ValueError(f"Value Must Be Type Of {self.type}")
+                raise ValueError(f"Value Must Be Type Of {self.Type}")
         else:
             if self.value == o:
                 return True
+        return False
 
     # <
     def __lt__(self, o: object) -> bool:
         if o.__class__ == Variable:
-            if type(o) == self.type:
+            if type(o) == self.Type:
+                if o < self.value:
+                    return True
+            elif type(o) == type(self):
                 if o.value < self.value:
                     return True
             else:
-                raise ValueError(f"Value Must Be Type Of {self.type}")
+                raise ValueError(f"Value Must Be Type Of {self.Type}")
         else:
             if self.value < o:
                 return True
+        return False
 
     # >
     def __gt__(self, o: object) -> bool:
         if o.__class__ == Variable:
-            if type(o) == self.type:
+            if type(o) == self.Type:
+                if o > self.value:
+                    return True
+            elif type(o) == type(self):
                 if o.value > self.value:
                     return True
             else:
-                raise ValueError(f"Value Must Be Type Of {self.type}")
+                raise ValueError(f"Value Must Be Type Of {self.Type}")
         else:
             if self.value > o:
                 return True
+        return False
 
     # <=
     def __le__(self, o: object) -> bool:
         if o.__class__ == Variable:
-            if type(o) == self.type:
+            if type(o) == self.Type:
+                if o <= self.value:
+                    return True
+            elif type(o) == type(self):
                 if o.value <= self.value:
                     return True
             else:
-                raise ValueError(f"Value Must Be Type Of {self.type}")
+                raise ValueError(f"Value Must Be Type Of {self.Type}")
         else:
             if self.value <= o:
                 return True
+        return False
 
     # >=
     def __ge__(self, o: object) -> bool:
         if o.__class__ == Variable:
-            if type(o) == self.type:
+            if type(o) == self.Type:
+                if o >= self.value:
+                    return True
+            elif type(o) == type(self):
                 if o.value >= self.value:
                     return True
             else:
-                raise ValueError(f"Value Must Be Type Of {self.type}")
+                raise ValueError(f"Value Must Be Type Of {self.Type}")
         else:
             if self.value >= o:
                 return True
+        return False
 
     def __str__(self) -> str:
         return f"Variable({self.value})"

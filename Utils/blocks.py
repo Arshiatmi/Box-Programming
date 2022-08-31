@@ -1,3 +1,4 @@
+import inspect
 from typing import Callable
 from Utils.functions import make_id_from_name
 from Utils.helpers import convert_to_list
@@ -12,7 +13,7 @@ from .global_vars import *
 class Option:
     Index = 0
 
-    def __init__(self, text: str, Type: Types, Side: Sides = None):
+    def __init__(self, text: str, Type: Types, Side: Sides = None, variable_mode=False):
         global options
         self.id = make_id_from_name(text)
         if Type == Types.executable:
@@ -23,14 +24,19 @@ class Option:
                 self.id = self.id + "_out"
         try:
             options[self.id]
-        except:
+            if Type != Types.executable:
+                if variable_mode:
+                    self.variable = variables[self.id]
+                else:
+                    self.variable = Variable(self.id, Type)
             Option.Index += 1
             options[self.id + "_" + str(Option.Index)] = self
+        except:
+            options[self.id] = self
+            self.variable = Variable(self.id, Type)
         self.Type = Type
         self.text = text
         self.side = Side
-        if Type != Types.executable:
-            self.variable = Variable(text, Type)
         self.target_option = None
         if self.Type == Types.boolean:
             self.input_model = InputTypes.checkbox
@@ -69,7 +75,6 @@ class Option:
                 self.target_option = option
                 self.target_option.target_option = self
                 if self.side == Sides.left:
-                    # print("Setting", self.text, self.target_option, self.value)
                     self.value = self.target_option.value
                 else:
                     self.target_option.value = self.value
@@ -182,6 +187,12 @@ class Function:
     def __call__(self, *args: object, **kwds: object) -> None:
         return self.func(*args, **kwds)
 
+    def __str__(self) -> str:
+        return self.name
+
+    def __repr__(self) -> str:
+        return f"Function({self.id})"
+
 # Boxes ( Core ) Of This Application
 
 
@@ -194,12 +205,12 @@ class Box:
             boxes["start"] = self
             name = "start"
             function = Function("start", lambda x: x, [], [
-                                Option("Execute", Types.executable)])
+                                Option("StartExecute", Types.executable)])
         elif Type == BoxTypes.End:
             boxes["end"] = self
             name = "end"
             function = Function("end", lambda x: x, [
-                Option("Execute", Types.executable)], [])
+                Option("EndExecute", Types.executable)], [])
         elif name:
             self.id = make_id_from_name(name)
             try:
@@ -259,7 +270,10 @@ class Box:
                                      Types.variable, self.inputs))
         if len(value) == len(refrence_types):
             for c, i in enumerate(refrence_types):
-                i.value = value[c]
+                try:
+                    i.value = value[c].value
+                except:
+                    i.value = value[c]
 
     @property
     def function_outputs(self):
@@ -272,7 +286,10 @@ class Box:
                                      Types.variable, self.outputs))
         if len(value) == len(refrence_types):
             for c, i in enumerate(refrence_types):
-                i.value = value[c].value
+                try:
+                    i.value = value[c].value
+                except:
+                    i.value = value[c]
 
     def addOption(self, option: Option):
         if self.Type == BoxTypes.Executable:
