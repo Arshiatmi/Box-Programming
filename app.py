@@ -60,3 +60,13 @@ orBool = make_box(OperatorBuiltins.OR, BoxTypes.Operator)
 orBool.attach(get_can_use, 0, 0, Sides.left)
 orBool.attach(None, 1, False, Sides.left)
 print(orBool.outputs[0].value)
+
+
+# get_running, set_running = define_variable("Running?", Types.boolean)
+# set_running(True)
+# set_can_use(True)
+
+# andBool1 = make_box(OperatorBuiltins.AND, BoxTypes.Operator)
+# andBool1.attach(get_can_use, 0, 0, Sides.left)
+# andBool1.attach(get_running, 1, 0, Sides.left)
+# print(andBool1.outputs[0].value)

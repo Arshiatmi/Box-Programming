@@ -23,19 +23,14 @@ class Option:
                 self.id = self.id + "_out"
         try:
             options[self.id]
-            raise ValueError(
-                "This Name Can Not Be Set Because This Option Name Set Before.")
-        except:
-            pass
-        try:
-            options[self.id]
         except:
             Option.Index += 1
             options[self.id + "_" + str(Option.Index)] = self
         self.Type = Type
         self.text = text
         self.side = Side
-        self.variable = Variable(text, Type)
+        if Type != Types.executable:
+            self.variable = Variable(text, Type)
         self.target_option = None
         if self.Type == Types.boolean:
             self.input_model = InputTypes.checkbox
@@ -48,6 +43,8 @@ class Option:
 
     @property
     def value(self):
+        if self.Type == Types.executable:
+            return self.id
         if self.side == Sides.left:
             if self.target_option:
                 self.variable.value = self.target_option.value
@@ -55,18 +52,27 @@ class Option:
 
     @value.setter
     def value(self, value):
-        self.variable.value = value
+        if self.Type == Types.executable:
+            return
         if self.side == Sides.left:
             if self.target_option:
+                self.target_option.value = value
                 self.variable.value = self.target_option.value
+            else:
+                self.variable.value = value
+        else:
+            self.variable.value = value
 
     def attach(self, option):
         if type(option) == type(self):
             if self.side != option.side:
                 self.target_option = option
+                self.target_option.target_option = self
                 if self.side == Sides.left:
                     # print("Setting", self.text, self.target_option, self.value)
                     self.value = self.target_option.value
+                else:
+                    self.target_option.value = self.value
             else:
                 raise SideError("Sides Should Not Be Equal :(")
         else:
@@ -90,12 +96,6 @@ class Function:
     def __init__(self, name: str, func: Callable, inputs: list = [], outputs: list = [], requirements: list = [], is_instance: bool = False) -> None:
         global functions
         self.id = make_id_from_name(name)
-        try:
-            functions[self.id]
-            raise ValueError(
-                "This Name Can Not Be Set Because This Function Defined Before.")
-        except:
-            pass
         try:
             functions[self.id]
             Function.Index += 1
@@ -314,13 +314,9 @@ class Box:
             if side == Sides.left:  # Side Of Line
                 self.inputs[self_index].attach(
                     box.outputs[target_index_or_value])
-                box.outputs[target_index_or_value].attach(
-                    self.inputs[self_index])
             else:
                 self.outputs[self_index].attach(
                     box.inputs[target_index_or_value])
-                box.inputs[target_index_or_value].attach(
-                    self.outputs[self_index])
         self()
 
     def detach(self, box, self_index, target_index_or_value, side=Sides.left):
@@ -360,6 +356,12 @@ class Box:
         else:
             raise FunctionError(
                 "BoxType Must Be Executable To Be Called")
+
+    def __str__(self) -> str:
+        return f"Box({self.name})"
+
+    def __repr__(self) -> str:
+        return f"Box({self.name})"
 
     # It Will Tries To Run A Javascript Code To Draw The Block
     def draw_block(self, startpos: list, endpos=[]):
