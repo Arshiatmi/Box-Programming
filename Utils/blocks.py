@@ -1,4 +1,3 @@
-import inspect
 from typing import Callable
 from Utils.functions import make_id_from_name
 from Utils.helpers import convert_to_list
@@ -13,9 +12,10 @@ from .global_vars import *
 class Option:
     Index = 0
 
-    def __init__(self, text: str, Type: Types, Side: Sides = None, variable_mode=False):
+    def __init__(self, text: str, Type: Types, Side: Sides = None, variable_mode=False, show_text=False):
         global options
         self.id = make_id_from_name(text)
+        self.box_id = self.id
         if Type == Types.executable:
             self.id = "execute_" + self.id
             if Side == Sides.left:
@@ -37,6 +37,8 @@ class Option:
         self.Type = Type
         self.text = text
         self.side = Side
+        self.show_text = show_text
+        self.parent = None
         self.target_option = None
         if self.Type == Types.boolean:
             self.input_model = InputTypes.checkbox
@@ -82,6 +84,12 @@ class Option:
                 raise SideError("Sides Should Not Be Equal :(")
         else:
             self.value = option
+
+    def get_box(self):
+        if self.parent:
+            return self.parent
+        else:
+            raise BoxError(f"Box With Id {self.box_id} Not Found :(")
 
     def detach(self):
         self.target_option = None
@@ -230,6 +238,8 @@ class Box:
         self.function_argvs = None
         self._function_inputs = []
         self._function_outputs = []
+        self.x = None
+        self.y = None
         if Type == BoxTypes.Variable:
             # Set Variable Box
             if self.function.has_this_outputs({Types.executable: 1}) and self.function.has_this_inputs({Types.variable: 1, Types.executable: 1}):
@@ -258,6 +268,10 @@ class Box:
         self.outputs = self.function.outputs
         self.block_input_connected = [None] * len(self.inputs)
         self.block_output_connected = [None] * len(self.outputs)
+        for i in self.inputs:
+            i.parent = self
+        for i in self.outputs:
+            i.parent = self
 
     @property
     def function_inputs(self):
@@ -334,7 +348,8 @@ class Box:
             else:
                 self.outputs[self_index].attach(
                     box.inputs[target_index_or_value])
-        self()
+        if self.Type == BoxTypes.Operator:
+            self()
 
     def detach(self, box, self_index, target_index_or_value, side=Sides.left):
         if box == None:
@@ -349,7 +364,8 @@ class Box:
             else:
                 self.outputs[self_index].detach()
                 box.inputs[target_index_or_value].detach()
-        self()
+        if self.Type == BoxTypes.Operator:
+            self()
 
     def __call__(self, *args):
         if self.Type in [BoxTypes.Executable, BoxTypes.Variable, BoxTypes.Operator]:
@@ -360,11 +376,14 @@ class Box:
                 ans = convert_to_list(ans)
                 if self.check_types(self.outputs, ans):
                     self.function_outputs = ans
-                    if len(ans) == 1:
-                        try:
-                            return ans[0].value
-                        except:
-                            return ans[0]
+                    if self.Type == BoxTypes.Operator:
+                        if len(ans) == 1:
+                            try:
+                                return ans[0].value
+                            except:
+                                return ans[0]
+                    else:
+                        return ans[0]
                     return list(map(lambda x: x.value, self.function_outputs))
                 raise FunctionError(
                     "Function Outputs Are Not Defined In Correct Type.")
@@ -373,6 +392,14 @@ class Box:
         else:
             raise FunctionError(
                 "BoxType Must Be Executable To Be Called")
+
+    def get_connected_option(self):
+        ans = self()
+        return ans.target_option
+
+    def execute_box(self):
+        ans = self()
+        return ans.target_option.parent
 
     def __str__(self) -> str:
         return f"Box({self.name})"
@@ -401,6 +428,10 @@ class Line:
     def __init__(self) -> None:
         self.id = f"Line{Line.Index}"
         Line.Index += 1
+        self.start_x = None
+        self.start_y = None
+        self.end_x = None
+        self.end_y = None
         self.start_box = None
         self.end_box = None
 

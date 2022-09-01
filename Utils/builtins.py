@@ -1,4 +1,5 @@
-from Utils.enums import BoxTypes, OperatorBuiltins
+from Utils.helpers import if_statement
+from Utils.enums import BoxTypes, ExecutableBuiltins, OperatorBuiltins
 from Utils.blocks import Box
 from Utils.exceptions import BoxError
 from Utils.operators import *
@@ -28,7 +29,7 @@ def define_variable(name, Type):
     return box_get_variable, box_set_variable
 
 
-def make_box(builtin_Box_Type, Type):
+def make_box(builtin_Box_Type, Type: BoxTypes):
     if Type == BoxTypes.Operator:
         if builtin_Box_Type == OperatorBuiltins.Add_Two_Numbers:
             return Box("Add Two Numbers", BoxTypes.Operator, add_two_numbers_operator, True)
@@ -42,3 +43,6 @@ def make_box(builtin_Box_Type, Type):
             return Box("OR", BoxTypes.Operator, OR_operator, True)
         else:
             raise BoxError("The Operator Box Type Is Not Defined.")
+    elif Type == BoxTypes.Executable:
+        if builtin_Box_Type == ExecutableBuiltins.If:
+            return Box("if", BoxTypes.Executable, if_statement_function, True)

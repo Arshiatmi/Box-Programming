@@ -57,3 +57,16 @@ OR_operator = Function(f"OR",
                            Option(f"builtin_{make_id_from_name('OR')}_n3", Types.boolean,
                                   Sides.right)
                        ])
+
+if_statement_function = Function("If",
+                                 if_statement,
+                                 [
+                                     Option("builtin_If",
+                                            Types.executable, Sides.left),
+                                     Option("builtin_If_bool", Types.boolean, Sides.left)],
+                                 [
+                                     Option("True", Types.executable,
+                                            Sides.right, show_text=True),
+                                     Option("False", Types.executable,
+                                            Sides.right, show_text=True)
+                                 ])

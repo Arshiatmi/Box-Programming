@@ -85,6 +85,13 @@ def OR(function_id, inputs, outputs):
     outputs[0].value = ans
 
 
+def if_statement(function_id, inputs, outputs):
+    if inputs[1].value:
+        return outputs[0]
+    else:
+        return outputs[1]
+
+
 def convert_to_list(inputs):
     if not inputs:
         return []

@@ -37,3 +37,7 @@ class OperatorBuiltins(enum.Enum):
     Minus_Two_Numbers = 3
     AND = 4
     OR = 5
+
+
+class ExecutableBuiltins(enum.Enum):
+    If = 1
