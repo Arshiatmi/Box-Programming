@@ -1,3 +1,4 @@
+from Utils.extention_manager import *
 from Utils.builtins import define_variable, make_box
 from Utils.variables import *
 from Utils.blocks import *
