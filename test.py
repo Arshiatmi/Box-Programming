@@ -134,3 +134,15 @@ print(_if.execute_box())  # Returns Next Box
 
 #                       Test If Statements                       #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                        Test Array Type                         #
+array_test = Function("arrayTest", array_test, [
+    Option("arrayTest", Types.array, Sides.left)])
+bx = Box("arrayTest", BoxTypes.Executable, array_test)
+bx()
+
+#                        Test Array Type                         #
+##################################################################

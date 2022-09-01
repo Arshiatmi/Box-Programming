@@ -50,6 +50,8 @@ class Variable:
             self._value = 0.0
         elif self._type == Types.text:
             self._value = ""
+        elif self._type == Types.array:
+            self._value = []
         elif self._type == Types.executable:
             self._value = None
         elif self._type == Types.variable:

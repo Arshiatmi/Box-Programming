@@ -383,7 +383,8 @@ class Box:
                             except:
                                 return ans[0]
                     else:
-                        return ans[0]
+                        if len(ans) == 1:
+                            return ans[0]
                     return list(map(lambda x: x.value, self.function_outputs))
                 raise FunctionError(
                     "Function Outputs Are Not Defined In Correct Type.")

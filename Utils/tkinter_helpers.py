@@ -1,6 +1,6 @@
-from Utils.enums import ConfigModes, Current
+from Utils.enums import ConfigModes
 from .blocks import conf, Line
-from .global_vars import ALL_GLOBALS, boxes, images, locked_image_objects
+from .global_vars import boxes, images, locked_image_objects
 import tkinter as tk
 
 

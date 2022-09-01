@@ -5,6 +5,7 @@ class Types(enum.Enum):
     boolean = bool
     text = str
     number = float
+    array = list
     empty = 0
     executable = 1
     variable = 2

@@ -92,6 +92,12 @@ def if_statement(function_id, inputs, outputs):
         return outputs[1]
 
 
+def array_test(function_id, inputs, outputs):
+    inputs[0].value.append("test")
+    print(inputs[0])
+    print(outputs)
+
+
 def convert_to_list(inputs):
     if not inputs:
         return []

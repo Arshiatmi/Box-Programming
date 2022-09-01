@@ -1,4 +1,3 @@
-from Utils.helpers import if_statement
 from Utils.enums import BoxTypes, ExecutableBuiltins, OperatorBuiltins
 from Utils.blocks import Box
 from Utils.exceptions import BoxError
