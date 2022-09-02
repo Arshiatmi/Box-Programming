@@ -1,3 +1,6 @@
+![license](https://img.shields.io/github/license/Arshiatmi/Box-Programming.svg)
+![last-commit](https://img.shields.io/github/last-commit/Arshiatmi/Box-Programming.svg)
+
 # Functions
 
 You Can Define Functions Like :
