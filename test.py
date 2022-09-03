@@ -172,3 +172,5 @@ _print.attach(None, 1, "Hello There :)", Sides.left)  # Check For Normal Print
 _print.execute_box()
 _print.attach(get_name, 1, 0, Sides.left)  # Check For Variable
 _print.execute_box()
+_print.attach(_input, 1, 1, Sides.left)  # Check For Box Chain
+_print.execute_box()

@@ -95,7 +95,7 @@ def get_input_function():
                         Option("builtin_Input",
                                Types.executable, Sides.right),
                         Option("builtin_Input_text",
-                               Types.text, Sides.left, optional=True)
+                               Types.text, Sides.right, optional=True)
                     ], is_instance=True)
 
 
