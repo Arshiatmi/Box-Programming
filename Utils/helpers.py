@@ -102,6 +102,70 @@ def print_string(function_id, inputs, outputs):
     return outputs[0]
 
 
+def number_to_text(function_id, inputs, outputs):
+    try:
+        outputs[2].value = float(inputs[1].value)
+        return outputs[0]
+    except:
+        return outputs[1]
+
+
+def number_to_bool(function_id, inputs, outputs):
+    try:
+        outputs[2].value = bool(inputs[1].value)
+        return outputs[0]
+    except:
+        return outputs[1]
+
+
+def bool_to_number(function_id, inputs, outputs):
+    try:
+        outputs[2].value = float(inputs[1].value)
+        return outputs[0]
+    except:
+        return outputs[1]
+
+
+def bool_to_text(function_id, inputs, outputs):
+    try:
+        outputs[2].value = str(inputs[1].value)
+        return outputs[0]
+    except:
+        return outputs[1]
+
+
+def text_to_number(function_id, inputs, outputs):
+    try:
+        outputs[2].value = float(inputs[1].value)
+        return outputs[0]
+    except:
+        return outputs[1]
+
+
+def text_to_bool(function_id, inputs, outputs):
+    try:
+        outputs[2].value = bool(inputs[1].value)
+        return outputs[0]
+    except:
+        return outputs[1]
+
+
+def array_to_text(function_id, inputs, outputs):
+    try:
+        outputs[2].value = str(inputs[1].value)
+        return outputs[0]
+    except:
+        return outputs[1]
+
+
+def text_to_array(function_id, inputs, outputs):
+    try:
+        outputs[2].value = list(inputs[1].value)
+        return outputs[0]
+    except:
+        return outputs[1]
+
+
 def array_test(function_id, inputs, outputs):
     inputs[0].value.append("test")
 

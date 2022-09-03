@@ -110,3 +110,139 @@ def print_string_function():
                         Option("builtin_Print",
                                Types.executable, Sides.right),
                     ], is_instance=True)
+
+
+def number_to_text_function():
+    return Function("Number To Text",
+                    number_to_text,
+                    [
+                        Option("builtin_Cast_NumberToText",
+                               Types.executable, Sides.left),
+                        Option("builtin_Cast_NumberToText_input", Types.number, Sides.left)],
+                    [
+                        Option("builtin_Cast_NumberToText",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_NumberToText_failed",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_NumberToText_output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
+
+def number_to_bool_function():
+    return Function("Number To Bool",
+                    number_to_bool,
+                    [
+                        Option("builtin_Cast_NumberToBool",
+                               Types.executable, Sides.left),
+                        Option("builtin_Cast_NumberToBool_input", Types.number, Sides.left)],
+                    [
+                        Option("builtin_Cast_NumberToBool",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_NumberToBool_failed",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_NumberToBool_output",
+                               Types.boolean, Sides.right),
+                    ], is_instance=True)
+
+
+def bool_to_number_function():
+    return Function("Bool To Number",
+                    bool_to_number,
+                    [
+                        Option("builtin_Cast_BoolToNumber",
+                               Types.executable, Sides.left),
+                        Option("builtin_Cast_BoolToNumber_input", Types.boolean, Sides.left)],
+                    [
+                        Option("builtin_Cast_BoolToNumber",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_BoolToNumber_failed",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_BoolToNumber_output",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+
+def bool_to_text_function():
+    return Function("Bool To Text",
+                    bool_to_text,
+                    [
+                        Option("builtin_Cast_BoolToText",
+                               Types.executable, Sides.left),
+                        Option("builtin_Cast_BoolToText_input", Types.boolean, Sides.left)],
+                    [
+                        Option("builtin_Cast_BoolToText",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_BoolToText_failed",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_BoolToText_output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
+
+def text_to_number_function():
+    return Function("Text To Number",
+                    text_to_number,
+                    [
+                        Option("builtin_Cast_TextToNumber",
+                               Types.executable, Sides.left),
+                        Option("builtin_Cast_TextToNumber_input", Types.text, Sides.left)],
+                    [
+                        Option("builtin_Cast_TextToNumber",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_TextToNumber_failed",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_TextToNumber_output",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+
+def text_to_bool_function():
+    return Function("Text To Bool",
+                    text_to_bool,
+                    [
+                        Option("builtin_Cast_TextToBool",
+                               Types.executable, Sides.left),
+                        Option("builtin_Cast_TextToBool_input", Types.text, Sides.left)],
+                    [
+                        Option("builtin_Cast_TextToBool",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_TextToBool_failed",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_TextToBool_output",
+                               Types.boolean, Sides.right),
+                    ], is_instance=True)
+
+
+def array_to_text_function():
+    return Function("Array To Text",
+                    array_to_text,
+                    [
+                        Option("builtin_Cast_ArrayToText",
+                               Types.executable, Sides.left),
+                        Option("builtin_Cast_ArrayToText_input", Types.array, Sides.left)],
+                    [
+                        Option("builtin_Cast_ArrayToText",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_ArrayToText_failed",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_ArrayToText_output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
+
+def text_to_array_function():
+    return Function("Text To Array",
+                    text_to_array,
+                    [
+                        Option("builtin_Cast_TextToArray",
+                               Types.executable, Sides.left),
+                        Option("builtin_Cast_TextToArray_input", Types.text, Sides.left)],
+                    [
+                        Option("builtin_Cast_TextToArray",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_TextToArray_failed",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_TextToArray_output",
+                               Types.array, Sides.right),
+                    ], is_instance=True)

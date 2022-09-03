@@ -44,3 +44,14 @@ class ExecutableBuiltins(enum.Enum):
     If = 1
     Input = 2
     Print = 3
+
+
+class CastBuiltins(enum.Enum):
+    Number_To_Text = 1
+    Number_To_Bool = 2
+    Bool_To_Number = 3
+    Bool_To_Text = 4
+    Text_To_Number = 5
+    Text_To_Bool = 6
+    Array_To_Text = 7
+    Text_To_Array = 8
