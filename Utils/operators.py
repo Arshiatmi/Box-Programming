@@ -70,3 +70,16 @@ if_statement_function = Function("If",
                                      Option("False", Types.executable,
                                             Sides.right, show_text=True)
                                  ])
+
+get_input_function = Function("Input",
+                              get_input,
+                              [
+                                  Option("builtin_Input",
+                                         Types.executable, Sides.left),
+                                  Option("builtin_Input_prompt", Types.text, Sides.left)],
+                              [
+                                  Option("builtin_Input",
+                                         Types.executable, Sides.right),
+                                  Option("builtin_Input_text",
+                                         Types.text, Sides.left, optional=True)
+                              ])

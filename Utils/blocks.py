@@ -12,7 +12,7 @@ from .global_vars import *
 class Option:
     Index = 0
 
-    def __init__(self, text: str, Type: Types, Side: Sides = None, variable_mode=False, show_text=False):
+    def __init__(self, text: str, Type: Types, Side: Sides = None, variable_mode=False, show_text=False, optional=False):
         global options
         self.id = make_id_from_name(text)
         self.box_id = self.id
@@ -40,6 +40,7 @@ class Option:
         self.show_text = show_text
         self.parent = None
         self.target_option = None
+        self.optional = optional
         if self.Type == Types.boolean:
             self.input_model = InputTypes.checkbox
         elif self.Type == Types.number:
@@ -329,8 +330,15 @@ class Box:
     def check_types(self, refrence_types: list, types_to_check: list) -> bool:
         refrence_types = list(filter(lambda x: x.Type in Variable.VariableTypes or x.Type ==
                                      Types.variable, refrence_types))
+        try:
+            types_to_check = list(filter(lambda x: x.Type in Variable.VariableTypes or x.Type ==
+                                         Types.variable, types_to_check))
+        except:
+            pass
         for i, j in zip(refrence_types, types_to_check):
             if i.Type == detect_variable_type(j, return_variable_type=False):
+                continue
+            if j.optional:
                 continue
             return False
         return True
@@ -367,7 +375,7 @@ class Box:
         if self.Type == BoxTypes.Operator:
             self()
 
-    def __call__(self, *args):
+    def __call__(self, *args, set_answer=True):
         if self.Type in [BoxTypes.Executable, BoxTypes.Variable, BoxTypes.Operator]:
             if self.check_types(self.inputs, args):
                 self.function_inputs = args
@@ -375,7 +383,8 @@ class Box:
                                     *args)
                 ans = convert_to_list(ans)
                 if self.check_types(self.outputs, ans):
-                    self.function_outputs = ans
+                    if set_answer:
+                        self.function_outputs = ans
                     if self.Type == BoxTypes.Operator:
                         if len(ans) == 1:
                             try:
@@ -398,9 +407,12 @@ class Box:
         ans = self()
         return ans.target_option
 
-    def execute_box(self):
-        ans = self()
-        return ans.target_option.parent
+    def execute_box(self, set_answer=True):
+        ans = self(set_answer=set_answer)
+        try:
+            return ans.target_option.parent
+        except:
+            return None
 
     def __str__(self) -> str:
         return f"Box({self.name})"

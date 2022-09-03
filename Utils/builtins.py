@@ -45,3 +45,5 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
     elif Type == BoxTypes.Executable:
         if builtin_Box_Type == ExecutableBuiltins.If:
             return Box("if", BoxTypes.Executable, if_statement_function, True)
+        elif builtin_Box_Type == ExecutableBuiltins.Input:
+            return Box("Input", BoxTypes.Executable, get_input_function, True)

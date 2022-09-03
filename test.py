@@ -146,3 +146,24 @@ bx()
 
 #                        Test Array Type                         #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                       Test Get Input                           #
+#                   Get Name And Say Hello !                     #
+
+_input = make_box(ExecutableBuiltins.Input, BoxTypes.Executable)
+_input.attach(None, 1, "Enter Your Name: ", Sides.left)
+_input.execute_box(set_answer=False)
+# _input.outputs[1].value Is The Answer As String
+
+
+say_hello = make_box(OperatorBuiltins.Add_Two_Text, BoxTypes.Operator)
+say_hello.attach(None, 0, "Hello ", Sides.left)
+say_hello.attach(None, 1, _input.outputs[1].value, Sides.left)
+print(say_hello.outputs[0].value)
+
+#                   Get Name And Say Hello !                     #
+#                       Test Get Input                           #
+##################################################################
