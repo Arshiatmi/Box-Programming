@@ -113,7 +113,6 @@ print(orBool.outputs[0].value)
 
 get_running, set_running = define_variable("Running?", Types.boolean)
 set_running(True)
-set_can_use(True)
 
 andBool1 = make_box(OperatorBuiltins.AND, BoxTypes.Operator)
 andBool1.attach(get_running, 0, 0, Sides.left)
@@ -155,9 +154,9 @@ bx()
 
 _input = make_box(ExecutableBuiltins.Input, BoxTypes.Executable)
 _input.attach(None, 1, "Enter Your Name: ", Sides.left)
+# Set Answer Will Not Set New Answers Just Runs Function ( Needs For get inputs )
 _input.execute_box(set_answer=False)
 # _input.outputs[1].value Is The Answer As String
-
 
 say_hello = make_box(OperatorBuiltins.Add_Two_Text, BoxTypes.Operator)
 say_hello.attach(None, 0, "Hello ", Sides.left)
@@ -167,3 +166,9 @@ print(say_hello.outputs[0].value)
 #                   Get Name And Say Hello !                     #
 #                       Test Get Input                           #
 ##################################################################
+
+_print = make_box(ExecutableBuiltins.Print, BoxTypes.Executable)
+_print.attach(None, 1, "Hello There :)", Sides.left)  # Check For Normal Print
+_print.execute_box()
+_print.attach(get_name, 1, 0, Sides.left)  # Check For Variable
+_print.execute_box()

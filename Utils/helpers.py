@@ -97,6 +97,11 @@ def get_input(function_id, inputs, outputs):
     return outputs[0]
 
 
+def print_string(function_id, inputs, outputs):
+    print(inputs[1].value)
+    return outputs[0]
+
+
 def array_test(function_id, inputs, outputs):
     inputs[0].value.append("test")
 

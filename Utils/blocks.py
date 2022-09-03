@@ -24,13 +24,14 @@ class Option:
                 self.id = self.id + "_out"
         try:
             options[self.id]
+            Option.Index += 1
             if Type != Types.executable:
                 if variable_mode:
                     self.variable = variables[self.id]
                 else:
                     self.variable = Variable(self.id, Type)
-            Option.Index += 1
-            options[self.id + "_" + str(Option.Index)] = self
+            self.id = self.id + "_" + str(Option.Index)
+            options[self.id] = self
         except:
             options[self.id] = self
             self.variable = Variable(self.id, Type)
@@ -111,9 +112,11 @@ class Function:
         global functions
         self.id = make_id_from_name(name)
         try:
-            functions[self.id]
+            if not is_instance:
+                functions[self.id]
             Function.Index += 1
-            functions[self.id + "_" + str(Function.Index)] = self
+            self.id = self.id + "_" + str(Function.Index)
+            functions[self.id] = self
             if not is_instance:
                 logger.warning(
                     f"The Function With id {self.id} Exists. Box id Changed Too {self.id + '_' + str(Function.Index)}")
@@ -225,7 +228,8 @@ class Box:
             try:
                 boxes[self.id]
                 Box.Index += 1
-                boxes[self.id + "_" + str(Box.Index)] = self
+                self.id = self.id + "_" + str(Box.Index)
+                boxes[self.id] = self
                 if not is_instance:
                     logger.warning(
                         f"The Box With id {self.id} Exists. Box id Changed Too {self.id + '_' + str(Box.Index)}")

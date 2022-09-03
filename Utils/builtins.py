@@ -31,19 +31,21 @@ def define_variable(name, Type):
 def make_box(builtin_Box_Type, Type: BoxTypes):
     if Type == BoxTypes.Operator:
         if builtin_Box_Type == OperatorBuiltins.Add_Two_Numbers:
-            return Box("Add Two Numbers", BoxTypes.Operator, add_two_numbers_operator, True)
+            return Box("Add Two Numbers", BoxTypes.Operator, add_two_numbers_operator(), True)
         elif builtin_Box_Type == OperatorBuiltins.Add_Two_Text:
-            return Box("Add Two Text", BoxTypes.Operator, add_two_text_operator, True)
+            return Box("Add Two Text", BoxTypes.Operator, add_two_text_operator(), True)
         elif builtin_Box_Type == OperatorBuiltins.Minus_Two_Numbers:
-            return Box("Minus Two Numbers", BoxTypes.Operator, minus_two_numbers_operator, True)
+            return Box("Minus Two Numbers", BoxTypes.Operator, minus_two_numbers_operator(), True)
         elif builtin_Box_Type == OperatorBuiltins.AND:
-            return Box("AND", BoxTypes.Operator, AND_operator, True)
+            return Box("AND", BoxTypes.Operator, AND_operator(), True)
         elif builtin_Box_Type == OperatorBuiltins.OR:
-            return Box("OR", BoxTypes.Operator, OR_operator, True)
+            return Box("OR", BoxTypes.Operator, OR_operator(), True)
         else:
             raise BoxError("The Operator Box Type Is Not Defined.")
     elif Type == BoxTypes.Executable:
         if builtin_Box_Type == ExecutableBuiltins.If:
-            return Box("if", BoxTypes.Executable, if_statement_function, True)
+            return Box("if", BoxTypes.Executable, if_statement_function(), True)
         elif builtin_Box_Type == ExecutableBuiltins.Input:
-            return Box("Input", BoxTypes.Executable, get_input_function, True)
+            return Box("Input", BoxTypes.Executable, get_input_function(), True)
+        elif builtin_Box_Type == ExecutableBuiltins.Print:
+            return Box("Print", BoxTypes.Executable, print_string_function(), True)

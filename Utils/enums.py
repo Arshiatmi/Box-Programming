@@ -43,3 +43,4 @@ class OperatorBuiltins(enum.Enum):
 class ExecutableBuiltins(enum.Enum):
     If = 1
     Input = 2
+    Print = 3
