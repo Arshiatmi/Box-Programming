@@ -112,8 +112,7 @@ class Function:
         global functions
         self.id = make_id_from_name(name)
         try:
-            if not is_instance:
-                functions[self.id]
+            functions[self.id]
             Function.Index += 1
             self.id = self.id + "_" + str(Function.Index)
             functions[self.id] = self
@@ -197,7 +196,8 @@ class Function:
             return len(self.inputs) > 0
 
     def __call__(self, *args: object, **kwds: object) -> None:
-        return self.func(*args, **kwds)
+        a = self.func(*args, **kwds)
+        return a
 
     def __str__(self) -> str:
         return self.name
@@ -415,8 +415,10 @@ class Box:
         ans = self(set_answer=set_answer)
         try:
             return ans.target_option.parent
-        except:
+        except AttributeError:
             return None
+        except:
+            raise
 
     def __str__(self) -> str:
         return f"Box({self.name})"

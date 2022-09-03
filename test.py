@@ -167,6 +167,11 @@ print(say_hello.outputs[0].value)
 #                       Test Get Input                           #
 ##################################################################
 
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                     Test Print Function                        #
+
 _print = make_box(ExecutableBuiltins.Print, BoxTypes.Executable)
 _print.attach(None, 1, "Hello There :)", Sides.left)  # Check For Normal Print
 _print.execute_box()
@@ -174,3 +179,20 @@ _print.attach(get_name, 1, 0, Sides.left)  # Check For Variable
 _print.execute_box()
 _print.attach(_input, 1, 1, Sides.left)  # Check For Box Chain
 _print.execute_box()
+
+#                     Test Print Function                        #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                   Test Cast Text To Number                     #
+
+set_name("1")
+textToNumber = make_box(CastBuiltins.Text_To_Number, BoxTypes.Executable)
+textToNumber.attach(get_name,1,0)
+next_box = textToNumber.execute_box(set_answer=False)
+print(textToNumber.outputs[2].value) # Prints Casted Variable
+
+#                   Test Cast Text To Number                     #
+##################################################################

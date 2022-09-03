@@ -31,14 +31,14 @@ def add_two_text_operator():
 
 
 def minus_two_numbers_operator():
-    return Function(f"Function Add Two Number",
+    return Function(f"Function Minus Two Numbers",
                     minus2Numbers,
                     [
-                        Option(f"builtin_{make_id_from_name('Function Add Two Number')}_n1", Types.number,
+                        Option(f"builtin_{make_id_from_name('Function Minus Two Numbers')}_n1", Types.number,
                                Sides.left),
-                        Option(f"builtin_{make_id_from_name('Function Add Two Number')}_n2", Types.number, Sides.left)],
+                        Option(f"builtin_{make_id_from_name('Function Minus Two Numbers')}_n2", Types.number, Sides.left)],
                     [
-                        Option(f"builtin_{make_id_from_name('Function Add Two Number')}_n3", Types.number,
+                        Option(f"builtin_{make_id_from_name('Function Minus Two Numbers')}_n3", Types.number,
                                Sides.right)
                     ], is_instance=True)
 
