@@ -10,6 +10,7 @@ variable_funcs = {
     Types.boolean: [getBooleanVariable, setBooleanVariable, "Boolean"],
     Types.number: [getNumberVariable, setNumberVariable, "Number"],
     Types.text: [getTextVariable, setTextVariable, "String"],
+    Types.array: [getArrayVariable, setArrayVariable, "Array"],
 }
 
 

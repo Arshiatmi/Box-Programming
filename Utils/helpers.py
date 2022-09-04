@@ -38,6 +38,11 @@ def getTextVariable(function_id, inputs, outputs):
     return variables[variable_name]
 
 
+def getArrayVariable(function_id, inputs, outputs):
+    variable_name = outputs[0].variable.id
+    return variables[variable_name]
+
+
 def setBooleanVariable(function_id, inputs, outputs, value):
     inputs[1].variable.value = value
     return value
@@ -51,6 +56,11 @@ def setNumberVariable(function_id, inputs, outputs, value):
 def setTextVariable(function_id, inputs, outputs, value):
     inputs[1].variable.value = value
     return value
+
+
+def setArrayVariable(function_id, inputs, outputs, value):
+    inputs[1].variable.value = value
+    return inputs[1].variable
 
 
 def add2vars(function_id, inputs, outputs):
@@ -104,7 +114,7 @@ def print_string(function_id, inputs, outputs):
 
 def number_to_text(function_id, inputs, outputs):
     try:
-        outputs[2].value = float(inputs[1].value)
+        outputs[2].value = str(inputs[1].value)
         return outputs[0]
     except:
         return outputs[1]

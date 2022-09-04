@@ -44,6 +44,19 @@ print(get_name())
 # -------------------------------------------------------------------------------------
 
 ##################################################################
+#                           Array Variable                       #
+
+get_data, set_data = define_variable("data", Types.array)
+
+set_data([1,2,3,4])
+print(get_data())
+
+#                           Array Variable                       #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
 #                   Add Numbers Operator Test                    #
 
 add = make_box(OperatorBuiltins.Add_Two_Numbers, BoxTypes.Operator)
@@ -195,4 +208,102 @@ next_box = textToNumber.execute_box(set_answer=False)
 print(textToNumber.outputs[2].value) # Prints Casted Variable
 
 #                   Test Cast Text To Number                     #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                    Test Cast Text To Bool                      #
+
+set_name("")
+textToBool = make_box(CastBuiltins.Text_To_Bool, BoxTypes.Executable)
+textToBool.attach(get_name,1,0)
+next_box = textToBool.execute_box(set_answer=False)
+print(textToBool.outputs[2].value) # Prints Casted Variable
+
+#                    Test Cast Text To Bool                      #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                   Test Cast Text To Array                      #
+
+set_name("Test")
+textToArray = make_box(CastBuiltins.Text_To_Array, BoxTypes.Executable)
+textToArray.attach(get_name,1,0)
+next_box = textToArray.execute_box(set_answer=False)
+print(textToArray.outputs[2].value) # Prints Casted Variable
+
+#                   Test Cast Text To Array                      #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                   Test Cast Bool To Number                     #
+
+set_can_use(False)
+boolToNumber = make_box(CastBuiltins.Bool_To_Number, BoxTypes.Executable)
+boolToNumber.attach(get_can_use,1,0)
+next_box = boolToNumber.execute_box(set_answer=False)
+print(boolToNumber.outputs[2].value) # Prints Casted Variable
+
+#                   Test Cast Bool To Number                     #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                    Test Cast Bool To Text                      #
+
+set_can_use(True)
+boolToText = make_box(CastBuiltins.Bool_To_Text, BoxTypes.Executable)
+boolToText.attach(get_can_use,1,0)
+next_box = boolToText.execute_box(set_answer=False)
+print(boolToText.outputs[2].value) # Prints Casted Variable
+
+#                    Test Cast Bool To Text                      #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                   Test Cast Number To Bool                     #
+
+set_age(20)
+numberToBool = make_box(CastBuiltins.Number_To_Bool, BoxTypes.Executable)
+numberToBool.attach(get_age,1,0)
+next_box = numberToBool.execute_box(set_answer=False)
+print(numberToBool.outputs[2].value) # Prints Casted Variable
+
+#                   Test Cast Number To Bool                     #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                   Test Cast Number To Text                     #
+
+set_age(20)
+numberToText = make_box(CastBuiltins.Number_To_Text, BoxTypes.Executable)
+numberToText.attach(get_age,1,0)
+next_box = numberToText.execute_box(set_answer=False)
+print(numberToText.outputs[2].value) # Prints Casted Variable
+
+#                   Test Cast Number To Text                     #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                    Test Cast Array To Text                     #
+
+set_data([6,5,4])
+numberToText = make_box(CastBuiltins.Array_To_Text, BoxTypes.Executable)
+numberToText.attach(get_data,1,0)
+next_box = numberToText.execute_box(set_answer=False)
+print(numberToText.outputs[2].value) # Prints Casted Variable
+
+#                    Test Cast Array To Text                     #
 ##################################################################

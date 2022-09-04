@@ -4,7 +4,7 @@ from Utils.global_vars import variables, options
 
 
 class Variable:
-    VariableTypes = [Types.number, Types.boolean, Types.text]
+    VariableTypes = [Types.number, Types.boolean, Types.text, Types.array]
 
     def __init__(self, name: str, Type: Types):
         global variables
@@ -165,5 +165,9 @@ def detect_variable_type(value: object, return_variable_type=True) -> Types:
         if return_variable_type:
             return Types.variable
         return Types.text
+    elif type(value) == list:
+        if return_variable_type:
+            return Types.variable
+        return Types.array
     else:
         raise ValueError("Invalid Type")
