@@ -14,6 +14,11 @@ class Option:
 
     def __init__(self, text: str, Type: Types, Side: Sides = None, variable_mode=False, show_text=False, optional=False):
         global options
+        if text.startswith("builtin_"):
+            text = ' '.join(text.replace("builtin_", "").split('_'))
+            self.text = text
+        else:
+            self.text = text
         self.id = make_id_from_name(text)
         self.box_id = self.id
         if Type == Types.executable:
@@ -29,14 +34,15 @@ class Option:
                 if variable_mode:
                     self.variable = variables[self.id]
                 else:
+                    self.id = self.id + "_" + str(Option.Index)
                     self.variable = Variable(self.id, Type)
-            self.id = self.id + "_" + str(Option.Index)
+            else:
+                self.id = self.id + "_" + str(Option.Index)
             options[self.id] = self
         except:
             options[self.id] = self
             self.variable = Variable(self.id, Type)
         self.Type = Type
-        self.text = text
         self.side = Side
         self.show_text = show_text
         self.parent = None
@@ -97,10 +103,10 @@ class Option:
         self.target_option = None
 
     def __str__(self):
-        return f"Option({self.value})"
+        return f"Option({self.text}, {self.value})"
 
     def __repr__(self):
-        return f"Option({self.value})"
+        return f"Option({self.text}, {self.value})"
 
 # Functions That Are Made Like This To Make Application More Readable
 
@@ -196,8 +202,7 @@ class Function:
             return len(self.inputs) > 0
 
     def __call__(self, *args: object, **kwds: object) -> None:
-        a = self.func(*args, **kwds)
-        return a
+        return self.func(*args, **kwds)
 
     def __str__(self) -> str:
         return self.name
@@ -389,7 +394,7 @@ class Box:
                 if self.check_types(self.outputs, ans):
                     if set_answer:
                         self.function_outputs = ans
-                    if self.Type == BoxTypes.Operator:
+                    if self.Type == BoxTypes.Operator or self.Type == BoxTypes.Variable:
                         if len(ans) == 1:
                             try:
                                 return ans[0].value

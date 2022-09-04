@@ -246,3 +246,20 @@ def text_to_array_function():
                         Option("builtin_Cast_TextToArray_output",
                                Types.array, Sides.right),
                     ], is_instance=True)
+
+
+def parse_array_function():
+    return Function("Parse Array",
+                    parse_array,
+                    [
+                        Option("builtin_Array_Parse_Input",
+                               Types.array, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Array_Parse_Length",
+                               Types.number, Sides.right),
+                        Option("builtin_Array_Parse_Elements",
+                               Types.array, Sides.right),
+                        Option("builtin_Array_Parse_Reversed",
+                               Types.array, Sides.right),
+                    ], is_instance=True)

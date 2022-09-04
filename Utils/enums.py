@@ -55,3 +55,7 @@ class CastBuiltins(enum.Enum):
     Text_To_Bool = 6
     Array_To_Text = 7
     Text_To_Array = 8
+
+
+class ArrayBuiltins(enum.Enum):
+    Parse = 1

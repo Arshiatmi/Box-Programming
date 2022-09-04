@@ -1,4 +1,4 @@
-from Utils.enums import BoxTypes, CastBuiltins, ExecutableBuiltins, OperatorBuiltins
+from Utils.enums import ArrayBuiltins, BoxTypes, CastBuiltins, ExecutableBuiltins, OperatorBuiltins
 from Utils.blocks import Box
 from Utils.exceptions import BoxError
 from Utils.operators import *
@@ -52,18 +52,21 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
             return Box("Print", BoxTypes.Executable, print_string_function(), True)
         elif builtin_Box_Type in CastBuiltins:
             if builtin_Box_Type == CastBuiltins.Number_To_Text:
-                return Box("Number To Text", BoxTypes.Executable, number_to_text_function(), True)
+                return Box("Cast Number To Text", BoxTypes.Executable, number_to_text_function(), True)
             elif builtin_Box_Type == CastBuiltins.Number_To_Bool:
-                return Box("Number To Bool", BoxTypes.Executable, number_to_bool_function(), True)
+                return Box("Cast Number To Bool", BoxTypes.Executable, number_to_bool_function(), True)
             elif builtin_Box_Type == CastBuiltins.Bool_To_Number:
-                return Box("Bool To Number", BoxTypes.Executable, bool_to_number_function(), True)
+                return Box("Cast Bool To Number", BoxTypes.Executable, bool_to_number_function(), True)
             elif builtin_Box_Type == CastBuiltins.Bool_To_Text:
-                return Box("Bool To Text", BoxTypes.Executable, bool_to_text_function(), True)
+                return Box("Cast Bool To Text", BoxTypes.Executable, bool_to_text_function(), True)
             elif builtin_Box_Type == CastBuiltins.Text_To_Number:
-                return Box("Text To Number", BoxTypes.Executable, text_to_number_function(), True)
+                return Box("Cast Text To Number", BoxTypes.Executable, text_to_number_function(), True)
             elif builtin_Box_Type == CastBuiltins.Text_To_Bool:
-                return Box("Text To Bool", BoxTypes.Executable, text_to_bool_function(), True)
+                return Box("Cast Text To Bool", BoxTypes.Executable, text_to_bool_function(), True)
             elif builtin_Box_Type == CastBuiltins.Array_To_Text:
-                return Box("Array To Text", BoxTypes.Executable, array_to_text_function(), True)
+                return Box("Cast Array To Text", BoxTypes.Executable, array_to_text_function(), True)
             elif builtin_Box_Type == CastBuiltins.Text_To_Array:
-                return Box("Text To Array", BoxTypes.Executable, text_to_array_function(), True)
+                return Box("Cast Text To Array", BoxTypes.Executable, text_to_array_function(), True)
+        elif builtin_Box_Type in ArrayBuiltins:
+            if builtin_Box_Type == ArrayBuiltins.Parse:
+                return Box("Array Parse", BoxTypes.Executable, parse_array_function(), True)

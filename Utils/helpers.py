@@ -64,32 +64,32 @@ def setArrayVariable(function_id, inputs, outputs, value):
 
 
 def add2vars(function_id, inputs, outputs):
-    first_variable_name = inputs[0].text
-    second_variable_name = inputs[1].text
+    first_variable_name = inputs[0].id
+    second_variable_name = inputs[1].id
     ans = variables[first_variable_name].value + \
         variables[second_variable_name].value
     outputs[0].value = ans
 
 
 def minus2Numbers(function_id, inputs, outputs):
-    first_variable_name = inputs[0].text
-    second_variable_name = inputs[1].text
+    first_variable_name = inputs[0].id
+    second_variable_name = inputs[1].id
     ans = variables[first_variable_name].value - \
         variables[second_variable_name].value
     outputs[0].value = ans
 
 
 def AND(function_id, inputs, outputs):
-    first_variable_name = inputs[0].text
-    second_variable_name = inputs[1].text
+    first_variable_name = inputs[0].id
+    second_variable_name = inputs[1].id
     ans = variables[first_variable_name].value and \
         variables[second_variable_name].value
     outputs[0].value = ans
 
 
 def OR(function_id, inputs, outputs):
-    first_variable_name = inputs[0].text
-    second_variable_name = inputs[1].text
+    first_variable_name = inputs[0].id
+    second_variable_name = inputs[1].id
     ans = variables[first_variable_name].value or \
         variables[second_variable_name].value
     outputs[0].value = ans
@@ -174,6 +174,12 @@ def text_to_array(function_id, inputs, outputs):
         return outputs[0]
     except:
         return outputs[1]
+
+
+def parse_array(function_id, inputs, outputs):
+    outputs[0].value = len(inputs[0].value)
+    outputs[1].value = list(inputs[0].value)
+    outputs[2].value = list(reversed(inputs[0].value))
 
 
 def array_test(function_id, inputs, outputs):

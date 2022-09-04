@@ -307,3 +307,18 @@ print(numberToText.outputs[2].value) # Prints Casted Variable
 
 #                    Test Cast Array To Text                     #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                       Test Parse Array                         #
+
+parseArray = make_box(ArrayBuiltins.Parse, BoxTypes.Executable)
+parseArray.attach(get_data,0,0)
+next_box = parseArray.execute_box()
+print(parseArray.outputs[0]) # Prints Length Of Array
+print(parseArray.outputs[1]) # Prints Array
+print(parseArray.outputs[2]) # Prints Reversed Array
+
+#                       Test Parse Array                         #
+##################################################################
