@@ -410,3 +410,16 @@ print(fileList.outputs[1].value)
 
 #                     Test FileList Box                          #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                   Test Append To Array                         #
+
+appendList = make_box(ArrayBuiltins.Append, BoxTypes.Executable)
+appendList.attach(get_data,0,0)
+appendList.attach(None,1,43)
+print(appendList.outputs[0].value)
+
+#                   Test Append To Array                         #
+##################################################################

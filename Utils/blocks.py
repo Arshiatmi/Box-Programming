@@ -230,7 +230,7 @@ class Function:
 class Box:
     Index = 0
 
-    def __init__(self, name: str = "", Type: BoxTypes = BoxTypes.Executable, function: Function = Function("pass", lambda x: x), is_instance: bool = False):
+    def __init__(self, name: str = "", Type: BoxTypes = BoxTypes.Executable, function: Function = Function("pass", lambda x: x), is_instance: bool = False, auto_run: bool = False):
         global boxes
         if Type == BoxTypes.Start:
             boxes["start"] = self
@@ -264,6 +264,7 @@ class Box:
         self._function_outputs = []
         self.x = None
         self.y = None
+        self.auto_run = auto_run
         if Type == BoxTypes.Variable:
             # Set Variable Box
             if self.function.has_this_outputs({Types.executable: 1}) and self.function.has_this_inputs({Types.variable: 1, Types.executable: 1}):
@@ -381,7 +382,7 @@ class Box:
             else:
                 self.outputs[self_index].attach(
                     box.inputs[target_index_or_value])
-        if self.Type == BoxTypes.Operator:
+        if self.Type == BoxTypes.Operator or self.auto_run:
             self()
 
     def detach(self, box, self_index, target_index_or_value, side=Sides.left):
@@ -397,7 +398,7 @@ class Box:
             else:
                 self.outputs[self_index].detach()
                 box.inputs[target_index_or_value].detach()
-        if self.Type == BoxTypes.Operator:
+        if self.Type == BoxTypes.Operator or self.auto_run:
             self()
 
     def __call__(self, *args):

@@ -31,6 +31,7 @@ def define_variable(name, Type):
 
 def make_box(builtin_Box_Type, Type: BoxTypes):
     if Type == BoxTypes.Operator:
+        # Operators
         if builtin_Box_Type == OperatorBuiltins.Add_Two_Numbers:
             return Box("Add Two Numbers", BoxTypes.Operator, add_two_numbers_operator(), True)
         elif builtin_Box_Type == OperatorBuiltins.Add_Two_Text:
@@ -43,15 +44,20 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
             return Box("OR", BoxTypes.Operator, OR_operator(), True)
         else:
             raise BoxError("The Operator Box Type Is Not Defined.")
+
     elif Type == BoxTypes.Executable:
-        if builtin_Box_Type == ExecutableBuiltins.If:
-            return Box("if", BoxTypes.Executable, if_statement_function(), True)
-        elif builtin_Box_Type == ExecutableBuiltins.Input:
-            return Box("Input", BoxTypes.Executable, get_input_function(), True)
-        elif builtin_Box_Type == ExecutableBuiltins.Print:
-            return Box("Print", BoxTypes.Executable, print_string_function(), True)
-        elif builtin_Box_Type == ExecutableBuiltins.For:
-            return Box("For", BoxTypes.Executable, for_loop_function(), True)
+        # Executable Boxes
+        if builtin_Box_Type in ExecutableBuiltins:
+            if builtin_Box_Type == ExecutableBuiltins.If:
+                return Box("if", BoxTypes.Executable, if_statement_function(), True)
+            elif builtin_Box_Type == ExecutableBuiltins.Input:
+                return Box("Input", BoxTypes.Executable, get_input_function(), True)
+            elif builtin_Box_Type == ExecutableBuiltins.Print:
+                return Box("Print", BoxTypes.Executable, print_string_function(), True)
+            elif builtin_Box_Type == ExecutableBuiltins.For:
+                return Box("For", BoxTypes.Executable, for_loop_function(), True)
+
+        # Type Cast Boxes
         elif builtin_Box_Type in CastBuiltins:
             if builtin_Box_Type == CastBuiltins.Number_To_Text:
                 return Box("Cast Number To Text", BoxTypes.Executable, number_to_text_function(), True)
@@ -71,9 +77,15 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Cast Text To Array", BoxTypes.Executable, text_to_array_function(), True)
             elif builtin_Box_Type == CastBuiltins.Variable_To_Text:
                 return Box("Cast Any Variable Type To Text", BoxTypes.Executable, variable_to_text_function(), True)
+
+        # Arrays
         elif builtin_Box_Type in ArrayBuiltins:
             if builtin_Box_Type == ArrayBuiltins.Parse:
-                return Box("Array Parse", BoxTypes.Executable, parse_array_function(), True)
+                return Box("Array Parse", BoxTypes.Executable, parse_array_function(), True, auto_run=True)
+            if builtin_Box_Type == ArrayBuiltins.Append:
+                return Box("Array Append", BoxTypes.Executable, append_array_function(), True, auto_run=True)
+
+        # Files
         elif builtin_Box_Type in FileBuiltins:
             if builtin_Box_Type == FileBuiltins.ReadFile:
                 return Box("Read File", BoxTypes.Executable, read_file_function(), True)

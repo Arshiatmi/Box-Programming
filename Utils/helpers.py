@@ -195,6 +195,12 @@ def parse_array(function_id, inputs, outputs):
     outputs[2].value = list(reversed(inputs[0].value))
 
 
+def append_array(function_id, inputs, outputs):
+    array = inputs[0].value.copy()
+    array.append(inputs[1].value)
+    outputs[0].value = array
+
+
 def read_file(function_id, inputs, outputs):
     file_name = inputs[1].value
     f = open(file_name, "r")

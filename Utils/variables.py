@@ -35,6 +35,12 @@ class Variable:
         if self.Type.value == float:
             if int(self._value) == self._value:
                 return int(self._value)
+        elif self.Type == Types.variable:
+            try:
+                if int(self._value) == self._value:
+                    return int(self._value)
+            except:
+                pass
         return self._value
 
     @value.setter

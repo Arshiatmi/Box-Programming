@@ -5,7 +5,7 @@ from Utils.helpers import *
 
 
 def add_two_numbers_operator():
-    return Function(f"Function Add Two Numbers",
+    return Function(f"Add Two Numbers Function",
                     add2vars,
                     [
                         Option(f"builtin_{make_id_from_name('Function Add Two Numbers')}_n1", Types.number,
@@ -18,7 +18,7 @@ def add_two_numbers_operator():
 
 
 def add_two_text_operator():
-    return Function(f"Function Add Two Text",
+    return Function(f"Add Two Text Function",
                     add2vars,
                     [
                         Option(f"builtin_{make_id_from_name('Function Add Two Text')}_n1", Types.text,
@@ -31,7 +31,7 @@ def add_two_text_operator():
 
 
 def minus_two_numbers_operator():
-    return Function(f"Function Minus Two Numbers",
+    return Function(f"Minus Two Numbers Function",
                     minus2Numbers,
                     [
                         Option(f"builtin_{make_id_from_name('Function Minus Two Numbers')}_n1", Types.number,
@@ -44,7 +44,7 @@ def minus_two_numbers_operator():
 
 
 def AND_operator():
-    return Function(f"AND",
+    return Function(f"AND Function",
                     AND,
                     [
                         Option(f"builtin_{make_id_from_name('AND')}_n1", Types.boolean,
@@ -57,7 +57,7 @@ def AND_operator():
 
 
 def OR_operator():
-    return Function(f"OR",
+    return Function(f"OR Function",
                     OR,
                     [
                         Option(f"builtin_{make_id_from_name('OR')}_n1", Types.boolean,
@@ -70,7 +70,7 @@ def OR_operator():
 
 
 def if_statement_function():
-    return Function("If",
+    return Function("If Function",
                     if_statement,
                     [
                         Option("builtin_If",
@@ -85,7 +85,7 @@ def if_statement_function():
 
 
 def get_input_function():
-    return Function("Input",
+    return Function("Input Function",
                     get_input,
                     [
                         Option("builtin_Input",
@@ -100,7 +100,7 @@ def get_input_function():
 
 
 def print_string_function():
-    return Function("Print",
+    return Function("Print Function",
                     print_string,
                     [
                         Option("builtin_Print",
@@ -113,7 +113,7 @@ def print_string_function():
 
 
 def number_to_text_function():
-    return Function("Number To Text",
+    return Function("Number To Text Function",
                     number_to_text,
                     [
                         Option("builtin_Cast_NumberToText",
@@ -130,7 +130,7 @@ def number_to_text_function():
 
 
 def number_to_bool_function():
-    return Function("Number To Bool",
+    return Function("Number To Bool Function",
                     number_to_bool,
                     [
                         Option("builtin_Cast_NumberToBool",
@@ -147,7 +147,7 @@ def number_to_bool_function():
 
 
 def bool_to_number_function():
-    return Function("Bool To Number",
+    return Function("Bool To Number Function",
                     bool_to_number,
                     [
                         Option("builtin_Cast_BoolToNumber",
@@ -164,7 +164,7 @@ def bool_to_number_function():
 
 
 def bool_to_text_function():
-    return Function("Bool To Text",
+    return Function("Bool To Text Function",
                     bool_to_text,
                     [
                         Option("builtin_Cast_BoolToText",
@@ -181,7 +181,7 @@ def bool_to_text_function():
 
 
 def text_to_number_function():
-    return Function("Text To Number",
+    return Function("Text To Number Function",
                     text_to_number,
                     [
                         Option("builtin_Cast_TextToNumber",
@@ -198,7 +198,7 @@ def text_to_number_function():
 
 
 def text_to_bool_function():
-    return Function("Text To Bool",
+    return Function("Text To Bool Function",
                     text_to_bool,
                     [
                         Option("builtin_Cast_TextToBool",
@@ -215,7 +215,7 @@ def text_to_bool_function():
 
 
 def array_to_text_function():
-    return Function("Array To Text",
+    return Function("Array To Text Function",
                     array_to_text,
                     [
                         Option("builtin_Cast_ArrayToText",
@@ -232,7 +232,7 @@ def array_to_text_function():
 
 
 def text_to_array_function():
-    return Function("Text To Array",
+    return Function("Text To Array Function",
                     text_to_array,
                     [
                         Option("builtin_Cast_TextToArray",
@@ -249,7 +249,7 @@ def text_to_array_function():
 
 
 def variable_to_text_function():
-    return Function("Variable To Text",
+    return Function("Variable To Text Function",
                     variable_to_text,
                     [
                         Option("builtin_Cast_VariableToText",
@@ -266,7 +266,7 @@ def variable_to_text_function():
 
 
 def parse_array_function():
-    return Function("Parse Array",
+    return Function("Parse Array Function",
                     parse_array,
                     [
                         Option("builtin_Array_Parse_Input",
@@ -278,6 +278,21 @@ def parse_array_function():
                         Option("builtin_Array_Parse_Elements",
                                Types.array, Sides.right),
                         Option("builtin_Array_Parse_Reversed",
+                               Types.array, Sides.right),
+                    ], is_instance=True)
+
+
+def append_array_function():
+    return Function("Append To Array Function",
+                    append_array,
+                    [
+                        Option("builtin_Array_Append_Input",
+                               Types.array, Sides.left),
+                        Option("builtin_Array_Append_Element",
+                               Types.variable, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Array_Append_Output",
                                Types.array, Sides.right),
                     ], is_instance=True)
 

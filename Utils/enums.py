@@ -62,12 +62,12 @@ class CastBuiltins(enum.Enum):
 class ArrayBuiltins(enum.Enum):
     Parse = 1
     Append = 2
-    Clear = 3
-    Count = 4
-    Index = 5
-    Insert = 6
-    Remove = 7
-    Sort = 7
+    Clear = 3  # TODO: Make This Work
+    Count = 4  # TODO: Make This Work
+    Index = 5  # TODO: Make This Work
+    Insert = 6  # TODO: Make This Work
+    Remove = 7  # TODO: Make This Work
+    Sort = 7  # TODO: Make This Work
 
 
 class FileBuiltins(enum.Enum):
@@ -77,22 +77,22 @@ class FileBuiltins(enum.Enum):
     FileList = 4
 
 
-class TextBuiltins(enum.Enum):
-    Capitalize = 1
-    Count = 2
-    EndsWith = 3
-    Find = 4
-    Index = 5
-    IsAlphabet = 6
-    IsAlphabetNumber = 7
-    IsDigit = 8
-    IsLowerCase = 9
-    IsUpperCase = 10
-    Join = 11
-    Replace = 12
-    rFind = 13
-    Strip = 14
-    rStrip = 15
-    Split = 16
-    SwapCase = 17
-    ZeroFill = 18
+class TextBuiltins(enum.Enum):  # TODO: Use This
+    Capitalize = 1  # TODO: Make This Work
+    Count = 2  # TODO: Make This Work
+    EndsWith = 3  # TODO: Make This Work
+    Find = 4  # TODO: Make This Work
+    Index = 5  # TODO: Make This Work
+    IsAlphabet = 6  # TODO: Make This Work
+    IsAlphabetNumber = 7  # TODO: Make This Work
+    IsDigit = 8  # TODO: Make This Work
+    IsLowerCase = 9  # TODO: Make This Work
+    IsUpperCase = 10  # TODO: Make This Work
+    Join = 11  # TODO: Make This Work
+    Replace = 12  # TODO: Make This Work
+    rFind = 13  # TODO: Make This Work
+    Strip = 14  # TODO: Make This Work
+    rStrip = 15  # TODO: Make This Work
+    Split = 16  # TODO: Make This Work
+    SwapCase = 17  # TODO: Make This Work
+    ZeroFill = 18  # TODO: Make This Work
