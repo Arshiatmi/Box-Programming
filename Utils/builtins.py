@@ -50,6 +50,8 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
             return Box("Input", BoxTypes.Executable, get_input_function(), True)
         elif builtin_Box_Type == ExecutableBuiltins.Print:
             return Box("Print", BoxTypes.Executable, print_string_function(), True)
+        elif builtin_Box_Type == ExecutableBuiltins.For:
+            return Box("For", BoxTypes.Executable, for_loop_function(), True)
         elif builtin_Box_Type in CastBuiltins:
             if builtin_Box_Type == CastBuiltins.Number_To_Text:
                 return Box("Cast Number To Text", BoxTypes.Executable, number_to_text_function(), True)

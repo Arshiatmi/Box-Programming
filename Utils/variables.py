@@ -12,6 +12,7 @@ class Variable:
         variables[self.id] = self
         self.name = name
         self.Type = Type
+        self.changed = False
 
     @staticmethod
     def is_number(number):
@@ -29,12 +30,22 @@ class Variable:
 
     @value.setter
     def value(self, value):
+        self.changed = True
+        if Variable.is_number(value):
+            value = float(value)
         if self.Type.value == float and Variable.is_number(value):
             self._value = float(value)
         elif type(value) == self.Type.value:
             self._value = value
         else:
-            raise ValueError(f"Value Must Be Type Of {self.Type}")
+            try:
+                print(type(value), self.Type.value)
+                if type(value) in self.Type.value:
+                    self._value = value
+                else:
+                    raise
+            except:
+                raise ValueError(f"Value Must Be Type Of {self.Type}")
 
     # Type Property
     @property
@@ -52,6 +63,8 @@ class Variable:
             self._value = ""
         elif self._type == Types.array:
             self._value = []
+        elif self._type == Types.variable:
+            self._value = None
         elif self._type == Types.executable:
             self._value = None
         elif self._type == Types.variable:
@@ -63,7 +76,7 @@ class Variable:
     # ==
     def __eq__(self, o: object) -> bool:
         if o.__class__ == Variable:
-            if type(o) == self.Type:
+            if type(o) == self.Type or type(o) in self.Type:
                 if o == self.value:
                     return True
             elif type(o) == type(self):
@@ -79,7 +92,7 @@ class Variable:
     # <
     def __lt__(self, o: object) -> bool:
         if o.__class__ == Variable:
-            if type(o) == self.Type:
+            if type(o) == self.Type or type(o) in self.Type:
                 if o < self.value:
                     return True
             elif type(o) == type(self):
@@ -95,7 +108,7 @@ class Variable:
     # >
     def __gt__(self, o: object) -> bool:
         if o.__class__ == Variable:
-            if type(o) == self.Type:
+            if type(o) == self.Type or type(o) in self.Type:
                 if o > self.value:
                     return True
             elif type(o) == type(self):
@@ -111,7 +124,7 @@ class Variable:
     # <=
     def __le__(self, o: object) -> bool:
         if o.__class__ == Variable:
-            if type(o) == self.Type:
+            if type(o) == self.Type or type(o) in self.Type:
                 if o <= self.value:
                     return True
             elif type(o) == type(self):
@@ -127,7 +140,7 @@ class Variable:
     # >=
     def __ge__(self, o: object) -> bool:
         if o.__class__ == Variable:
-            if type(o) == self.Type:
+            if type(o) == self.Type or type(o) in self.Type:
                 if o >= self.value:
                     return True
             elif type(o) == type(self):

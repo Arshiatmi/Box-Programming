@@ -79,6 +79,12 @@ class Option:
         else:
             self.variable.value = value
 
+    def get(self, default_value=None):
+        if self.variable.changed:
+            return self.variable.value
+        else:
+            return default_value
+
     def attach(self, option):
         if type(option) == type(self):
             if self.side != option.side:
@@ -310,9 +316,11 @@ class Box:
                                      Types.variable, self.outputs))
         if len(value) == len(refrence_types):
             for c, i in enumerate(refrence_types):
+                if value[c].Type == Types.executable:
+                    continue
                 try:
                     i.value = value[c].value
-                except:
+                except Exception as e:
                     i.value = value[c]
 
     def addOption(self, option: Option):
@@ -384,7 +392,7 @@ class Box:
         if self.Type == BoxTypes.Operator:
             self()
 
-    def __call__(self, *args, set_answer=True):
+    def __call__(self, *args):
         if self.Type in [BoxTypes.Executable, BoxTypes.Variable, BoxTypes.Operator]:
             if self.check_types(self.inputs, args):
                 self.function_inputs = args
@@ -392,8 +400,10 @@ class Box:
                                     *args)
                 ans = convert_to_list(ans)
                 if self.check_types(self.outputs, ans):
-                    if set_answer:
+                    try:
                         self.function_outputs = ans
+                    except Exception as e:
+                        logger.debug(f"Some Error Passed ({e}).")
                     if self.Type == BoxTypes.Operator or self.Type == BoxTypes.Variable:
                         if len(ans) == 1:
                             try:
@@ -416,8 +426,8 @@ class Box:
         ans = self()
         return ans.target_option
 
-    def execute_box(self, set_answer=True):
-        ans = self(set_answer=set_answer)
+    def execute_box(self):
+        ans = self()
         try:
             return ans.target_option.parent
         except AttributeError:

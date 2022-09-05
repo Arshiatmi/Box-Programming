@@ -8,7 +8,7 @@ class Types(enum.Enum):
     array = list
     empty = 0
     executable = 1
-    variable = 2
+    variable = [bool, str, float, list]
 
 
 class InputTypes(enum.Enum):
@@ -44,6 +44,7 @@ class ExecutableBuiltins(enum.Enum):
     If = 1
     Input = 2
     Print = 3
+    For = 4
 
 
 class CastBuiltins(enum.Enum):

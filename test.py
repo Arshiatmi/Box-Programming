@@ -168,7 +168,7 @@ bx()
 _input = make_box(ExecutableBuiltins.Input, BoxTypes.Executable)
 _input.attach(None, 1, "Enter Your Name: ", Sides.left)
 # Set Answer Will Not Set New Answers Just Runs Function ( Needs For get inputs )
-_input.execute_box(set_answer=False)
+_input.execute_box()
 # _input.outputs[1].value Is The Answer As String
 
 say_hello = make_box(OperatorBuiltins.Add_Two_Text, BoxTypes.Operator)
@@ -204,7 +204,7 @@ _print.execute_box()
 set_name("1")
 textToNumber = make_box(CastBuiltins.Text_To_Number, BoxTypes.Executable)
 textToNumber.attach(get_name,1,0)
-next_box = textToNumber.execute_box(set_answer=False)
+next_box = textToNumber.execute_box()
 print(textToNumber.outputs[2].value) # Prints Casted Variable
 
 #                   Test Cast Text To Number                     #
@@ -218,7 +218,7 @@ print(textToNumber.outputs[2].value) # Prints Casted Variable
 set_name("")
 textToBool = make_box(CastBuiltins.Text_To_Bool, BoxTypes.Executable)
 textToBool.attach(get_name,1,0)
-next_box = textToBool.execute_box(set_answer=False)
+next_box = textToBool.execute_box()
 print(textToBool.outputs[2].value) # Prints Casted Variable
 
 #                    Test Cast Text To Bool                      #
@@ -232,7 +232,7 @@ print(textToBool.outputs[2].value) # Prints Casted Variable
 set_name("Test")
 textToArray = make_box(CastBuiltins.Text_To_Array, BoxTypes.Executable)
 textToArray.attach(get_name,1,0)
-next_box = textToArray.execute_box(set_answer=False)
+next_box = textToArray.execute_box()
 print(textToArray.outputs[2].value) # Prints Casted Variable
 
 #                   Test Cast Text To Array                      #
@@ -246,7 +246,7 @@ print(textToArray.outputs[2].value) # Prints Casted Variable
 set_can_use(False)
 boolToNumber = make_box(CastBuiltins.Bool_To_Number, BoxTypes.Executable)
 boolToNumber.attach(get_can_use,1,0)
-next_box = boolToNumber.execute_box(set_answer=False)
+next_box = boolToNumber.execute_box()
 print(boolToNumber.outputs[2].value) # Prints Casted Variable
 
 #                   Test Cast Bool To Number                     #
@@ -260,7 +260,7 @@ print(boolToNumber.outputs[2].value) # Prints Casted Variable
 set_can_use(True)
 boolToText = make_box(CastBuiltins.Bool_To_Text, BoxTypes.Executable)
 boolToText.attach(get_can_use,1,0)
-next_box = boolToText.execute_box(set_answer=False)
+next_box = boolToText.execute_box()
 print(boolToText.outputs[2].value) # Prints Casted Variable
 
 #                    Test Cast Bool To Text                      #
@@ -274,7 +274,7 @@ print(boolToText.outputs[2].value) # Prints Casted Variable
 set_age(20)
 numberToBool = make_box(CastBuiltins.Number_To_Bool, BoxTypes.Executable)
 numberToBool.attach(get_age,1,0)
-next_box = numberToBool.execute_box(set_answer=False)
+next_box = numberToBool.execute_box()
 print(numberToBool.outputs[2].value) # Prints Casted Variable
 
 #                   Test Cast Number To Bool                     #
@@ -288,7 +288,7 @@ print(numberToBool.outputs[2].value) # Prints Casted Variable
 set_age(20)
 numberToText = make_box(CastBuiltins.Number_To_Text, BoxTypes.Executable)
 numberToText.attach(get_age,1,0)
-next_box = numberToText.execute_box(set_answer=False)
+next_box = numberToText.execute_box()
 print(numberToText.outputs[2].value) # Prints Casted Variable
 
 #                   Test Cast Number To Text                     #
@@ -300,10 +300,10 @@ print(numberToText.outputs[2].value) # Prints Casted Variable
 #                    Test Cast Array To Text                     #
 
 set_data([6,5,4])
-numberToText = make_box(CastBuiltins.Array_To_Text, BoxTypes.Executable)
-numberToText.attach(get_data,1,0)
-next_box = numberToText.execute_box(set_answer=False)
-print(numberToText.outputs[2].value) # Prints Casted Variable
+arrayToText = make_box(CastBuiltins.Array_To_Text, BoxTypes.Executable)
+arrayToText.attach(get_data,1,0)
+next_box = arrayToText.execute_box()
+print(arrayToText.outputs[2].value) # Prints Casted Variable
 
 #                    Test Cast Array To Text                     #
 ##################################################################
@@ -321,4 +321,24 @@ print(parseArray.outputs[1]) # Prints Array
 print(parseArray.outputs[2]) # Prints Reversed Array
 
 #                       Test Parse Array                         #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                        Test For Loops                          #
+
+forLoop = make_box(ExecutableBuiltins.For, BoxTypes.Executable)
+forLoop.attach(get_data,4,0)
+numberToText.attach(forLoop,0,1)
+numberToText.attach(forLoop,1,2)
+_print.attach(numberToText,1,2)
+_print.attach(numberToText,0,0)
+
+# Make Finished
+
+next_box = forLoop.execute_box()
+print(next_box)
+
+#                        Test For Loops                          #
 ##################################################################

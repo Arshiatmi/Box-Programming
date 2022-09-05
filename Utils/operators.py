@@ -263,3 +263,30 @@ def parse_array_function():
                         Option("builtin_Array_Parse_Reversed",
                                Types.array, Sides.right),
                     ], is_instance=True)
+
+
+def for_loop_function():
+    return Function("For Loop Function",
+                    for_loop,
+                    [
+                        Option("builtin_For_Loop",
+                               Types.executable, Sides.left),
+                        Option("builtin_For_Loop_Start",
+                               Types.number, Sides.left),
+                        Option("builtin_For_Loop_End",
+                               Types.number, Sides.left),
+                        Option("builtin_For_Loop_Step",
+                               Types.number, Sides.left),
+                        Option("builtin_For_Loop_Array",
+                               Types.array, Sides.left),
+                    ],
+                    [
+                        Option("builtin_For_Loop_Finished",
+                               Types.executable, Sides.right),
+                        Option("builtin_For_Loop",
+                               Types.executable, Sides.right),
+                        Option("builtin_For_Loop_Index",
+                               Types.number, Sides.right),
+                        Option("builtin_For_Loop_Element",
+                               Types.variable, Sides.right),
+                    ], is_instance=True)

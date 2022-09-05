@@ -182,6 +182,31 @@ def parse_array(function_id, inputs, outputs):
     outputs[2].value = list(reversed(inputs[0].value))
 
 
+def for_loop(function_id, inputs, outputs):
+    start = inputs[1].get(0)
+    array = inputs[4].get()
+    step = inputs[3].get(1)
+    end = inputs[2].get(len(array))
+    if array:
+        for i in range(start, end, step):
+            outputs[2].value = i
+            outputs[3].value = array[i]
+            next_box = outputs[1].target_option.parent.execute_box()
+            while True:
+                if not next_box:
+                    break
+                next_box = next_box.execute_box()
+    else:
+        for i in range(start, end, step):
+            outputs[2].value = i
+            next_box = outputs[1].target_option.parent.execute_box()
+            while True:
+                if not next_box:
+                    break
+                next_box = next_box.execute_box()
+    return outputs[0]
+
+
 def array_test(function_id, inputs, outputs):
     inputs[0].value.append("test")
 
