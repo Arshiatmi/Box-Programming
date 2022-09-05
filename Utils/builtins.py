@@ -79,3 +79,5 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Read File", BoxTypes.Executable, read_file_function(), True)
             if builtin_Box_Type == FileBuiltins.WriteFile:
                 return Box("Write File", BoxTypes.Executable, write_file_function(), True)
+            if builtin_Box_Type == FileBuiltins.RemoveFile:
+                return Box("Remove File", BoxTypes.Executable, delete_file_function(), True)

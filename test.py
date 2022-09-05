@@ -367,7 +367,6 @@ print(next_box)
 writeFile = make_box(FileBuiltins.WriteFile, BoxTypes.Executable)
 writeFile.attach(None,1,"test/test.txt")
 writeFile.attach(None,2,"This Is Test Text To Write In A File\nYay :)")
-# Make Finished
 next_box = writeFile.execute_box()
 print(writeFile.outputs[1].value)
 
@@ -381,10 +380,22 @@ print(writeFile.outputs[1].value)
 
 readFile = make_box(FileBuiltins.ReadFile, BoxTypes.Executable)
 readFile.attach(None,1,"test/test.txt")
-# Make Finished
 next_box = readFile.execute_box()
 print(next_box)
 print(readFile.outputs[1].value)
 
 #                        Test Read File                          #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                      Test Remove File                          #
+
+removeFile = make_box(FileBuiltins.RemoveFile, BoxTypes.Executable)
+removeFile.attach(None,1,"test/test.txt")
+next_box = removeFile.execute_box()
+print(removeFile.outputs[1].value)
+
+#                      Test Remove File                          #
 ##################################################################

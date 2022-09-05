@@ -1,3 +1,4 @@
+import os
 from .global_vars import *
 from .variables import Variable, variables
 from .enums import BoxTypes
@@ -207,7 +208,6 @@ def read_file(function_id, inputs, outputs):
 def write_file(function_id, inputs, outputs):
     file_name = inputs[1].value
     text = inputs[2].value
-    outputs[1].value = True
     try:
         if inputs[3].value == True:
             f = open(file_name, "a")
@@ -215,6 +215,15 @@ def write_file(function_id, inputs, outputs):
             f = open(file_name, "w")
         f.write(text)
         f.close()
+    except:
+        outputs[1].value = False
+    return outputs[0]
+
+
+def delete_file(function_id, inputs, outputs):
+    file_name = inputs[1].value
+    try:
+        os.remove(file_name)
     except:
         outputs[1].value = False
     return outputs[0]

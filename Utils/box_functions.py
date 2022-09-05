@@ -347,3 +347,20 @@ def write_file_function():
                         Option("builtin_WriteFile_Success",
                                Types.boolean, Sides.right, default=True),
                     ], is_instance=True)
+
+
+def delete_file_function():
+    return Function("Delete File Function",
+                    delete_file,
+                    [
+                        Option("builtin_DeleteFile",
+                               Types.executable, Sides.left),
+                        Option("builtin_DeleteFile_Name",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_DeleteFile",
+                               Types.executable, Sides.right),
+                        Option("builtin_DeleteFile_Success",
+                               Types.boolean, Sides.right, default=True),
+                    ], is_instance=True)
