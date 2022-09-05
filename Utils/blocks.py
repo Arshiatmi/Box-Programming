@@ -12,7 +12,7 @@ from .global_vars import *
 class Option:
     Index = 0
 
-    def __init__(self, text: str, Type: Types, Side: Sides = None, variable_mode=False, show_text=False, optional=False):
+    def __init__(self, text: str, Type: Types, Side: Sides = None, variable_mode=False, show_text=False, optional=False, default=None):
         global options
         if text.startswith("builtin_"):
             text = ' '.join(text.replace("builtin_", "").split('_'))
@@ -35,13 +35,13 @@ class Option:
                     self.variable = variables[self.id]
                 else:
                     self.id = self.id + "_" + str(Option.Index)
-                    self.variable = Variable(self.id, Type)
+                    self.variable = Variable(self.id, Type, default=default)
             else:
                 self.id = self.id + "_" + str(Option.Index)
             options[self.id] = self
         except:
             options[self.id] = self
-            self.variable = Variable(self.id, Type)
+            self.variable = Variable(self.id, Type, default=default)
         self.Type = Type
         self.side = Side
         self.show_text = show_text

@@ -61,3 +61,7 @@ class CastBuiltins(enum.Enum):
 
 class ArrayBuiltins(enum.Enum):
     Parse = 1
+
+
+class FileBuiltins(enum.Enum):
+    ReadFile = 1

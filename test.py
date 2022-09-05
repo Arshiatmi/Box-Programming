@@ -358,3 +358,18 @@ print(next_box)
 
 #                        Test For Loops                          #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                        Test Read File                          #
+
+readFile = make_box(FileBuiltins.ReadFile, BoxTypes.Executable)
+readFile.attach(None,1,"sign.py")
+# Make Finished
+next_box = readFile.execute_box()
+print(next_box)
+print(readFile.outputs[1].value)
+
+#                        Test Read File                          #
+##################################################################

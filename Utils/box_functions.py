@@ -307,3 +307,22 @@ def for_loop_function():
                         Option("builtin_For_Loop_Element",
                                Types.variable, Sides.right),
                     ], is_instance=True)
+
+
+def read_file_function():
+    return Function("Read File Function",
+                    read_file,
+                    [
+                        Option("builtin_ReadFile",
+                               Types.executable, Sides.left),
+                        Option("builtin_ReadFile_Name",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_ReadFile",
+                               Types.executable, Sides.right),
+                        Option("builtin_ReadFile_Data",
+                               Types.text, Sides.right),
+                        Option("builtin_ReadFile_Data_List",
+                               Types.array, Sides.right),
+                    ], is_instance=True)

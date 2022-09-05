@@ -6,12 +6,14 @@ from Utils.global_vars import variables, options
 class Variable:
     VariableTypes = [Types.number, Types.boolean, Types.text, Types.array]
 
-    def __init__(self, name: str, Type: Types):
+    def __init__(self, name: str, Type: Types, default=None):
         global variables
         self.id = make_id_from_name(name)
         variables[self.id] = self
         self.name = name
         self.Type = Type
+        if default != None:
+            self.value = default
         self.changed = False
 
     @staticmethod

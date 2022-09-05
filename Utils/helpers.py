@@ -194,6 +194,16 @@ def parse_array(function_id, inputs, outputs):
     outputs[2].value = list(reversed(inputs[0].value))
 
 
+def read_file(function_id, inputs, outputs):
+    file_name = inputs[1].value
+    f = open(file_name, "r")
+    data = f.readlines()
+    f.close()
+    outputs[2].value = data
+    outputs[1].value = ''.join(data)
+    return outputs[0]
+
+
 def for_loop(function_id, inputs, outputs):
     start = inputs[1].get(0)
     array = inputs[4].get()

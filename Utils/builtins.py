@@ -1,7 +1,7 @@
-from Utils.enums import ArrayBuiltins, BoxTypes, CastBuiltins, ExecutableBuiltins, OperatorBuiltins
+from Utils.enums import ArrayBuiltins, BoxTypes, CastBuiltins, ExecutableBuiltins, FileBuiltins, OperatorBuiltins
 from Utils.blocks import Box
 from Utils.exceptions import BoxError
-from Utils.operators import *
+from Utils.box_functions import *
 
 Box(Type=BoxTypes.Start)
 Box(Type=BoxTypes.End)
@@ -74,3 +74,6 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
         elif builtin_Box_Type in ArrayBuiltins:
             if builtin_Box_Type == ArrayBuiltins.Parse:
                 return Box("Array Parse", BoxTypes.Executable, parse_array_function(), True)
+        elif builtin_Box_Type in FileBuiltins:
+            if builtin_Box_Type == FileBuiltins.ReadFile:
+                return Box("Read File", BoxTypes.Executable, read_file_function(), True)
