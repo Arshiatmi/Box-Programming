@@ -338,6 +338,8 @@ def write_file_function():
                                Types.text, Sides.left),
                         Option("builtin_WriteFile_Text",
                                Types.text, Sides.left),
+                        Option("builtin_WriteFile_ShouldAppend",
+                               Types.boolean, Sides.left, default=True),
                     ],
                     [
                         Option("builtin_WriteFile",

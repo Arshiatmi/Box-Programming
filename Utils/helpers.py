@@ -209,7 +209,10 @@ def write_file(function_id, inputs, outputs):
     text = inputs[2].value
     outputs[1].value = True
     try:
-        f = open(file_name, "w")
+        if inputs[3].value == True:
+            f = open(file_name, "a")
+        else:
+            f = open(file_name, "w")
         f.write(text)
         f.close()
     except:
