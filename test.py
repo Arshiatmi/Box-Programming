@@ -362,10 +362,25 @@ print(next_box)
 # -------------------------------------------------------------------------------------
 
 ##################################################################
+#                       Test Write File                          #
+
+writeFile = make_box(FileBuiltins.WriteFile, BoxTypes.Executable)
+writeFile.attach(None,1,"test/test.txt")
+writeFile.attach(None,2,"This Is Test Text To Write In A File\nYay :)")
+# Make Finished
+next_box = writeFile.execute_box()
+print(writeFile.outputs[1].value)
+
+#                       Test Write File                          #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
 #                        Test Read File                          #
 
 readFile = make_box(FileBuiltins.ReadFile, BoxTypes.Executable)
-readFile.attach(None,1,"sign.py")
+readFile.attach(None,1,"test/test.txt")
 # Make Finished
 next_box = readFile.execute_box()
 print(next_box)

@@ -204,6 +204,19 @@ def read_file(function_id, inputs, outputs):
     return outputs[0]
 
 
+def write_file(function_id, inputs, outputs):
+    file_name = inputs[1].value
+    text = inputs[2].value
+    outputs[1].value = True
+    try:
+        f = open(file_name, "w")
+        f.write(text)
+        f.close()
+    except:
+        outputs[1].value = False
+    return outputs[0]
+
+
 def for_loop(function_id, inputs, outputs):
     start = inputs[1].get(0)
     array = inputs[4].get()

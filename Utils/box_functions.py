@@ -326,3 +326,22 @@ def read_file_function():
                         Option("builtin_ReadFile_Data_List",
                                Types.array, Sides.right),
                     ], is_instance=True)
+
+
+def write_file_function():
+    return Function("Write File Function",
+                    write_file,
+                    [
+                        Option("builtin_WriteFile",
+                               Types.executable, Sides.left),
+                        Option("builtin_WriteFile_Name",
+                               Types.text, Sides.left),
+                        Option("builtin_WriteFile_Text",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_WriteFile",
+                               Types.executable, Sides.right),
+                        Option("builtin_WriteFile_Success",
+                               Types.boolean, Sides.right, default=True),
+                    ], is_instance=True)

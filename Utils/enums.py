@@ -65,3 +65,7 @@ class ArrayBuiltins(enum.Enum):
 
 class FileBuiltins(enum.Enum):
     ReadFile = 1
+    WriteFile = 2
+    AppendFile = 3
+    RemoveFile = 4
+    FileList = 5
