@@ -61,6 +61,13 @@ class CastBuiltins(enum.Enum):
 
 class ArrayBuiltins(enum.Enum):
     Parse = 1
+    Append = 2
+    Clear = 3
+    Count = 4
+    Index = 5
+    Insert = 6
+    Remove = 7
+    Sort = 7
 
 
 class FileBuiltins(enum.Enum):
@@ -68,3 +75,24 @@ class FileBuiltins(enum.Enum):
     WriteFile = 2
     RemoveFile = 3
     FileList = 4
+
+
+class TextBuiltins(enum.Enum):
+    Capitalize = 1
+    Count = 2
+    EndsWith = 3
+    Find = 4
+    Index = 5
+    IsAlphabet = 6
+    IsAlphabetNumber = 7
+    IsDigit = 8
+    IsLowerCase = 9
+    IsUpperCase = 10
+    Join = 11
+    Replace = 12
+    rFind = 13
+    Strip = 14
+    rStrip = 15
+    Split = 16
+    SwapCase = 17
+    ZeroFill = 18
