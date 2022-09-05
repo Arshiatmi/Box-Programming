@@ -229,6 +229,22 @@ def delete_file(function_id, inputs, outputs):
     return outputs[0]
 
 
+def file_list(function_id, inputs, outputs):
+    path = inputs[1].value
+    contains_files = inputs[2].value
+    contains_directories = inputs[3].value
+    try:
+        if contains_files and contains_directories:
+            outputs[1].value = os.listdir(path)
+        elif contains_files:
+            outputs[1].value = [i for i in os.scandir(path) if i.is_file()]
+        elif contains_directories:
+            outputs[1].value = [i for i in os.scandir(path) if i.is_dir()]
+    except:
+        outputs[2].value = False
+    return outputs[0]
+
+
 def for_loop(function_id, inputs, outputs):
     start = inputs[1].get(0)
     array = inputs[4].get()

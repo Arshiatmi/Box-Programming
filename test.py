@@ -381,7 +381,6 @@ print(writeFile.outputs[1].value)
 readFile = make_box(FileBuiltins.ReadFile, BoxTypes.Executable)
 readFile.attach(None,1,"test/test.txt")
 next_box = readFile.execute_box()
-print(next_box)
 print(readFile.outputs[1].value)
 
 #                        Test Read File                          #
@@ -398,4 +397,16 @@ next_box = removeFile.execute_box()
 print(removeFile.outputs[1].value)
 
 #                      Test Remove File                          #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                     Test FileList Box                          #
+
+fileList = make_box(FileBuiltins.FileList, BoxTypes.Executable)
+next_box = fileList.execute_box()
+print(fileList.outputs[1].value)
+
+#                     Test FileList Box                          #
 ##################################################################

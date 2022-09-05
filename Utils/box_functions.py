@@ -364,3 +364,26 @@ def delete_file_function():
                         Option("builtin_DeleteFile_Success",
                                Types.boolean, Sides.right, default=True),
                     ], is_instance=True)
+
+
+def file_list_function():
+    return Function("Delete File Function",
+                    file_list,
+                    [
+                        Option("builtin_FileList",
+                               Types.executable, Sides.left),
+                        Option("builtin_FileList_Path",
+                               Types.text, Sides.left, default='.'),
+                        Option("builtin_FileList_Contain_Files",
+                               Types.boolean, Sides.left, default=True),
+                        Option("builtin_FileList_Contain_Directories",
+                               Types.boolean, Sides.left, default=True),
+                    ],
+                    [
+                        Option("builtin_FileList",
+                               Types.executable, Sides.right),
+                        Option("builtin_FileList_Files",
+                               Types.array, Sides.right),
+                        Option("builtin_FileList_Success",
+                               Types.boolean, Sides.right, default=True),
+                    ], is_instance=True)
