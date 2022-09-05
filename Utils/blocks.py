@@ -85,8 +85,16 @@ class Option:
         else:
             return default_value
 
-    def attach(self, option):
+    def type_check(self, option):
         if type(option) == type(self):
+            return True
+        if self.Type == Types.variable:
+            if type(option) in Variable.VariableTypes:
+                return True
+        return False
+
+    def attach(self, option):
+        if self.type_check(option):
             if self.side != option.side:
                 self.target_option = option
                 self.target_option.target_option = self

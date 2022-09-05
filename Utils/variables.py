@@ -20,6 +20,13 @@ class Variable:
             return True
         return False
 
+    def type_check(self, variable):
+        if type(variable) == type(self):
+            return True
+        elif self.Type == Types.variable:
+            return True
+        return False
+
     # Value Property
     @property
     def value(self):
@@ -37,15 +44,10 @@ class Variable:
             self._value = float(value)
         elif type(value) == self.Type.value:
             self._value = value
+        elif self.type_check(value):
+            self._value = value
         else:
-            try:
-                print(type(value), self.Type.value)
-                if type(value) in self.Type.value:
-                    self._value = value
-                else:
-                    raise
-            except:
-                raise ValueError(f"Value Must Be Type Of {self.Type}")
+            raise ValueError(f"Value Must Be Type Of {self.Type}")
 
     # Type Property
     @property

@@ -248,6 +248,23 @@ def text_to_array_function():
                     ], is_instance=True)
 
 
+def variable_to_text_function():
+    return Function("Variable To Text",
+                    variable_to_text,
+                    [
+                        Option("builtin_Cast_VariableToText",
+                               Types.executable, Sides.left),
+                        Option("builtin_Cast_VariableToText_input", Types.variable, Sides.left)],
+                    [
+                        Option("builtin_Cast_VariableToText",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_VariableToText_failed",
+                               Types.executable, Sides.right),
+                        Option("builtin_Cast_VariableToText_output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
+
 def parse_array_function():
     return Function("Parse Array",
                     parse_array,

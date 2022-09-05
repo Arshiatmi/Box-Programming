@@ -69,6 +69,8 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Cast Array To Text", BoxTypes.Executable, array_to_text_function(), True)
             elif builtin_Box_Type == CastBuiltins.Text_To_Array:
                 return Box("Cast Text To Array", BoxTypes.Executable, text_to_array_function(), True)
+            elif builtin_Box_Type == CastBuiltins.Variable_To_Text:
+                return Box("Cast Any Variable Type To Text", BoxTypes.Executable, variable_to_text_function(), True)
         elif builtin_Box_Type in ArrayBuiltins:
             if builtin_Box_Type == ArrayBuiltins.Parse:
                 return Box("Array Parse", BoxTypes.Executable, parse_array_function(), True)

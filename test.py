@@ -310,6 +310,22 @@ print(arrayToText.outputs[2].value) # Prints Casted Variable
 
 # -------------------------------------------------------------------------------------
 
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                 Test Cast Variable To Text                     #
+
+set_data([6,5,4])
+variableToText = make_box(CastBuiltins.Variable_To_Text, BoxTypes.Executable)
+variableToText.attach(get_data,1,0)
+next_box = variableToText.execute_box()
+print(variableToText.outputs[2].value) # Prints Casted Variable
+
+#                 Test Cast Variable To Text                     #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
 ##################################################################
 #                       Test Parse Array                         #
 
@@ -330,10 +346,10 @@ print(parseArray.outputs[2]) # Prints Reversed Array
 
 forLoop = make_box(ExecutableBuiltins.For, BoxTypes.Executable)
 forLoop.attach(get_data,4,0)
-numberToText.attach(forLoop,0,1)
-numberToText.attach(forLoop,1,2)
-_print.attach(numberToText,1,2)
-_print.attach(numberToText,0,0)
+variableToText.attach(forLoop,0,1)
+variableToText.attach(forLoop,1,3)
+_print.attach(variableToText,1,2)
+_print.attach(variableToText,0,0)
 
 # Make Finished
 

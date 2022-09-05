@@ -1,5 +1,5 @@
 from .global_vars import *
-from .variables import variables
+from .variables import Variable, variables
 from .enums import BoxTypes
 
 
@@ -171,6 +171,18 @@ def array_to_text(function_id, inputs, outputs):
 def text_to_array(function_id, inputs, outputs):
     try:
         outputs[2].value = list(inputs[1].value)
+        return outputs[0]
+    except:
+        return outputs[1]
+
+
+def variable_to_text(function_id, inputs, outputs):
+    try:
+        target_object = inputs[1].value
+        if Variable.is_number(target_object):
+            if int(target_object) == target_object:
+                target_object = int(target_object)
+        outputs[2].value = str(target_object)
         return outputs[0]
     except:
         return outputs[1]
