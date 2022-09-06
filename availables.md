@@ -100,6 +100,31 @@ Output0 : Output (Types.array)
 Output1 : Success (Types.boolean)
 ```
 
+# Text Boxes
+
+### Capitalize
+
+```
+Input0 : Text That You Want To Capitalize (Types.text)
+Output0 : Output Text (Types.text)
+```
+
+### Count
+
+```
+Input0 : Full Text That You Want To Search Into (Types.text)
+Input1 : Text That You Want To Search For And Get Count Of It (Types.text)
+Output0 : Count How Many Input1 Is In Input0 (Types.number)
+```
+
+### EndsWith
+
+```
+Input0 : Full Text That You Want To Search Into (Types.text)
+Input1 : Text That You Want To Search And Check If Input0 Endswith (Types.text)
+Output0 : Checks if Input0 ends with Input1 Or Not (Types.boolean)
+```
+
 # File Boxes
 
 ### ReadFile

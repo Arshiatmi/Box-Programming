@@ -510,3 +510,44 @@ print(sortList.outputs[0].value)
 
 #                        Test Sort Array                         #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                     Test Capitalize Text                       #
+
+
+capitalizeText = make_box(TextBuiltins.Capitalize, BoxTypes.Executable)
+capitalizeText.attach(get_name, 0, 0)
+print(capitalizeText.outputs[0].value)
+
+#                     Test Capitalize Text                       #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                       Test Count Text                          #
+
+
+countText = make_box(TextBuiltins.Count, BoxTypes.Executable)
+countText.attach(get_name, 0, 0)
+countText.attach(None, 0, "e")
+print(countText.outputs[0].value)
+
+#                       Test Count Text                          #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                     Test EndsWith Text                         #
+
+
+endsWithText = make_box(TextBuiltins.EndsWith, BoxTypes.Executable)
+endsWithText.attach(get_name, 0, 0)
+endsWithText.attach(None, 0, "t")
+print(endsWithText.outputs[0].value)
+
+#                     Test EndsWith Text                         #
+##################################################################

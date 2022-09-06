@@ -1,4 +1,4 @@
-from Utils.enums import ArrayBuiltins, BoxTypes, CastBuiltins, ExecutableBuiltins, FileBuiltins, OperatorBuiltins
+from Utils.enums import ArrayBuiltins, BoxTypes, CastBuiltins, ExecutableBuiltins, FileBuiltins, OperatorBuiltins, TextBuiltins
 from Utils.blocks import Box
 from Utils.exceptions import BoxError
 from Utils.box_functions import *
@@ -107,3 +107,12 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Remove File", BoxTypes.Executable, delete_file_function(), True)
             if builtin_Box_Type == FileBuiltins.FileList:
                 return Box("Get File List", BoxTypes.Executable, file_list_function(), True)
+
+        # Texts
+        elif builtin_Box_Type in TextBuiltins:
+            if builtin_Box_Type == TextBuiltins.Capitalize:
+                return Box("Text Capitalize", BoxTypes.Executable, capitalize_text_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.Count:
+                return Box("Text Count", BoxTypes.Executable, count_text_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.EndsWith:
+                return Box("Text Endswith", BoxTypes.Executable, endswith_text_function(), True, auto_run=True)

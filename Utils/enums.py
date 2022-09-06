@@ -77,10 +77,10 @@ class FileBuiltins(enum.Enum):
     FileList = 4
 
 
-class TextBuiltins(enum.Enum):  # TODO: Use This
-    Capitalize = 1  # TODO: Make This Work
-    Count = 2  # TODO: Make This Work
-    EndsWith = 3  # TODO: Make This Work
+class TextBuiltins(enum.Enum):
+    Capitalize = 1
+    Count = 2
+    EndsWith = 3
     Find = 4  # TODO: Make This Work
     Index = 5  # TODO: Make This Work
     IsAlphabet = 6  # TODO: Make This Work

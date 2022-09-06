@@ -419,6 +419,8 @@ def for_loop_function():
                                Types.variable, Sides.right),
                     ], is_instance=True)
 
+############################################################################################
+#                                        File                                              #
 
 def read_file_function():
     return Function("Read File Function",
@@ -498,3 +500,54 @@ def file_list_function():
                         Option("builtin_FileList_Success",
                                Types.boolean, Sides.right, default=True),
                     ], is_instance=True)
+
+#                                        File                                              #
+############################################################################################
+
+# -----------------------------------------------------------------------------------------------------
+
+############################################################################################
+#                                        Text                                              #
+
+def capitalize_text_function():
+    return Function("Capitalize Text Function",
+                    capitalize_text,
+                    [
+                        Option("builtin_Text_Capitalize_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_Capitalize_Output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
+def count_text_function():
+    return Function("Capitalize Text Function",
+                    count_text,
+                    [
+                        Option("builtin_Text_Count_Input",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_Count_Element_To_search",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_Count_Output",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+def endswith_text_function():
+    return Function("Endswith Text Function",
+                    endswith_text,
+                    [
+                        Option("builtin_Text_Endswith_Input",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_Endswith_Element_To_search",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_Endswith_Output",
+                               Types.boolean, Sides.right),
+                    ], is_instance=True)
+
+#                                        Text                                              #
+############################################################################################

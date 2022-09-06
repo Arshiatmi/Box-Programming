@@ -303,6 +303,23 @@ def file_list(function_id, inputs, outputs):
     return outputs[0]
 
 
+def capitalize_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    outputs[0].value = text.capitalize()
+
+
+def count_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    search_text = inputs[1].value
+    outputs[0].value = text.count(search_text)
+
+
+def endswith_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    search_text = inputs[1].value
+    outputs[0].value = text.endswith(search_text)
+
+
 def for_loop(function_id, inputs, outputs):
     start = inputs[1].get(0)
     array = inputs[4].get()
