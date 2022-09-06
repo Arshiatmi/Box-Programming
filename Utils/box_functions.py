@@ -327,6 +327,25 @@ def index_element_array_function():
                     ], is_instance=True)
 
 
+def insert_element_array_function():
+    return Function("Insert Element In Array Function",
+                    insert_element_array,
+                    [
+                        Option("builtin_Array_Insert_Input",
+                               Types.array, Sides.left),
+                        Option("builtin_Array_Insert_Element",
+                               Types.variable, Sides.left),
+                        Option("builtin_Array_Insert_Index",
+                               Types.number, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Array_Insert_Output",
+                               Types.array, Sides.right),
+                        Option("builtin_Array_Insert_Success",
+                               Types.boolean, Sides.right, default=True),
+                    ], is_instance=True)
+
+
 def for_loop_function():
     return Function("For Loop Function",
                     for_loop,

@@ -48,7 +48,7 @@ print(get_name())
 
 get_data, set_data = define_variable("data", Types.array)
 
-set_data([1,2,3,4])
+set_data([1, 2, 3, 4])
 print(get_data())
 
 #                           Array Variable                       #
@@ -203,9 +203,9 @@ _print.execute_box()
 
 set_name("1")
 textToNumber = make_box(CastBuiltins.Text_To_Number, BoxTypes.Executable)
-textToNumber.attach(get_name,1,0)
+textToNumber.attach(get_name, 1, 0)
 next_box = textToNumber.execute_box()
-print(textToNumber.outputs[2].value) # Prints Casted Variable
+print(textToNumber.outputs[2].value)  # Prints Casted Variable
 
 #                   Test Cast Text To Number                     #
 ##################################################################
@@ -217,9 +217,9 @@ print(textToNumber.outputs[2].value) # Prints Casted Variable
 
 set_name("")
 textToBool = make_box(CastBuiltins.Text_To_Bool, BoxTypes.Executable)
-textToBool.attach(get_name,1,0)
+textToBool.attach(get_name, 1, 0)
 next_box = textToBool.execute_box()
-print(textToBool.outputs[2].value) # Prints Casted Variable
+print(textToBool.outputs[2].value)  # Prints Casted Variable
 
 #                    Test Cast Text To Bool                      #
 ##################################################################
@@ -231,9 +231,9 @@ print(textToBool.outputs[2].value) # Prints Casted Variable
 
 set_name("Test")
 textToArray = make_box(CastBuiltins.Text_To_Array, BoxTypes.Executable)
-textToArray.attach(get_name,1,0)
+textToArray.attach(get_name, 1, 0)
 next_box = textToArray.execute_box()
-print(textToArray.outputs[2].value) # Prints Casted Variable
+print(textToArray.outputs[2].value)  # Prints Casted Variable
 
 #                   Test Cast Text To Array                      #
 ##################################################################
@@ -245,9 +245,9 @@ print(textToArray.outputs[2].value) # Prints Casted Variable
 
 set_can_use(False)
 boolToNumber = make_box(CastBuiltins.Bool_To_Number, BoxTypes.Executable)
-boolToNumber.attach(get_can_use,1,0)
+boolToNumber.attach(get_can_use, 1, 0)
 next_box = boolToNumber.execute_box()
-print(boolToNumber.outputs[2].value) # Prints Casted Variable
+print(boolToNumber.outputs[2].value)  # Prints Casted Variable
 
 #                   Test Cast Bool To Number                     #
 ##################################################################
@@ -259,9 +259,9 @@ print(boolToNumber.outputs[2].value) # Prints Casted Variable
 
 set_can_use(True)
 boolToText = make_box(CastBuiltins.Bool_To_Text, BoxTypes.Executable)
-boolToText.attach(get_can_use,1,0)
+boolToText.attach(get_can_use, 1, 0)
 next_box = boolToText.execute_box()
-print(boolToText.outputs[2].value) # Prints Casted Variable
+print(boolToText.outputs[2].value)  # Prints Casted Variable
 
 #                    Test Cast Bool To Text                      #
 ##################################################################
@@ -273,9 +273,9 @@ print(boolToText.outputs[2].value) # Prints Casted Variable
 
 set_age(20)
 numberToBool = make_box(CastBuiltins.Number_To_Bool, BoxTypes.Executable)
-numberToBool.attach(get_age,1,0)
+numberToBool.attach(get_age, 1, 0)
 next_box = numberToBool.execute_box()
-print(numberToBool.outputs[2].value) # Prints Casted Variable
+print(numberToBool.outputs[2].value)  # Prints Casted Variable
 
 #                   Test Cast Number To Bool                     #
 ##################################################################
@@ -287,9 +287,9 @@ print(numberToBool.outputs[2].value) # Prints Casted Variable
 
 set_age(20)
 numberToText = make_box(CastBuiltins.Number_To_Text, BoxTypes.Executable)
-numberToText.attach(get_age,1,0)
+numberToText.attach(get_age, 1, 0)
 next_box = numberToText.execute_box()
-print(numberToText.outputs[2].value) # Prints Casted Variable
+print(numberToText.outputs[2].value)  # Prints Casted Variable
 
 #                   Test Cast Number To Text                     #
 ##################################################################
@@ -299,11 +299,11 @@ print(numberToText.outputs[2].value) # Prints Casted Variable
 ##################################################################
 #                    Test Cast Array To Text                     #
 
-set_data([6,5,4])
+set_data([6, 5, 4])
 arrayToText = make_box(CastBuiltins.Array_To_Text, BoxTypes.Executable)
-arrayToText.attach(get_data,1,0)
+arrayToText.attach(get_data, 1, 0)
 next_box = arrayToText.execute_box()
-print(arrayToText.outputs[2].value) # Prints Casted Variable
+print(arrayToText.outputs[2].value)  # Prints Casted Variable
 
 #                    Test Cast Array To Text                     #
 ##################################################################
@@ -315,11 +315,11 @@ print(arrayToText.outputs[2].value) # Prints Casted Variable
 ##################################################################
 #                 Test Cast Variable To Text                     #
 
-set_data([6,5,4])
+set_data([6, 5, 4])
 variableToText = make_box(CastBuiltins.Variable_To_Text, BoxTypes.Executable)
-variableToText.attach(get_data,1,0)
+variableToText.attach(get_data, 1, 0)
 next_box = variableToText.execute_box()
-print(variableToText.outputs[2].value) # Prints Casted Variable
+print(variableToText.outputs[2].value)  # Prints Casted Variable
 
 #                 Test Cast Variable To Text                     #
 ##################################################################
@@ -330,11 +330,11 @@ print(variableToText.outputs[2].value) # Prints Casted Variable
 #                       Test Parse Array                         #
 
 parseArray = make_box(ArrayBuiltins.Parse, BoxTypes.Executable)
-parseArray.attach(get_data,0,0)
+parseArray.attach(get_data, 0, 0)
 next_box = parseArray.execute_box()
-print(parseArray.outputs[0]) # Prints Length Of Array
-print(parseArray.outputs[1]) # Prints Array
-print(parseArray.outputs[2]) # Prints Reversed Array
+print(parseArray.outputs[0])  # Prints Length Of Array
+print(parseArray.outputs[1])  # Prints Array
+print(parseArray.outputs[2])  # Prints Reversed Array
 
 #                       Test Parse Array                         #
 ##################################################################
@@ -345,11 +345,11 @@ print(parseArray.outputs[2]) # Prints Reversed Array
 #                        Test For Loops                          #
 
 forLoop = make_box(ExecutableBuiltins.For, BoxTypes.Executable)
-forLoop.attach(get_data,4,0)
-variableToText.attach(forLoop,0,1)
-variableToText.attach(forLoop,1,3)
-_print.attach(variableToText,1,2)
-_print.attach(variableToText,0,0)
+forLoop.attach(get_data, 4, 0)
+variableToText.attach(forLoop, 0, 1)
+variableToText.attach(forLoop, 1, 3)
+_print.attach(variableToText, 1, 2)
+_print.attach(variableToText, 0, 0)
 
 # Make Finished
 
@@ -365,8 +365,8 @@ print(next_box)
 #                       Test Write File                          #
 
 writeFile = make_box(FileBuiltins.WriteFile, BoxTypes.Executable)
-writeFile.attach(None,1,"test/test.txt")
-writeFile.attach(None,2,"This Is Test Text To Write In A File\nYay :)")
+writeFile.attach(None, 1, "test/test.txt")
+writeFile.attach(None, 2, "This Is Test Text To Write In A File\nYay :)")
 next_box = writeFile.execute_box()
 print(writeFile.outputs[1].value)
 
@@ -379,7 +379,7 @@ print(writeFile.outputs[1].value)
 #                        Test Read File                          #
 
 readFile = make_box(FileBuiltins.ReadFile, BoxTypes.Executable)
-readFile.attach(None,1,"test/test.txt")
+readFile.attach(None, 1, "test/test.txt")
 next_box = readFile.execute_box()
 print(readFile.outputs[1].value)
 
@@ -392,7 +392,7 @@ print(readFile.outputs[1].value)
 #                      Test Remove File                          #
 
 removeFile = make_box(FileBuiltins.RemoveFile, BoxTypes.Executable)
-removeFile.attach(None,1,"test/test.txt")
+removeFile.attach(None, 1, "test/test.txt")
 next_box = removeFile.execute_box()
 print(removeFile.outputs[1].value)
 
@@ -417,8 +417,8 @@ print(fileList.outputs[1].value)
 #                   Test Append To Array                         #
 
 appendList = make_box(ArrayBuiltins.Append, BoxTypes.Executable)
-appendList.attach(get_data,0,0)
-appendList.attach(None,1,43)
+appendList.attach(get_data, 0, 0)
+appendList.attach(None, 1, 43)
 print(appendList.outputs[0].value)
 
 #                   Test Append To Array                         #
@@ -430,10 +430,10 @@ print(appendList.outputs[0].value)
 #                 Test Count Elements In Array                    #
 
 countList = make_box(ArrayBuiltins.Count, BoxTypes.Executable)
-countList.attach(get_data,0,0)
-countList.attach(None,1,6)
+countList.attach(get_data, 0, 0)
+countList.attach(None, 1, 6)
 print(countList.outputs[0].value)
-countList.attach(None,1,32)
+countList.attach(None, 1, 32)
 print(countList.outputs[0].value)
 
 #                 Test Count Elements In Array                    #
@@ -445,11 +445,26 @@ print(countList.outputs[0].value)
 #              Test Get Index Of Element In Array                #
 
 indexList = make_box(ArrayBuiltins.Index, BoxTypes.Executable)
-indexList.attach(get_data,0,0)
-indexList.attach(None,1,6)
+indexList.attach(get_data, 0, 0)
+indexList.attach(None, 1, 6)
 print(indexList.outputs[0].value)
-indexList.attach(None,1,32)
+indexList.attach(None, 1, 32)
 print(indexList.outputs[0].value)
 
 #              Test Get Index Of Element In Array                #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                 Test Insert Element To Array                   #
+
+insertList = make_box(ArrayBuiltins.Insert, BoxTypes.Executable)
+insertList.attach(get_data, 0, 0)
+insertList.attach(None, 1, 6)
+insertList.attach(None, 2, 1)
+print(insertList.outputs[0].value)
+print(insertList.outputs[1].value)
+
+#                 Test Insert Element To Array                   #
 ##################################################################

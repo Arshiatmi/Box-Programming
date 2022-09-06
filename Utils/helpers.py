@@ -216,6 +216,15 @@ def index_element_array(function_id, inputs, outputs):
     outputs[0].value = index
 
 
+def insert_element_array(function_id, inputs, outputs):
+    array = inputs[0].value.copy()
+    try:
+        array.insert(inputs[2].value, inputs[1].value)
+        outputs[0].value = array
+    except:
+        outputs[1].value = False
+
+
 def read_file(function_id, inputs, outputs):
     file_name = inputs[1].value
     f = open(file_name, "r")
