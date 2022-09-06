@@ -67,7 +67,7 @@ class ArrayBuiltins(enum.Enum):
     Index = 5
     Insert = 6
     Remove = 7
-    Sort = 8  # TODO: Make This Work
+    Sort = 8
 
 
 class FileBuiltins(enum.Enum):

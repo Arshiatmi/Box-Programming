@@ -231,6 +231,12 @@ def insert_element_array(function_id, inputs, outputs):
         outputs[1].value = False
 
 
+def sort_array(function_id, inputs, outputs):
+    array = inputs[0].value.copy()
+    array.sort()
+    outputs[0].value = array
+
+
 def remove_element_array(function_id, inputs, outputs):
     array = inputs[0].value.copy()
     element = inputs[1].value

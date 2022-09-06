@@ -312,6 +312,19 @@ def prepend_array_function():
                     ], is_instance=True)
 
 
+def sort_array_function():
+    return Function("Sort Array Function",
+                    sort_array,
+                    [
+                        Option("builtin_Array_Sort_Input",
+                               Types.array, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Array_Prepend_Output",
+                               Types.array, Sides.right),
+                    ], is_instance=True)
+
+
 def count_elements_array_function():
     return Function("Count Elements In Array Function",
                     count_elements_array,

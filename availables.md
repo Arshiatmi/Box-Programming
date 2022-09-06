@@ -65,6 +65,13 @@ Input1 : Element To Count (Types.variable)
 Output0 : Output (Types.number)
 ```
 
+### Sort
+
+```
+Input0 : Array (Types.array)
+Output0 : Sorted Array (Types.array)
+```
+
 ### Index
 
 ```

@@ -497,3 +497,16 @@ print(prependList.outputs[0].value)
 
 #                 Test Prepend Element To Array                  #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                        Test Sort Array                         #
+
+
+sortList = make_box(ArrayBuiltins.Sort, BoxTypes.Executable)
+sortList.attach(prependList, 0, 0)
+print(sortList.outputs[0].value)
+
+#                        Test Sort Array                         #
+##################################################################
