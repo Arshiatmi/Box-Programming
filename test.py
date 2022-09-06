@@ -423,3 +423,18 @@ print(appendList.outputs[0].value)
 
 #                   Test Append To Array                         #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                 Test Count Elements In Array                    #
+
+countList = make_box(ArrayBuiltins.Count, BoxTypes.Executable)
+countList.attach(get_data,0,0)
+countList.attach(None,1,6)
+print(countList.outputs[0].value)
+countList.attach(None,1,32)
+print(countList.outputs[0].value)
+
+#                 Test Count Elements In Array                    #
+##################################################################

@@ -297,6 +297,21 @@ def append_array_function():
                     ], is_instance=True)
 
 
+def count_elements_array_function():
+    return Function("Count Elements In Array Function",
+                    count_elements_array,
+                    [
+                        Option("builtin_Array_Count_Input",
+                               Types.array, Sides.left),
+                        Option("builtin_Array_Count_Element",
+                               Types.variable, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Array_Count_Output",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+
 def for_loop_function():
     return Function("For Loop Function",
                     for_loop,

@@ -84,6 +84,8 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Array Parse", BoxTypes.Executable, parse_array_function(), True, auto_run=True)
             if builtin_Box_Type == ArrayBuiltins.Append:
                 return Box("Array Append", BoxTypes.Executable, append_array_function(), True, auto_run=True)
+            if builtin_Box_Type == ArrayBuiltins.Count:
+                return Box("Array Count", BoxTypes.Executable, count_elements_array_function(), True, auto_run=True)
 
         # Files
         elif builtin_Box_Type in FileBuiltins:

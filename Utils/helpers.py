@@ -201,6 +201,12 @@ def append_array(function_id, inputs, outputs):
     outputs[0].value = array
 
 
+def count_elements_array(function_id, inputs, outputs):
+    array = inputs[0].value.copy()
+    count = array.count(inputs[1].value)
+    outputs[0].value = count
+
+
 def read_file(function_id, inputs, outputs):
     file_name = inputs[1].value
     f = open(file_name, "r")
