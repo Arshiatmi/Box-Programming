@@ -62,11 +62,12 @@ class CastBuiltins(enum.Enum):
 class ArrayBuiltins(enum.Enum):
     Parse = 1
     Append = 2
-    Count = 3
-    Index = 4
-    Insert = 5
-    Remove = 6
-    Sort = 7  # TODO: Make This Work
+    Prepend = 3  # TODO: Make This Work
+    Count = 4
+    Index = 5
+    Insert = 6
+    Remove = 7
+    Sort = 8  # TODO: Make This Work
 
 
 class FileBuiltins(enum.Enum):
