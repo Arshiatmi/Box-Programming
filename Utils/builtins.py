@@ -124,3 +124,11 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Text Is Alphabet Or Number Or Both", BoxTypes.Executable, isalphabetnumber_function(), True, auto_run=True)
             elif builtin_Box_Type == TextBuiltins.IsDigit:
                 return Box("Text Is Digits ( Number )", BoxTypes.Executable, isdigits_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.IsUpperCase:
+                return Box("Text Is Uppercase", BoxTypes.Executable, isupper_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.IsLowerCase:
+                return Box("Text Is Lowercase", BoxTypes.Executable, islower_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.ToUpper:
+                return Box("Text To Uppercase", BoxTypes.Executable, toupper_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.ToLower:
+                return Box("Text To Lowercase", BoxTypes.Executable, tolower_function(), True, auto_run=True)

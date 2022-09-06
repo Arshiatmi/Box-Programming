@@ -571,6 +571,54 @@ def isdigits_function():
                                Types.boolean, Sides.right),
                     ], is_instance=True)
 
+def islower_function():
+    return Function("Is Lower Text Function",
+                    islowercase_text,
+                    [
+                        Option("builtin_Text_IsLower_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_IsLower_Output",
+                               Types.boolean, Sides.right),
+                    ], is_instance=True)
+
+def isupper_function():
+    return Function("Is Upper Text Function",
+                    isuppercase_text,
+                    [
+                        Option("builtin_Text_IsUpper_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_IsUpper_Output",
+                               Types.boolean, Sides.right),
+                    ], is_instance=True)
+
+def toupper_function():
+    return Function("To Upper Text Function",
+                    touppercase_text,
+                    [
+                        Option("builtin_Text_ToUpper_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_ToUpper_Output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
+def tolower_function():
+    return Function("To Lower Text Function",
+                    tolowercase_text,
+                    [
+                        Option("builtin_Text_ToLower_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_ToLower_Output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
 def count_text_function():
     return Function("Capitalize Text Function",
                     count_text,

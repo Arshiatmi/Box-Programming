@@ -125,6 +125,35 @@ Input1 : Text That You Want To Search And Check If Input0 Endswith (Types.text)
 Output0 : Checks if Input0 ends with Input1 Or Not (Types.boolean)
 ```
 
+### Find
+
+```
+Input0 : Full Text That You Want To Search Into (Types.text)
+Input1 : Text That You Want To Search And Get Index From Input0. (Types.text)
+Output0 : Search And Get Input1 Index From Input0. ( Returns -1 If Not Found ) (Types.number)
+```
+
+### IsAlphabet
+
+```
+Input0 : Full Text That You Want To Check If Its Alphabet Or Not. (Types.text)
+Output0 : Returns Output. (Types.boolean)
+```
+
+### IsAlphabetNumber
+
+```
+Input0 : Full Text That You Want To Check If Its (Alphabet Or Number Or Both) Or Not. (Types.text)
+Output0 : Returns Output. (Types.boolean)
+```
+
+### IsDigit
+
+```
+Input0 : Full Text That You Want To Check If Its Digits(Number) Or Not. (Types.text)
+Output0 : Returns Output. (Types.boolean)
+```
+
 # File Boxes
 
 ### ReadFile

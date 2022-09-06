@@ -532,7 +532,7 @@ print(capitalizeText.outputs[0].value)
 
 countText = make_box(TextBuiltins.Count, BoxTypes.Executable)
 countText.attach(get_name, 0, 0)
-countText.attach(None, 0, "e")
+countText.attach(None, 1, "e")
 print(countText.outputs[0].value)
 
 #                       Test Count Text                          #
@@ -546,7 +546,7 @@ print(countText.outputs[0].value)
 
 endsWithText = make_box(TextBuiltins.EndsWith, BoxTypes.Executable)
 endsWithText.attach(get_name, 0, 0)
-endsWithText.attach(None, 0, "t")
+endsWithText.attach(None, 1, "t")
 print(endsWithText.outputs[0].value)
 
 #                     Test EndsWith Text                         #
@@ -560,7 +560,7 @@ print(endsWithText.outputs[0].value)
 
 findText = make_box(TextBuiltins.Find, BoxTypes.Executable)
 findText.attach(get_name, 0, 0)
-findText.attach(None, 0, "t")
+findText.attach(None, 1, "t")
 print(findText.outputs[0].value)
 
 #                       Test Find Text                           #
@@ -604,4 +604,56 @@ isdigitsText.attach(get_name, 0, 0)
 print(isdigitsText.outputs[0].value)
 
 #            Test Is Digits ( Number ) Or Both Text              #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                      Test To Lower Text                        #
+
+
+toLowerText = make_box(TextBuiltins.ToLower, BoxTypes.Executable)
+toLowerText.attach(get_name, 0, 0)
+print(toLowerText.outputs[0].value)
+
+#                      Test To Lower Text                        #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                      Test Is Lower Text                        #
+
+
+isLowerText = make_box(TextBuiltins.IsLowerCase, BoxTypes.Executable)
+isLowerText.attach(toLowerText, 0, 0)
+print(isLowerText.outputs[0].value)
+
+#                      Test Is Lower Text                        #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                      Test To Upper Text                        #
+
+
+toUpperText = make_box(TextBuiltins.ToUpper, BoxTypes.Executable)
+toUpperText.attach(get_name, 0, 0)
+print(toUpperText.outputs[0].value)
+
+#                      Test To Upper Text                        #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                      Test Is Upper Text                        #
+
+
+isUpperText = make_box(TextBuiltins.IsUpperCase, BoxTypes.Executable)
+isUpperText.attach(toUpperText, 0, 0)
+print(isUpperText.outputs[0].value)
+
+#                      Test Is Upper Text                        #
 ##################################################################

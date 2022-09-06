@@ -330,13 +330,35 @@ def isalphabet_text(function_id, inputs, outputs):
     text = inputs[0].value
     outputs[0].value = text.isalpha()
 
+
 def isalphabetnumber_text(function_id, inputs, outputs):
     text = inputs[0].value
     outputs[0].value = text.isalnum()
 
+
 def isdigit_text(function_id, inputs, outputs):
     text = inputs[0].value
     outputs[0].value = text.isdigit()
+
+
+def islowercase_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    outputs[0].value = text.islower()
+
+
+def isuppercase_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    outputs[0].value = text.isupper()
+
+
+def touppercase_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    outputs[0].value = text.upper()
+
+
+def tolowercase_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    outputs[0].value = text.lower()
 
 
 def for_loop(function_id, inputs, outputs):
