@@ -1,3 +1,5 @@
+from loguru import logger
+
 functions = {}
 boxes = {}
 options = {}

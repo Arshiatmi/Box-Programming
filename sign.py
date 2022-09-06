@@ -1,8 +1,10 @@
-import sys
 import os
 import time
+from pysha import CrossPlatformer
 
 animation_frames = []
+
+cp = CrossPlatformer()
 
 animation_frames.append(
     """
@@ -159,12 +161,21 @@ animation_frames.append(
 #############################################################################
 """)
 
+cp["clear"] = {"linux": "clear", "windows": "cls", "mac": "clear"}
 
+# Or You Can Do This :
+"""
+cp.add_os_commands(
+    "clear", {"linux": "clear", "windows": "cls", "mac": "clear"})
+cp["clear"] = {"linux": "clear", "windows": "cls", "mac": "clear"}
+"""
+
+c = 0
 while True:
     for i in animation_frames:
         print(i)
         time.sleep(0.05)
-        if sys.platform == "win32":
-            os.system("cls")
-        else:
-            os.system("clear")
+        os.system(cp["clear"])
+    c += 1
+    if c == 4:
+        break

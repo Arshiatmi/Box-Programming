@@ -10,5 +10,9 @@ class IOError(Exception):
     pass
 
 
-class OptionError(Exception):
+class BoxError(Exception):
+    pass
+
+
+class SideError(Exception):
     pass
