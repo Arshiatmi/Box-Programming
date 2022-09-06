@@ -85,11 +85,13 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
             if builtin_Box_Type == ArrayBuiltins.Append:
                 return Box("Array Append", BoxTypes.Executable, append_array_function(), True, auto_run=True)
             if builtin_Box_Type == ArrayBuiltins.Count:
-                return Box("Array Count", BoxTypes.Executable, count_elements_array_function(), True, auto_run=True)
+                return Box("Array Count Of Element", BoxTypes.Executable, count_elements_array_function(), True, auto_run=True)
             if builtin_Box_Type == ArrayBuiltins.Index:
-                return Box("Array Index", BoxTypes.Executable, index_element_array_function(), True, auto_run=True)
+                return Box("Array Index Of Elemenet", BoxTypes.Executable, index_element_array_function(), True, auto_run=True)
             if builtin_Box_Type == ArrayBuiltins.Insert:
-                return Box("Array Insert", BoxTypes.Executable, insert_element_array_function(), True, auto_run=True)
+                return Box("Array Insert Data", BoxTypes.Executable, insert_element_array_function(), True, auto_run=True)
+            if builtin_Box_Type == ArrayBuiltins.Remove:
+                return Box("Array Remove Element/Index", BoxTypes.Executable, remove_element_array_function(), True, auto_run=True)
 
         # Files
         elif builtin_Box_Type in FileBuiltins:

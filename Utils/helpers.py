@@ -225,6 +225,22 @@ def insert_element_array(function_id, inputs, outputs):
         outputs[1].value = False
 
 
+def remove_element_array(function_id, inputs, outputs):
+    array = inputs[0].value.copy()
+    element = inputs[1].value
+    is_index = inputs[2].value
+    try:
+        if is_index:
+            array.pop(element)
+        else:
+            array.remove(element)
+        outputs[0].value = array
+    except ValueError:
+        pass
+    except:
+        outputs[1].value = False
+
+
 def read_file(function_id, inputs, outputs):
     file_name = inputs[1].value
     f = open(file_name, "r")

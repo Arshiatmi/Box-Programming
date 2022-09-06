@@ -65,7 +65,7 @@ class ArrayBuiltins(enum.Enum):
     Count = 3
     Index = 4
     Insert = 5
-    Remove = 6  # TODO: Make This Work
+    Remove = 6
     Sort = 7  # TODO: Make This Work
 
 

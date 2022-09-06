@@ -346,6 +346,25 @@ def insert_element_array_function():
                     ], is_instance=True)
 
 
+def remove_element_array_function():
+    return Function("Remove Element From Array Function",
+                    remove_element_array,
+                    [
+                        Option("builtin_Array_Remove_Input",
+                               Types.array, Sides.left),
+                        Option("builtin_Array_Remove_Element",
+                               Types.variable, Sides.left),
+                        Option("builtin_Array_Should_Remove_Index",
+                               Types.boolean, Sides.left, default=False),
+                    ],
+                    [
+                        Option("builtin_Array_Remove_Output",
+                               Types.array, Sides.right),
+                        Option("builtin_Array_Remove_Success",
+                               Types.boolean, Sides.right, default=True),
+                    ], is_instance=True)
+
+
 def for_loop_function():
     return Function("For Loop Function",
                     for_loop,

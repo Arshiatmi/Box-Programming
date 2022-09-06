@@ -468,3 +468,18 @@ print(insertList.outputs[1].value)
 
 #                 Test Insert Element To Array                   #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                Test Remove Element From Array                  #
+
+
+removeList = make_box(ArrayBuiltins.Remove, BoxTypes.Executable)
+removeList.attach(get_data, 0, 0)
+removeList.attach(None, 1, 6)
+print(removeList.outputs[0].value)
+print(removeList.outputs[1].value)
+
+#                Test Remove Element From Array                  #
+##################################################################
