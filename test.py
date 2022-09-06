@@ -657,3 +657,60 @@ print(isUpperText.outputs[0].value)
 
 #                      Test Is Upper Text                        #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                      Test Run Os Command                       #
+
+
+runOsCommandObj = make_box(Others.runOsCommand, BoxTypes.Executable)
+runOsCommandObj.attach(None, 1, "cls")
+runOsCommandObj.attach(None, 2, False)
+runOsCommandObj.execute_box()
+
+#                      Test Run Os Command                       #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                         Test Join Text                         #
+
+
+joinText = make_box(TextBuiltins.Join, BoxTypes.Executable)
+joinText.attach(None, 0, '.')
+joinText.attach(get_data, 1, 0)
+print(joinText.outputs[0].value)
+
+#                         Test Join Text                         #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                       Test Replace Text                        #
+
+
+replaceText = make_box(TextBuiltins.Replace, BoxTypes.Executable)
+replaceText.attach(toLowerText, 0, 0)
+replaceText.attach(None, 1, 't')
+replaceText.attach(None, 2, 'd')
+print(replaceText.outputs[0].value)
+
+#                       Test Replace Text                        #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                        Test rFind Text                         #
+
+
+reverseFind = make_box(TextBuiltins.rFind, BoxTypes.Executable)
+reverseFind.attach(toLowerText, 0, 0)
+reverseFind.attach(None, 1, 't')
+print(reverseFind.outputs[0].value)
+
+#                        Test rFind Text                         #
+##################################################################

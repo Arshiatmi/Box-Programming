@@ -1,4 +1,4 @@
-from Utils.enums import ArrayBuiltins, BoxTypes, CastBuiltins, ExecutableBuiltins, FileBuiltins, OperatorBuiltins, TextBuiltins
+from Utils.enums import ArrayBuiltins, BoxTypes, CastBuiltins, ExecutableBuiltins, FileBuiltins, OperatorBuiltins, Others, TextBuiltins
 from Utils.blocks import Box
 from Utils.exceptions import BoxError
 from Utils.box_functions import *
@@ -132,3 +132,13 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Text To Uppercase", BoxTypes.Executable, toupper_function(), True, auto_run=True)
             elif builtin_Box_Type == TextBuiltins.ToLower:
                 return Box("Text To Lowercase", BoxTypes.Executable, tolower_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.Join:
+                return Box("Text Join Array", BoxTypes.Executable, join_text_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.Replace:
+                return Box("Text Replace", BoxTypes.Executable, replace_text_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.rFind:
+                return Box("Text Reverse Find", BoxTypes.Executable, rfind_text_function(), True, auto_run=True)
+
+        elif builtin_Box_Type in Others:
+            if builtin_Box_Type == Others.runOsCommand:
+                return Box("Run Os Command", BoxTypes.Executable, runOsCommand_function(), True)

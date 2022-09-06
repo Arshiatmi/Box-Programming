@@ -154,6 +154,34 @@ Input0 : Full Text That You Want To Check If Its Digits(Number) Or Not. (Types.t
 Output0 : Returns Output. (Types.boolean)
 ```
 
+### ToLower
+
+```
+Input0 : Full Text That You Want To Make Them LowerCase (Types.text)
+Output0 : Returns Output. (Types.text)
+```
+
+### ToUpper
+
+```
+Input0 : Full Text That You Want To Make Them UpperCase (Types.text)
+Output0 : Returns Output. (Types.text)
+```
+
+### IsLowerCase
+
+```
+Input0 : Full Text That You Want To Check If They Are LowerCase (Types.text)
+Output0 : Returns Output. (Types.boolean)
+```
+
+### IsUpperCase
+
+```
+Input0 : Full Text That You Want To Check If They Are UpperCase (Types.text)
+Output0 : Returns Output. (Types.boolean)
+```
+
 # File Boxes
 
 ### ReadFile

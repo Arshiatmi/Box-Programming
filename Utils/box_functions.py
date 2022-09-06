@@ -419,6 +419,24 @@ def for_loop_function():
                                Types.variable, Sides.right),
                     ], is_instance=True)
 
+def runOsCommand_function():
+    return Function("Run Os Command Function",
+                    runOsCommand,
+                    [
+                        Option("builtin_Run_Os_Command",
+                               Types.executable, Sides.left),
+                        Option("builtin_Run_Os_Command_Text",
+                               Types.text, Sides.left),
+                        Option("builtin_Run_Os_Command_AsProcess",
+                               Types.boolean, Sides.left,default=True),
+                    ],
+                    [
+                        Option("builtin_Run_Os_Command",
+                               Types.executable, Sides.right),
+                        Option("builtin_Run_Os_Command_Output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
 ############################################################################################
 #                                        File                                              #
 
@@ -532,6 +550,50 @@ def find_text_function():
                     ],
                     [
                         Option("builtin_Text_Find_Output",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+def join_text_function():
+    return Function("Join Text Function",
+                    join_text,
+                    [
+                        Option("builtin_Text_Join_Text",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_Join_Array",
+                               Types.array, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_Join_Output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
+def replace_text_function():
+    return Function("Replace Text Function",
+                    replace_text,
+                    [
+                        Option("builtin_Text_Replace_Text",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_Replace_Search_Text",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_Replace_To_Replace",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_Replace_Output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
+def rfind_text_function():
+    return Function("rFind Text Function",
+                    rfind_text,
+                    [
+                        Option("builtin_Text_rFind_Text",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_rFind_Search_Text",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_rFind_Output",
                                Types.number, Sides.right),
                     ], is_instance=True)
 

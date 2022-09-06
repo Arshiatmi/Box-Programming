@@ -89,11 +89,15 @@ class TextBuiltins(enum.Enum):
     IsUpperCase = 9
     ToUpper = 10
     ToLower = 11
-    Join = 12  # TODO: Make This Work
-    Replace = 13  # TODO: Make This Work
-    rFind = 14  # TODO: Make This Work
+    Join = 12
+    Replace = 13
+    rFind = 14
     Strip = 15  # TODO: Make This Work
     rStrip = 16  # TODO: Make This Work
     Split = 17  # TODO: Make This Work
     SwapCase = 18  # TODO: Make This Work
     ZeroFill = 19  # TODO: Make This Work
+
+
+class Others(enum.Enum):
+    runOsCommand = 1

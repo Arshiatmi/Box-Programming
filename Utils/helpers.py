@@ -326,6 +326,26 @@ def find_text(function_id, inputs, outputs):
     outputs[0].value = text.find(search_text)
 
 
+def join_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    array = inputs[1].value
+    array = list(map(lambda x: str(x), array))
+    outputs[0].value = text.join(array)
+
+
+def replace_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    search_text = inputs[1].value
+    replace_text = inputs[2].value
+    outputs[0].value = text.replace(search_text, replace_text)
+
+
+def rfind_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    search_text = inputs[1].value
+    outputs[0].value = text.rfind(search_text)
+
+
 def isalphabet_text(function_id, inputs, outputs):
     text = inputs[0].value
     outputs[0].value = text.isalpha()
@@ -359,6 +379,17 @@ def touppercase_text(function_id, inputs, outputs):
 def tolowercase_text(function_id, inputs, outputs):
     text = inputs[0].value
     outputs[0].value = text.lower()
+
+
+def runOsCommand(function_id, inputs, outputs):
+    text = inputs[1].value
+    as_process = inputs[2].value
+    if as_process:
+        ans = os.popen(text).read()
+        outputs[1].value = ans
+    else:
+        os.system(text)
+    return outputs[0]
 
 
 def for_loop(function_id, inputs, outputs):
