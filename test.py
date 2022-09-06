@@ -438,3 +438,18 @@ print(countList.outputs[0].value)
 
 #                 Test Count Elements In Array                    #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#              Test Get Index Of Element In Array                #
+
+indexList = make_box(ArrayBuiltins.Index, BoxTypes.Executable)
+indexList.attach(get_data,0,0)
+indexList.attach(None,1,6)
+print(indexList.outputs[0].value)
+indexList.attach(None,1,32)
+print(indexList.outputs[0].value)
+
+#              Test Get Index Of Element In Array                #
+##################################################################

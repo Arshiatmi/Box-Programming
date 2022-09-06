@@ -312,6 +312,21 @@ def count_elements_array_function():
                     ], is_instance=True)
 
 
+def index_element_array_function():
+    return Function("Index Of Element In Array Function",
+                    index_element_array,
+                    [
+                        Option("builtin_Array_Index_Input",
+                               Types.array, Sides.left),
+                        Option("builtin_Array_Index_Element",
+                               Types.variable, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Array_Index_Output",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+
 def for_loop_function():
     return Function("For Loop Function",
                     for_loop,
