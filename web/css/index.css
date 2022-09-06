@@ -1,177 +1,470 @@
+/* ++ {Start} add fonts ++ */
 @font-face {
-    font-family: 'DynaPuff';
-    src: url('../fonts/DynaPuff/DynaPuff-Regular.ttf');
+  font-family: "DynaPuff";
+  src: url("../fonts/DynaPuff/DynaPuff-Regular.ttf");
 }
 
 @font-face {
-    font-family: 'RobotoSlab';
-    src: url('../fonts/RobotoSlab/RobotoSlab-Regular.ttf');
+  font-family: "RobotoSlab";
+  src: url("../fonts/RobotoSlab/RobotoSlab-Regular.ttf");
 }
 
-*{
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-decoration: none;
-    box-sizing: border-box;
-    outline: none;
-    font-family: 'RobotoSlab';
+@font-face {
+  font-family: "MDI";
+  src: url("../fonts/icon/MDI/fonts/materialdesignicons-webfont.eot")
+      format("eot"),
+    url("../fonts/icon/MDI/fonts/materialdesignicons-webfont.ttf")
+      format("truetype"),
+    url("../fonts/icon/MDI/fonts/materialdesignicons-webfont.woff")
+      format("woff"),
+    url("../fonts/icon/MDI/fonts/materialdesignicons-webfont.woff2")
+      format("woff2");
+}
+/* ++ {End} add fonts ++ */
+
+/* ++ {Start} add custom colors to root ++ */
+:root {
+  --softBlack: #333;
+  --softGray: #525252;
+  --softWhite: #dbd6d6;
+  --white: #fff;
+  --black: #000;
+  --boolean: #c00;
+  --number: #e4d00a;
+  --text: #32CD32;
+  --array: #009acd;
+  --empty: #999999;
+  --executable: #8b008b;
+  --variable:#ff8C00;
+}
+/* ++ {Start} add custom colors to root ++ */
+
+/* ++ {Start} add basic styles ++ */
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  outline: none;
+  font-family: "RobotoSlab";
 }
 
-html{
-    display: block;
+html {
+  display: block;
 }
 
-:root{
-    --softBlack: #333;
-    --softGray: rgb(82, 82, 82);
-    --softWhite: rgb(219, 214, 214);
-    --white: #fff;
-    --black: #000;
+body {
+  background: url("../img/morphing-diamonds.svg");
+  background-color: var(--softBlack);
+  height: 100vh;
+  direction: ltr;
+  overflow: hidden;
+}
+/* ++ {End} add basic styles ++ */
+
+/* |- {Start} The main part consists of three parts: navbar,main-content,inspector -| */
+.main-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-body{
-    background: url('../img/morphing-diamonds.svg');
-    background-color: var(--softBlack);
-    height: 100vh;
-    direction: ltr;
+/* _. {Start} create navbar ._ */
+.navbar {
+  height: 100%;
+  width: 20%;
+  background-color: var(--softGray);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  box-shadow: 2px -1px 10px rgba(0, 0, 0, 0.8), -1px -1px 5px rgba(0, 0, 0, 0.8);
 }
 
-.sec1{
-    width: 100%;
-    height: 100%;
-    display: flex;
+/* => {Start} create navbar title section <= */
+.navbar .title {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  background-color: var(--softWhite);
+  position: relative;
 }
 
-.sec1 nav{
-    height: 100%;
-    width: 250px;
-    background-color: var(--softGray);
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
+.navbar .title::before,
+.navbar .title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
 }
 
-.sec1 nav .title{
-    width: 100%;
-    padding: 20px 0;
-    text-align: center;
-    background-color: var(--softWhite);
-    position: relative;
+.navbar .title::before {
+  left: 0;
+  border-left: 15px solid var(--softWhite);
+  border-bottom: 15px solid transparent;
+  border-top: 15px solid transparent;
 }
 
-.sec1 nav .title::before,
-.sec1 nav .title::after{
-    content: '';
-    position: absolute;
-    bottom: -15px;
+.navbar .title::after {
+  right: 0;
+  border-right: 15px solid var(--softWhite);
+  border-bottom: 15px solid transparent;
+  border-top: 15px solid transparent;
 }
 
-.sec1 nav .title::before{
-    left: 0;
-    border-left: 15px solid var(--softWhite);
-    border-bottom: 15px solid transparent;
-    border-top: 15px solid transparent;
+.navbar .title h1 {
+  font-size: 22px;
+  font-weight: 900;
+  font-family: "DynaPuff";
+  text-transform: uppercase;
+}
+/* => {End} create navbar title section <= */
+
+/* => {Start} create navbar search field <= */
+.navbar .search {
+  width: 85%;
+  position: relative;
+  margin: 40px auto 0 auto;
 }
 
-.sec1 nav .title::after{
-    right: 0;
-    border-right: 15px solid var(--softWhite);
-    border-bottom: 15px solid transparent;
-    border-top: 15px solid transparent;
+.navbar .search .inp {
+  width: 100%;
+  padding: 10px;
+  padding-left: 40px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border: none;
+  font-size: 16px;
 }
 
-.sec1 nav .title h1{
-    font-size: 22px;
-    font-weight: 900;
-    font-family: 'DynaPuff';
+.navbar .search a {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--softBlack);
+  color: #fff;
+  height: 100%;
+  width: 35px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: none;
 }
 
-.sec1 nav .search{
-    width: 85%;
-    position: relative;
-    margin: 40px auto 0 auto;
+.navbar .search a i {
+  font-size: 25px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* => {End} create navbar search field <= */
+
+/* => {Start} create boxes section in navbar <= */
+.navbar ul {
+  width: 100%;
+  margin-top: 20px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  border: none;
 }
 
-.sec1 nav .search .inp{
-    width: 100%;
-    padding: 10px;
-    padding-left: 40px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border: none;
-    font-size: 16px;
+.navbar ul li {
+  padding: 18px 20px;
+  cursor: pointer;
+  border-top: 1px solid var(--softWhite);
+  font-size: 18px;
+  color: var(--softWhite);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
 }
 
-.sec1 nav .search a {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: var(--softBlack);
-    color: #fff;
-    height: 100%;
-    width: 35px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border: none;
+.navbar ul li i {
+  margin-right: 5px;
+  text-align: center;
+  color: var(--white);
 }
 
-.sec1 nav .search a i{
-    font-size: 25px;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.navbar ul li:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--softBlack);
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
 }
 
-.sec1 nav ul{
-    width: 100%;
-    margin-top: 20px;
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    border: none;
+.navbar ul li:hover::before {
+  left: 0;
+}
+/* => {End} create boxes section in navbar <= */
+/* _. {End} create navbar ._ */
+
+/* _. {Start} create the inspector section ._ */
+.inspector {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-.sec1 nav ul li{
-    padding: 18px 20px;
-    cursor: pointer;
-    border-top: 1px solid var(--softWhite);
-    font-size: 18px;
-    color: var(--softWhite);
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
+/*  => {Start} create the button to show the inspector <= */
+.inspector .arrow-inspector {
+  color: var(--black);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 13%;
+  height: 55px;
+  background-color: var(--softWhite);
+  position: relative;
+  cursor: pointer;
 }
 
-.sec1 nav ul li i{
-    margin-right: 5px;
-    text-align: center;
-    color: var(--white);
+.inspector .arrow-inspector::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: 0;
+  border-top: 30px solid transparent;
+  border-right: 35px solid var(--softWhite);
 }
 
-.sec1 nav ul li:before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background-color: var(--softBlack);
-    z-index: -1;
-    transition: all .3s ease-in-out;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -ms-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
+.inspector .arrow-inspector::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  border-bottom: 30px solid transparent;
+  border-right: 35px solid var(--softWhite);
 }
 
-.sec1 nav ul li:hover::before{
-    left: 0;
+.inspector .arrow-inspector i {
+  font-size: 30px;
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
 }
+
+.active-inspector .arrow-inspector i{
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+/* => {End} create the button to show the inspector <= */
+
+/* _. {Start} create the main section and inspector information ._ */
+.inspector .box-inspector {
+  height: 100%;
+  width: 87%;
+  overflow: auto;
+  background-color: var(--softGray);
+  box-shadow: 2px -1px 10px rgba(0, 0, 0, 0.8), -1px -1px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* => {Start} create the title section in inspection <= */
+.inspector .box-inspector .title {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  background-color: var(--softWhite);
+  position: relative;
+}
+
+.inspector .box-inspector .title::before,
+.inspector .box-inspector .title::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+}
+
+.inspector .box-inspector .title::before {
+  left: 0;
+  border-left: 15px solid var(--softWhite);
+  border-bottom: 15px solid transparent;
+  border-top: 15px solid transparent;
+}
+
+.inspector .box-inspector .title::after {
+  right: 0;
+  border-right: 15px solid var(--softWhite);
+  border-bottom: 15px solid transparent;
+  border-top: 15px solid transparent;
+}
+
+.inspector .box-inspector .title h1 {
+  font-size: 22px;
+  font-weight: 900;
+  font-family: "DynaPuff";
+  text-transform: uppercase;
+}
+/* => {End} create the title section in inspection <= */
+
+/* _. {Start} create the basic parts of the inspector, including inputs and outputs, edit, function code ._ */
+.inspector .box-inspector .inspector-item{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 30px;
+  padding: 0 15px;
+}
+
+/* => {Start} create input and output tables <= */
+.inspector .box-inspector .inspector-item .inp-out-main{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  overflow: auto;
+}
+
+.inspector .box-inspector .inspector-item .inp-out-main .inputs,
+.inspector .box-inspector .inspector-item .inp-out-main .outputs{
+  width: 50%;
+  background-color: var(--white);
+}
+
+.inspector .box-inspector .inspector-item .inp-out-main .inputs{
+  border-right: 1px solid var(--black);
+}
+
+.inspector .box-inspector .inspector-item .inp-out-main .inputs .title-inp,
+.inspector .box-inspector .inspector-item .inp-out-main .outputs .title-otp{
+  text-align: center;
+  border-bottom: 1px solid var(--black);
+  padding: 7px;
+}
+
+.inspector .box-inspector .inspector-item .inp-out-main .inputs .title-inp h4,
+.inspector .box-inspector .inspector-item .inp-out-main .outputs .title-otp h4{
+  font-size: 17px;
+}
+
+.inspector .box-inspector .inspector-item .inp-out-main .inputs .variables{
+  width: 100%;
+}
+
+.inspector .box-inspector .inspector-item .inp-out-main .variables .variable{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 7px;
+  cursor: default;
+  border-bottom: 1px solid var(--black);
+}
+
+.inspector .box-inspector .inspector-item .inp-out-main .variables .variable:last-child{
+  border-bottom: none;
+}
+
+.inspector .box-inspector .inspector-item .inp-out-main .variables .variable .id-vrb{
+  width: 8px;
+  height: 8px;
+  background-color: var(--variable);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  margin-right: 5px;
+}
+
+.inspector .box-inspector .inspector-item .inp-out-main .variables .variable p{
+  font-size: 14px;
+  overflow: auto;
+  width: 80%;
+  text-align: left;
+}
+/* => {End} create input and output tables <= */
+
+/* => {Start} create the function code section in the inspector <= */
+.inspector .box-inspector .inspector-item .function-code{
+  width: 100%;
+  border-top: 1px solid var(--white);
+  margin-top: 20px;
+}
+
+.inspector .box-inspector .inspector-item .function-code .title-function{
+  width: 100%;
+  padding: 7px;
+  background-color: var(--white);
+  margin-top: 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--black);
+  border-radius: 10px 10px 0 0;
+  -webkit-border-radius: 10px 10px 0 0;
+  -moz-border-radius: 10px 10px 0 0;
+  -ms-border-radius: 10px 10px 0 0;
+  -o-border-radius: 10px 10px 0 0;
+}
+
+.inspector .box-inspector .inspector-item .function-code .title-function h4{
+  font-size: 16px;
+}
+
+.inspector .box-inspector .inspector-item .function-code .code{
+  width: 100%;
+  background-color: var(--white);
+  padding: 7px 10px;
+  border-radius: 0 0 10px 10px;
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -ms-border-radius: 0 0 10px 10px;
+  -o-border-radius: 0 0 10px 10px;
+}
+
+.inspector .box-inspector .inspector-item .function-code .code p{
+  font-size: 14px;
+  letter-spacing: 3px;
+  word-wrap: break-word;
+  color: var(--softBlack);
+}
+/* => {End} create the function code section in the inspector <= */
+/* _. {End} create the basic parts of the inspector, including inputs and outputs, edit, function code ._ */
+/* _. {End} create the main section and inspector information ._ */
+/* _. {End} create the inspector section ._ */
+/* |- {End} The main part consists of three parts: navbar,main-content,inspector -| */
+
+/* ++ {Start} custom scrollbar ++ */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--softWhite);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--softBlack);
+  border-radius: 10px;
+}
+/* ++ {End} custom scrollbar ++ */
