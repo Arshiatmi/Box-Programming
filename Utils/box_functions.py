@@ -521,6 +521,56 @@ def capitalize_text_function():
                                Types.text, Sides.right),
                     ], is_instance=True)
 
+def find_text_function():
+    return Function("Find Text Function",
+                    find_text,
+                    [
+                        Option("builtin_Text_Find_Input",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_Find_Element_To_Search",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_Find_Output",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+def isalphabet_function():
+    return Function("Is Alphabet Text Function",
+                    isalphabet_text,
+                    [
+                        Option("builtin_Text_IsAlphabet_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_IsAlphabet_Output",
+                               Types.boolean, Sides.right),
+                    ], is_instance=True)
+
+def isalphabetnumber_function():
+    return Function("Is Alphabet Or Number Or Both Text Function",
+                    isalphabetnumber_text,
+                    [
+                        Option("builtin_Text_IsAlphabetOrNumber_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_IsAlphabetOrNumber_Output",
+                               Types.boolean, Sides.right),
+                    ], is_instance=True)
+
+def isdigits_function():
+    return Function("Is Digit Text Function",
+                    isdigit_text,
+                    [
+                        Option("builtin_Text_IsDigits_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_IsDigits_Output",
+                               Types.boolean, Sides.right),
+                    ], is_instance=True)
+
 def count_text_function():
     return Function("Capitalize Text Function",
                     count_text,

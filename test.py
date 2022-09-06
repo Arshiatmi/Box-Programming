@@ -551,3 +551,57 @@ print(endsWithText.outputs[0].value)
 
 #                     Test EndsWith Text                         #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                       Test Find Text                           #
+
+
+findText = make_box(TextBuiltins.Find, BoxTypes.Executable)
+findText.attach(get_name, 0, 0)
+findText.attach(None, 0, "t")
+print(findText.outputs[0].value)
+
+#                       Test Find Text                           #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                   Test Is Alphabet Text                        #
+
+
+isalphabetText = make_box(TextBuiltins.IsAlphabet, BoxTypes.Executable)
+isalphabetText.attach(get_name, 0, 0)
+print(isalphabetText.outputs[0].value)
+
+#                   Test Is Alphabet Text                        #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#            Test Is Alphabet Or Number Or Both Text             #
+
+
+isalphabetNumberText = make_box(
+    TextBuiltins.IsAlphabetNumber, BoxTypes.Executable)
+isalphabetNumberText.attach(get_name, 0, 0)
+print(isalphabetNumberText.outputs[0].value)
+
+#            Test Is Alphabet Or Number Or Both Text             #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#            Test Is Digits ( Number ) Or Both Text              #
+
+
+isdigitsText = make_box(TextBuiltins.IsDigit, BoxTypes.Executable)
+isdigitsText.attach(get_name, 0, 0)
+print(isdigitsText.outputs[0].value)
+
+#            Test Is Digits ( Number ) Or Both Text              #
+##################################################################

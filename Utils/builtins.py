@@ -116,3 +116,11 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Text Count", BoxTypes.Executable, count_text_function(), True, auto_run=True)
             elif builtin_Box_Type == TextBuiltins.EndsWith:
                 return Box("Text Endswith", BoxTypes.Executable, endswith_text_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.Find:
+                return Box("Text Find", BoxTypes.Executable, find_text_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.IsAlphabet:
+                return Box("Text Is Alphabet", BoxTypes.Executable, isalphabet_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.IsAlphabetNumber:
+                return Box("Text Is Alphabet Or Number Or Both", BoxTypes.Executable, isalphabetnumber_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.IsDigit:
+                return Box("Text Is Digits ( Number )", BoxTypes.Executable, isdigits_function(), True, auto_run=True)

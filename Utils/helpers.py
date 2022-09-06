@@ -320,6 +320,25 @@ def endswith_text(function_id, inputs, outputs):
     outputs[0].value = text.endswith(search_text)
 
 
+def find_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    search_text = inputs[1].value
+    outputs[0].value = text.find(search_text)
+
+
+def isalphabet_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    outputs[0].value = text.isalpha()
+
+def isalphabetnumber_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    outputs[0].value = text.isalnum()
+
+def isdigit_text(function_id, inputs, outputs):
+    text = inputs[0].value
+    outputs[0].value = text.isdigit()
+
+
 def for_loop(function_id, inputs, outputs):
     start = inputs[1].get(0)
     array = inputs[4].get()
