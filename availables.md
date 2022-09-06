@@ -49,6 +49,14 @@ Input1 : Element To Append (Types.variable)
 Output0 : Output (Types.array)
 ```
 
+### Prepend
+
+```
+Input0 : Array (Types.array)
+Input1 : Element To Prepend (Types.variable)
+Output0 : Output (Types.array)
+```
+
 ### Count
 
 ```

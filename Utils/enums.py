@@ -62,7 +62,7 @@ class CastBuiltins(enum.Enum):
 class ArrayBuiltins(enum.Enum):
     Parse = 1
     Append = 2
-    Prepend = 3  # TODO: Make This Work
+    Prepend = 3
     Count = 4
     Index = 5
     Insert = 6

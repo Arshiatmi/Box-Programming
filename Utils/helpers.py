@@ -201,6 +201,12 @@ def append_array(function_id, inputs, outputs):
     outputs[0].value = array
 
 
+def prepend_array(function_id, inputs, outputs):
+    array = inputs[0].value.copy()
+    array.insert(0, inputs[1].value)
+    outputs[0].value = array
+
+
 def count_elements_array(function_id, inputs, outputs):
     array = inputs[0].value
     count = array.count(inputs[1].value)

@@ -84,6 +84,8 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Array Parse", BoxTypes.Executable, parse_array_function(), True, auto_run=True)
             if builtin_Box_Type == ArrayBuiltins.Append:
                 return Box("Array Append", BoxTypes.Executable, append_array_function(), True, auto_run=True)
+            if builtin_Box_Type == ArrayBuiltins.Prepend:
+                return Box("Array Prepend", BoxTypes.Executable, prepend_array_function(), True, auto_run=True)
             if builtin_Box_Type == ArrayBuiltins.Count:
                 return Box("Array Count Of Element", BoxTypes.Executable, count_elements_array_function(), True, auto_run=True)
             if builtin_Box_Type == ArrayBuiltins.Index:

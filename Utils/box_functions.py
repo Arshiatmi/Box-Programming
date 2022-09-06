@@ -297,6 +297,21 @@ def append_array_function():
                     ], is_instance=True)
 
 
+def prepend_array_function():
+    return Function("Prepend To Array Function",
+                    prepend_array,
+                    [
+                        Option("builtin_Array_Prepend_Input",
+                               Types.array, Sides.left),
+                        Option("builtin_Array_Prepend_Element",
+                               Types.variable, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Array_Prepend_Output",
+                               Types.array, Sides.right),
+                    ], is_instance=True)
+
+
 def count_elements_array_function():
     return Function("Count Elements In Array Function",
                     count_elements_array,

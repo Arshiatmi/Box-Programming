@@ -483,3 +483,17 @@ print(removeList.outputs[1].value)
 
 #                Test Remove Element From Array                  #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                 Test Prepend Element To Array                  #
+
+
+prependList = make_box(ArrayBuiltins.Prepend, BoxTypes.Executable)
+prependList.attach(get_data, 0, 0)
+prependList.attach(None, 1, 6)
+print(prependList.outputs[0].value)
+
+#                 Test Prepend Element To Array                  #
+##################################################################
