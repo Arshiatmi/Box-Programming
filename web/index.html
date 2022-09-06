@@ -1,3 +1,14 @@
+<!-- -------------------------------------------------------------------------------- -->
+<!-- {Start} Sign guide -->
+
+<!-- This sign |- -| means the main section like main,footer,tag and etc in html -->
+<!-- This sign _. ._ means the important parts and the parent of its children -->
+<!-- This sign => <= It means part of the whole -->
+<!-- This sign ++ ++ adding sub-features and appearance, such as font and etc  -->
+
+<!-- {End} Sign guide -->
+<!-- -------------------------------------------------------------------------------- -->
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -5,19 +16,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="fonts/icon/MDI/css/materialdesignicons.min.css">
     <title>Box Programming</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/eel.js"></script>
     <link rel="stylesheet" href="css/index.css">
   </head>
   <body>
-    <section class="sec1">
-      <nav>
+    
+    <!-- |- {Start} The main part consists of three parts: navbar,main-content,inspector -| -->
+    <section class="main-section">
+
+      <!-- _. {Start} create navbar ._ -->
+      <nav class="navbar">
+
+        <!-- => {Start} create navbar title section <= -->
         <div class="title">
           <h1>Box Programming</h1>
         </div>
+        <!-- => {Start} create navbar title section <= -->
+
+        <!-- => {Start} create navbar search field <= -->
         <div class="search">
           <a href="#"><i class="mdi mdi-magnify"></i></a>
           <input type="text" class="inp" placeholder="search">
         </div>
+        <!-- => {End} create navbar search field <= -->
+
+        <!-- => {Start} create boxes section in navbar <= -->
         <ul>
           <li><i class="mdi mdi-box-cutter"></i>new box</li>
           <li><i class="mdi mdi-box-cutter"></i>new box</li>
@@ -31,8 +55,102 @@
           <li><i class="mdi mdi-box-cutter"></i>new box</li>
           <li><i class="mdi mdi-box-cutter"></i>new box</li>
         </ul>
+        <!-- => {End} create boxes section in navbar <= -->
+
       </nav>
-      <div></div>
+      <!-- _. {End} create navbar ._ -->
+
+      <!-- _. {Start} create the section to add functions and main tasks ._ -->
+      <div id="main-content">
+
+        <!-- => {Start} create a canvas in the main content <= -->
+        <canvas id="myCanvas"></canvas>
+        <!-- => {End} create a canvas in the main content <= -->
+
+      </div>
+      <!-- _. {End} create the section to add functions and main tasks ._ -->
+
+      <!-- _. {Start} create the inspector section ._ -->
+      <div class="inspector">
+
+        <!-- => {Start} create the button to show the inspector <= -->
+        <div class="arrow-inspector">
+          <i class="mdi mdi-chevron-left"></i>
+        </div>
+        <!-- => {End} create the button to show the inspector <= -->
+
+        <!-- _. {Start} create the main section and inspector information ._ -->
+        <div class="box-inspector">
+
+          <!-- => {Start} create the title section in inspection <= -->
+          <div class="title">
+            <h1>inspector</h1>
+          </div>
+          <!-- => {End} create the title section in inspection <= -->
+
+          <!-- _. {Start} create the basic parts of the inspector, including inputs and outputs, edit, function code ._ -->
+          <div class="inspector-item">
+
+            <!-- => {Start} create input and output tables <= -->
+            <div class="inp-out-main">
+              <div class="inputs">
+                <div class="title-inp">
+                  <h4>Inputs</h4>
+                </div>
+                <div class="variables">
+                  <div class='variable' title="float">
+                    <span class="id-vrb"></span>
+                    <p>x</p>
+                  </div>
+                  <div class='variable' title="float">
+                    <span class="id-vrb"></span>
+                    <p>name</p>
+                  </div>
+                </div>
+              </div>
+              <div class="outputs">
+                <div class="title-otp">
+                  <h4>Outputs</h4>
+                </div>
+                <div class="variables">
+                  <div class='variable' title="float">
+                    <span class="id-vrb"></span>
+                    <p>x</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- => {End} create input and output tables <= -->
+
+            <!-- => {Start} create the function code section in the inspector <= -->
+            <div class="function-code">
+              <div class="title-function">
+                <h4>Function code</h4>
+              </div>
+              <div class="code">
+                <p>
+                    function test(){
+                      return "hello world";
+                    }
+                </p>
+              </div>
+            </div>
+            <!-- => {End} create the function code section in the inspector <= -->
+
+          </div>
+          <!-- _. {End} Making the basic parts of the inspector, including inputs and outputs, edit, function code ._ -->
+
+        </div>
+        <!-- _. {End} create the main section and inspector information ._ -->
+
+      </div>
+      <!-- _. {End} create the inspector section ._ -->
+      
     </section>
+    <!-- |- {End} The main part consists of three parts: navbar,main-content,inspector -| -->
+
   </body>
+
+  <script src="js/index.js"></script>
+
 </html>
