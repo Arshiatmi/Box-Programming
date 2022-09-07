@@ -130,7 +130,44 @@ Output0 : Checks if Input0 ends with Input1 Or Not (Types.boolean)
 ```
 Input0 : Full Text That You Want To Search Into (Types.text)
 Input1 : Text That You Want To Search And Get Index From Input0. (Types.text)
+Input2 : Reverse Search That Will Count From Latest Character To First Character.Given Index In Reverse Mode Is In Normal Index Not Reversed Index (Types.boolean)
 Output0 : Search And Get Input1 Index From Input0. ( Returns -1 If Not Found ) (Types.number)
+```
+
+### Strip
+
+```
+Input0 : Full Text That You Want To Strip It (Types.text)
+Input1 : You Can Give Characters That You Want To Strip From Them Here. Default Is All Whitespaces. (Types.text)
+Input2 : True If You Want To Strip Left.Default Is True. (Types.boolean)
+Input3 : True If You Want To Strip Right.Default Is True. (Types.boolean)
+Output0 : Returns Output That Is Stripped Text. (Types.text)
+```
+
+### Split
+
+```
+Input0 : Full Text That You Want To Split It (Types.text)
+Input1 : The Splitter Character Or Text. Input0 Will Split With Input0. (Types.text)
+Input2 : Max Split Count. For Example If Its 3, Input0 Will Try To Split Data Until 3 Times. (Types.number)
+Input3 : Start Index That Split Will Start On That Index.Default Is 0 (Types.number)
+Input4 : End Index That Split Will End On That Index. Default Is Inpu0 Length (Types.number)
+Output0 : Returns Splitted Text. (Types.array)
+```
+
+### SwapCase
+
+```
+Input0 : Full Text That You Want To SwapCase It (Capital letters to Small letters and oposite of that) (Types.text)
+Output0 : Returns Swapcased Text. (Types.text)
+```
+
+### ZeroFill
+
+```
+Input0 : Text That You Want To ZeroFill It. ( Fill Text With Zeros That You Specify ) (Types.text)
+Input1 : Count Of Full Text That You Want To Output (Types.text)
+Output0 : Returns A Text With Length (max(Input0.length,Input1)) That Is Zerofilled Text (Types.text)
 ```
 
 ### IsAlphabet
@@ -180,6 +217,23 @@ Output0 : Returns Output. (Types.boolean)
 ```
 Input0 : Full Text That You Want To Check If They Are UpperCase (Types.text)
 Output0 : Returns Output. (Types.boolean)
+```
+
+### Join
+
+```
+Input0 : Text That You Want To Join Array With It (Types.text)
+Input1 : Array That You Want To Join Them (Types.array)
+Output0 : Input1 Elements Joined With Input0. (Types.boolean)
+```
+
+### Replace
+
+```
+Input0 : Full Text That You Want To Replace Data (Types.text)
+Input1 : The Text That You Want To Replace It. (Types.text)
+Input2 : The Text That You Want To Replace Data With It. (Types.text)
+Output0 : Replaced Text. (Types.text)
 ```
 
 # File Boxes

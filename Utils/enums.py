@@ -91,12 +91,10 @@ class TextBuiltins(enum.Enum):
     ToLower = 11
     Join = 12
     Replace = 13
-    rFind = 14
-    Strip = 15  # TODO: Make This Work
-    rStrip = 16  # TODO: Make This Work
-    Split = 17  # TODO: Make This Work
-    SwapCase = 18  # TODO: Make This Work
-    ZeroFill = 19  # TODO: Make This Work
+    Strip = 14
+    Split = 15
+    SwapCase = 16
+    ZeroFill = 17
 
 
 class Others(enum.Enum):

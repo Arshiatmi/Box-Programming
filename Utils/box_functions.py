@@ -547,6 +547,8 @@ def find_text_function():
                                Types.text, Sides.left),
                         Option("builtin_Text_Find_Element_To_Search",
                                Types.text, Sides.left),
+                        Option("builtin_Text_Find_Reverse_Search",
+                               Types.boolean, Sides.left),
                     ],
                     [
                         Option("builtin_Text_Find_Output",
@@ -583,18 +585,68 @@ def replace_text_function():
                                Types.text, Sides.right),
                     ], is_instance=True)
 
-def rfind_text_function():
-    return Function("rFind Text Function",
-                    rfind_text,
+def strip_text_function():
+    return Function("Strip Text Function",
+                    strip_text,
                     [
-                        Option("builtin_Text_rFind_Text",
+                        Option("builtin_Text_Strip_Text",
                                Types.text, Sides.left),
-                        Option("builtin_Text_rFind_Search_Text",
+                        Option("builtin_Text_Strip_Chars_To_Remove",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_Strip_Left",
+                               Types.boolean, Sides.left,default=True),
+                        Option("builtin_Text_Strip_Right",
+                               Types.boolean, Sides.left,default=True),
+                    ],
+                    [
+                        Option("builtin_Text_Strip_Output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
+def split_text_function():
+    return Function("Split Text Function",
+                    split_text,
+                    [
+                        Option("builtin_Text_Split_Text",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_Split_Splitter",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_Split_Max_Split_Count",
+                               Types.number, Sides.left),
+                        Option("builtin_Text_Split_Start_Index",
+                               Types.number, Sides.left),
+                        Option("builtin_Text_Split_End_Index",
+                               Types.number, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_Split_Output",
+                               Types.array, Sides.right),
+                    ], is_instance=True)
+
+def swapcase_text_function():
+    return Function("Swapcase Text Function",
+                    swapcase_text,
+                    [
+                        Option("builtin_Text_Swapcase_Text",
                                Types.text, Sides.left),
                     ],
                     [
-                        Option("builtin_Text_rFind_Output",
-                               Types.number, Sides.right),
+                        Option("builtin_Text_Swapcase_Output",
+                               Types.text, Sides.right),
+                    ], is_instance=True)
+
+def zerofill_text_function():
+    return Function("ZeroFill Text Function",
+                    zerofill_text,
+                    [
+                        Option("builtin_Text_Zerofill_Text",
+                               Types.text, Sides.left),
+                        Option("builtin_Text_Zerofill_Zero_Count",
+                               Types.number, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Text_Zerofill_Output",
+                               Types.text, Sides.right),
                     ], is_instance=True)
 
 def isalphabet_function():

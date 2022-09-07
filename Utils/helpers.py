@@ -323,7 +323,11 @@ def endswith_text(function_id, inputs, outputs):
 def find_text(function_id, inputs, outputs):
     text = inputs[0].value
     search_text = inputs[1].value
-    outputs[0].value = text.find(search_text)
+    reverse_search = inputs[2].get(False)
+    if reverse_search:
+        outputs[0].value = text.rfind(search_text)
+    else:
+        outputs[0].value = text.find(search_text)
 
 
 def join_text(function_id, inputs, outputs):
@@ -340,10 +344,43 @@ def replace_text(function_id, inputs, outputs):
     outputs[0].value = text.replace(search_text, replace_text)
 
 
-def rfind_text(function_id, inputs, outputs):
-    text = inputs[0].value
-    search_text = inputs[1].value
-    outputs[0].value = text.rfind(search_text)
+def strip_text(function_id, inputs, outputs):
+    text = inputs[0].get()
+    customized_strip = inputs[1].get(None)
+    strip_left = inputs[2].get(True)
+    strip_right = inputs[3].get(True)
+    if strip_left and strip_right:
+        outputs[0].value = text.strip(customized_strip)
+    elif strip_left:
+        outputs[0].value = text.lstrip()
+    elif strip_right:
+        outputs[0].value = text.rstrip()
+    else:
+        outputs[0].value = text
+
+
+def split_text(function_id, inputs, outputs):
+    text = inputs[0].get()
+    splitter = inputs[1].get(" ")
+    split_count = inputs[2].get(-1)
+    start_index = inputs[3].get(-1)
+    end_index = inputs[4].get(-1)
+    if start_index != -1:
+        text = text[start_index:end_index]
+    if split_count != -1:
+        outputs[0].value = text.split(splitter, split_count)
+    else:
+        outputs[0].value = text.split(splitter)
+
+
+def swapcase_text(function_id, inputs, outputs):
+    text = inputs[0].get()
+    outputs[0].value = text.swapcase()
+
+def zerofill_text(function_id, inputs, outputs):
+    text = inputs[0].get()
+    zeroCount = inputs[1].get(1)
+    outputs[0].value = text.zfill(zeroCount)
 
 
 def isalphabet_text(function_id, inputs, outputs):

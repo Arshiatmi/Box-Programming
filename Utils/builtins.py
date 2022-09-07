@@ -136,8 +136,14 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Text Join Array", BoxTypes.Executable, join_text_function(), True, auto_run=True)
             elif builtin_Box_Type == TextBuiltins.Replace:
                 return Box("Text Replace", BoxTypes.Executable, replace_text_function(), True, auto_run=True)
-            elif builtin_Box_Type == TextBuiltins.rFind:
-                return Box("Text Reverse Find", BoxTypes.Executable, rfind_text_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.Strip:
+                return Box("Text Strip", BoxTypes.Executable, strip_text_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.Split:
+                return Box("Text Split", BoxTypes.Executable, split_text_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.SwapCase:
+                return Box("Text Swapcase", BoxTypes.Executable, swapcase_text_function(), True, auto_run=True)
+            elif builtin_Box_Type == TextBuiltins.ZeroFill:
+                return Box("Text Zerofill", BoxTypes.Executable, zerofill_text_function(), True, auto_run=True)
 
         elif builtin_Box_Type in Others:
             if builtin_Box_Type == Others.runOsCommand:

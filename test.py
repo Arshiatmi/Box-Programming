@@ -704,13 +704,53 @@ print(replaceText.outputs[0].value)
 # -------------------------------------------------------------------------------------
 
 ##################################################################
-#                        Test rFind Text                         #
+#                        Test Strip Text                         #
 
 
-reverseFind = make_box(TextBuiltins.rFind, BoxTypes.Executable)
-reverseFind.attach(toLowerText, 0, 0)
-reverseFind.attach(None, 1, 't')
-print(reverseFind.outputs[0].value)
+stripText = make_box(TextBuiltins.Strip, BoxTypes.Executable)
+stripText.attach(None, 0, "\nWelcome Here ")
+print(stripText.outputs[0].value)
 
-#                        Test rFind Text                         #
+#                        Test Strip Text                         #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                        Test Split Text                         #
+
+
+splitText = make_box(TextBuiltins.Split, BoxTypes.Executable)
+splitText.attach(None, 0, "Welcome Here ")
+splitText.attach(None, 1, " ")
+print(splitText.outputs[0].value)
+
+#                        Test Split Text                         #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                      Test Swapcase Text                        #
+
+
+swapcaseText = make_box(TextBuiltins.SwapCase, BoxTypes.Executable)
+swapcaseText.attach(None, 0, "Welcome Here ")
+print(swapcaseText.outputs[0].value)
+
+#                      Test Swapcase Text                        #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                      Test Zerofill Text                        #
+
+
+zerofillText = make_box(TextBuiltins.ZeroFill, BoxTypes.Executable)
+zerofillText.attach(None, 0, "10")
+zerofillText.attach(None, 1, 5)
+print(zerofillText.outputs[0].value)
+
+#                      Test Zerofill Text                        #
 ##################################################################
