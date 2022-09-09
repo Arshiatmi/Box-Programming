@@ -581,3 +581,8 @@ def Max(function_id, inputs, outputs):
     outputs[1].value = min_value
     outputs[2].value = inp.index(min_value)
     return outputs[0]
+
+
+def Exit(function_id, inputs, outputs):
+    import sys
+    sys.exit(0)

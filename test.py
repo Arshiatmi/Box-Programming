@@ -663,11 +663,16 @@ print(isUpperText.outputs[0].value)
 ##################################################################
 #                      Test Run Os Command                       #
 
-
 runOsCommandObj = make_box(Others.runOsCommand, BoxTypes.Executable)
 runOsCommandObj.attach(None, 1, "cls")
 runOsCommandObj.attach(None, 2, False)
-runOsCommandObj.execute_box()
+
+
+def clearScreen():
+    runOsCommandObj.execute_box()
+
+
+clearScreen()
 
 #                      Test Run Os Command                       #
 ##################################################################
@@ -871,6 +876,21 @@ print(testMin.outputs[2].value)  # Minimum Index
 #                          Test Min                              #
 ##################################################################
 
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                          Test Max                              #
+
+testMax = make_box(Boxfunctions.Max, BoxTypes.Executable)
+testMax.attach(None, 1, 100)
+testMax.attach(None, 2, 268)
+testMax.execute_box()
+print(testMax.outputs[1].value)  # Maximum Element
+print(testMax.outputs[2].value)  # Maximum Index
+
+#                          Test Max                              #
+##################################################################
+clearScreen()
 # -------------------------------------------------------------------------------------
 
 ##################################################################

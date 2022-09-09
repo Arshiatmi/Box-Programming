@@ -968,5 +968,15 @@ def max_function():
                     ], is_instance=True)
 
 
+def exit_function():
+    return Function("Exit Function",
+                    Exit,
+                    [
+                        Option("builtin_Exit",
+                               Types.executable, Sides.left),
+                    ],
+                    [], is_instance=True)
+
+
 #                                    Box Functions                                         #
 ############################################################################################
