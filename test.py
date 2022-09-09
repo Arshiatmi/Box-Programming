@@ -839,3 +839,49 @@ print(getChr.outputs[1].value)
 
 #                          Test Chr                              #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                          Test Map                              #
+
+testMap = make_box(Boxfunctions.Map, BoxTypes.Executable)
+variableToText.attach(testMap, 0, 1)
+variableToText.attach(testMap, 1, 2)
+_print.attach(variableToText, 0, 0)
+_print.attach(variableToText, 1, 2)
+testMap.attach(None, 1, [1, 2, 3])
+print(testMap.execute_box())
+
+#                          Test Map                              #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                          Test Min                              #
+
+testMin = make_box(Boxfunctions.Min, BoxTypes.Executable)
+testMin.attach(None, 1, 100)
+testMin.attach(None, 2, 268)
+testMin.execute_box()
+print(testMin.outputs[1].value)  # Minimum Element
+print(testMin.outputs[2].value)  # Minimum Index
+
+#                          Test Min                              #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                          Test Max                              #
+
+testMax = make_box(Boxfunctions.Max, BoxTypes.Executable)
+testMax.attach(None, 1, 100)
+testMax.attach(None, 2, 268)
+testMax.execute_box()
+print(testMax.outputs[1].value)  # Maximum Element
+print(testMax.outputs[2].value)  # Maximum Index
+
+#                          Test Max                              #
+##################################################################

@@ -70,6 +70,8 @@ class ArrayBuiltins(enum.Enum):
     Insert = 6
     Remove = 7
     Sort = 8
+    MinArray = 9  # TODO : Add This
+    MaxArray = 9  # TODO : Add This
 
 
 class FileBuiltins(enum.Enum):
@@ -119,9 +121,9 @@ class Boxfunctions(enum.Enum):
     Range = 3
     Ord = 4
     Chr = 5
-    Map = 6  # TODO : Add This
-    Min = 7  # TODO : Add This
-    Max = 8  # TODO : Add This
+    Map = 6
+    Min = 7
+    Max = 8
     Exit = 9  # TODO : Add This
     Zip = 10  # TODO : Add This
     Abs = 11  # TODO : Add This

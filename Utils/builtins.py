@@ -164,3 +164,9 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Ord", BoxTypes.Executable, ord_function(), True)
             if builtin_Box_Type == Boxfunctions.Chr:
                 return Box("Chr", BoxTypes.Executable, chr_function(), True)
+            if builtin_Box_Type == Boxfunctions.Map:
+                return Box("Map", BoxTypes.Executable, map_function(), True)
+            if builtin_Box_Type == Boxfunctions.Min:
+                return Box("Min", BoxTypes.Executable, min_function(), True, addable_left=True)
+            if builtin_Box_Type == Boxfunctions.Max:
+                return Box("Max", BoxTypes.Executable, max_function(), True, addable_left=True)

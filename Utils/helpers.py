@@ -1,3 +1,4 @@
+import sys
 import os
 from .global_vars import *
 from .variables import Variable, variables
@@ -548,4 +549,35 @@ def Chr(function_id, inputs, outputs):
             outputs[1].value = ans
     except:
         outputs[2].value = False
+    return outputs[0]
+
+
+def Map(function_id, inputs, outputs):
+    inp = inputs[1].value
+    for c, i in enumerate(inp):
+        outputs[2].value = i
+        outputs[3].value = c
+        next_box = outputs[1].target_option.parent.execute_box()
+        while True:
+            if not next_box:
+                break
+            next_box = next_box.execute_box()
+    return outputs[0]
+
+
+def Min(function_id, inputs, outputs):
+    inp = inputs[1:]
+    inp = list(map(lambda x: x.value, inp))
+    min_value = min(inp)
+    outputs[1].value = min_value
+    outputs[2].value = inp.index(min_value)
+    return outputs[0]
+
+
+def Max(function_id, inputs, outputs):
+    inp = inputs[1:]
+    inp = list(map(lambda x: x.value, inp))
+    min_value = max(inp)
+    outputs[1].value = min_value
+    outputs[2].value = inp.index(min_value)
     return outputs[0]

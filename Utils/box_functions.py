@@ -905,5 +905,68 @@ def chr_function():
                     ], is_instance=True)
 
 
+def map_function():
+    return Function("Map Function",
+                    Map,
+                    [
+                        Option("builtin_Map",
+                               Types.executable, Sides.left),
+                        Option("builtin_Map_Array",
+                               Types.array, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Map",
+                               Types.executable, Sides.right),
+                        Option("builtin_Map_Functionallity",
+                               Types.executable, Sides.right),
+                        Option("builtin_Map_Element",
+                               Types.variable, Sides.right),
+                        Option("builtin_Map_Index",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+
+def min_function():
+    return Function("Min Function",
+                    Min,
+                    [
+                        Option("builtin_Min",
+                               Types.executable, Sides.left),
+                        Option("builtin_Min_Data1",
+                               Types.variable, Sides.left),
+                        Option("builtin_Min_Data2",
+                               Types.variable, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Min",
+                               Types.executable, Sides.right),
+                        Option("builtin_Min_Output",
+                               Types.variable, Sides.right),
+                        Option("builtin_Min_Index",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+
+def max_function():
+    return Function("Max Function",
+                    Max,
+                    [
+                        Option("builtin_Max",
+                               Types.executable, Sides.left),
+                        Option("builtin_Max_Data1",
+                               Types.variable, Sides.left),
+                        Option("builtin_Max_Data2",
+                               Types.variable, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Max",
+                               Types.executable, Sides.right),
+                        Option("builtin_Max_Output",
+                               Types.variable, Sides.right),
+                        Option("builtin_Max_Index",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+
 #                                    Box Functions                                         #
 ############################################################################################

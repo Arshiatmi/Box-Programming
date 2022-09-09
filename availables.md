@@ -377,3 +377,40 @@ Output0 : Execute Next (Types.executable)
 Output1 : Output That Will Convert All Ascii Codes To Character Ans Concat Them (Types.text)
 Output2 : True If Chr Of Arrays Successfully Done. (Types.boolean)
 ```
+
+### Map ( Like Python map Function )
+
+```
+Input0 : Execute (Types.executable)
+Input1 : The Array That You Want To Map Data (Types.array)
+Output0 : Execute After Mapping (Types.executable)
+Output1 : Execute In Each Mapping Index (Types.executable)
+Output2 : Element Of Input1 That Currently Mapping On (Types.variable)
+Output3 : Index Of Input1 That Currently Mapping On (Types.number)
+```
+
+### Min
+
+```
+Input0 : Execute (Types.executable)
+Input1 : First Element For Getting Minimum Element Between Datas. (Types.variable)
+Input2 : Second Element For Getting Minimum Element Between Datas. (Types.variable)
+# More Inputs Are Addable
+
+Output0 : Execute After Calculation (Types.executable)
+Output1 : Minimum Element Between Elements That Specified. (Types.variable)
+Output2 : Index Of Minimum Element Between Elements. (Types.number)
+```
+
+### Max
+
+```
+Input0 : Execute (Types.executable)
+Input1 : First Element For Getting Maximum Element Between Datas. (Types.variable)
+Input2 : Second Element For Getting Maximum Element Between Datas. (Types.variable)
+# More Inputs Are Addable
+
+Output0 : Execute After Calculation (Types.executable)
+Output1 : Maximum Element Between Elements That Specified. (Types.variable)
+Output2 : Index Of Maximum Element Between Elements. (Types.number)
+```
