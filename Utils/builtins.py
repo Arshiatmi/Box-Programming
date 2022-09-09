@@ -158,3 +158,9 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Get Length", BoxTypes.Executable, getLength_function(), True)
             if builtin_Box_Type == Boxfunctions.Sum:
                 return Box("Sum", BoxTypes.Executable, sum_function(), True, addable_left=True)
+            if builtin_Box_Type == Boxfunctions.Range:
+                return Box("Range", BoxTypes.Executable, range_function(), True)
+            if builtin_Box_Type == Boxfunctions.Ord:
+                return Box("Ord", BoxTypes.Executable, ord_function(), True)
+            if builtin_Box_Type == Boxfunctions.Chr:
+                return Box("Chr", BoxTypes.Executable, chr_function(), True)

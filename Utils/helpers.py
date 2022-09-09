@@ -510,3 +510,42 @@ def sum_of_data(function_id, inputs, outputs):
     else:
         outputs[1].value = ans
     return outputs[0]
+
+
+def Range(function_id, inputs, outputs):
+    start_index = inputs[1].value
+    end_index = inputs[2].value
+    step = inputs[3].value
+    outputs[1].value = list(range(start_index, end_index, step))
+    return outputs[0]
+
+
+def Ord(function_id, inputs, outputs):
+    text = inputs[1].value
+    ans = []
+    try:
+        if len(text) == 1:
+            outputs[1].value = ord(text)
+        else:
+            for i in text:
+                ans.append(ord(i))
+            outputs[1].value = ans
+    except:
+        outputs[2].value = False
+    return outputs[0]
+
+
+def Chr(function_id, inputs, outputs):
+    inp = inputs[1].value
+    as_string = inputs[2].value
+    try:
+        ans = []
+        for i in inp:
+            ans.append(chr(i))
+        if as_string:
+            outputs[1].value = ''.join(ans)
+        else:
+            outputs[1].value = ans
+    except:
+        outputs[2].value = False
+    return outputs[0]

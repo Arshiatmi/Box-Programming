@@ -844,5 +844,66 @@ def sum_function():
                     ], is_instance=True)
 
 
+def range_function():
+    return Function("Range Function",
+                    Range,
+                    [
+                        Option("builtin_Range",
+                               Types.executable, Sides.left),
+                        Option("builtin_Range_Start_Index",
+                               Types.number, Sides.left),
+                        Option("builtin_Range_End_Index",
+                               Types.number, Sides.left),
+                        Option("builtin_Range_Step_Index",
+                               Types.number, Sides.left, default=1),
+                    ],
+                    [
+                        Option("builtin_Range",
+                               Types.executable, Sides.right),
+                        Option("builtin_Range_Output",
+                               Types.array, Sides.right),
+                    ], is_instance=True)
+
+
+def ord_function():
+    return Function("Ord Function",
+                    Ord,
+                    [
+                        Option("builtin_Ord",
+                               Types.executable, Sides.left),
+                        Option("builtin_Ord_Text",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Ord",
+                               Types.executable, Sides.right),
+                        Option("builtin_Ord_Output",
+                               Types.array, Sides.right),
+                        Option("builtin_Ord_Success",
+                               Types.boolean, Sides.right),
+                    ], is_instance=True)
+
+
+def chr_function():
+    return Function("Chr Function",
+                    Chr,
+                    [
+                        Option("builtin_Chr",
+                               Types.executable, Sides.left),
+                        Option("builtin_Chr_Characters",
+                               Types.array, Sides.left),
+                        Option("builtin_Chr_AsText",
+                               Types.boolean, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Chr",
+                               Types.executable, Sides.right),
+                        Option("builtin_Chr_Output",
+                               Types.variable, Sides.right),
+                        Option("builtin_Chr_Success",
+                               Types.boolean, Sides.right),
+                    ], is_instance=True)
+
+
 #                                    Box Functions                                         #
 ############################################################################################

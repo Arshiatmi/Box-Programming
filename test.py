@@ -797,3 +797,45 @@ print(sumData.outputs[1].value)
 
 #                           Test Sum                             #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                         Test Range                             #
+
+getRange = make_box(Boxfunctions.Range, BoxTypes.Executable)
+getRange.attach(None, 1, 10)
+getRange.attach(None, 2, 5)
+getRange.attach(None, 3, -1)
+getRange.execute_box()
+print(getRange.outputs[1].value)
+
+#                         Test Range                             #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                          Test Ord                              #
+
+getOrd = make_box(Boxfunctions.Ord, BoxTypes.Executable)
+getOrd.attach(None, 1, "Yo :)")
+getOrd.execute_box()
+print(getOrd.outputs[1].value)
+
+#                          Test Ord                              #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                          Test Chr                              #
+
+getChr = make_box(Boxfunctions.Chr, BoxTypes.Executable)
+getChr.attach(getOrd, 1, 1)
+getChr.attach(None, 2, True)
+getChr.execute_box()
+print(getChr.outputs[1].value)
+
+#                          Test Chr                              #
+##################################################################

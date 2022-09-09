@@ -341,7 +341,39 @@ Output1 : Output If You Run As Process. (Types.text)
 ```
 Input0 : Execute (Types.executable)
 Input1 : Object That You Want To Get Length Of It. (Types.variable)
-Output0 : Execute Next If Loop Finished (Types.executable)
+Output0 : Execute Next (Types.executable)
 Output1 : Length Of Input0. (Types.number)
 Output2 : True If Length Number Is Successfully Done (Types.boolean)
+```
+
+### Range
+
+```
+Input0 : Execute (Types.executable)
+Input1 : Start Index (Types.number)
+Input2 : End Index (Types.number)
+Input3 : Step (Types.number)
+Output0 : Execute Next (Types.executable)
+Output1 : Output (Types.array)
+```
+
+### Ord
+
+```
+Input0 : Execute (Types.executable)
+Input1 : Text That You Want To Get Ord Of Them ( ASCII Code ) (Types.text)
+Output0 : Execute Next (Types.executable)
+Output1 : Output (Types.array)
+Output2 : True If Ord Of Number Successfully Computed. (Types.array)
+```
+
+### Chr
+
+```
+Input0 : Execute (Types.executable)
+Input1 : Each Ascii Code As An Element Of an Array. Like [72 ,101 ,108 ,108 ,111] (Types.text)
+Input2 : True If Returns Answer As Text. (Types.boolean)
+Output0 : Execute Next (Types.executable)
+Output1 : Output That Will Convert All Ascii Codes To Character Ans Concat Them (Types.text)
+Output2 : True If Chr Of Arrays Successfully Done. (Types.boolean)
 ```

@@ -115,10 +115,10 @@ class AdvancedNumbers(enum.Enum):  # TODO : Add This
 
 class Boxfunctions(enum.Enum):
     Length = 1
-    Sum = 2  # TODO : Add This
-    Range = 3  # TODO : Add This
-    Ord = 4  # TODO : Add This
-    Chr = 5  # TODO : Add This
+    Sum = 2
+    Range = 3
+    Ord = 4
+    Chr = 5
     Map = 6  # TODO : Add This
     Min = 7  # TODO : Add This
     Max = 8  # TODO : Add This
