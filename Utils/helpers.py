@@ -583,6 +583,20 @@ def Max(function_id, inputs, outputs):
     return outputs[0]
 
 
+def Zip(function_id, inputs, outputs):
+    datas = inputs[1:]
+    datas = list(map(lambda x: x.value, datas))
+    last_index = len(min(datas, key=len))
+    for i in range(last_index):
+        outputs[2].value = [elem[i] for elem in datas]
+        outputs[3].value = i
+        next_box = outputs[1].target_option.parent.execute_box()
+        while True:
+            if not next_box:
+                break
+            next_box = next_box.execute_box()
+    return outputs[0]
+
+
 def Exit(function_id, inputs, outputs):
-    import sys
     sys.exit(0)

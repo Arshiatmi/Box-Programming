@@ -170,3 +170,7 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Min", BoxTypes.Executable, min_function(), True, addable_left=True)
             if builtin_Box_Type == Boxfunctions.Max:
                 return Box("Max", BoxTypes.Executable, max_function(), True, addable_left=True)
+            if builtin_Box_Type == Boxfunctions.Exit:
+                return Box("Exit", BoxTypes.Executable, exit_function(), True)
+            if builtin_Box_Type == Boxfunctions.Zip:
+                return Box("Zip", BoxTypes.Executable, zip_function(), True, addable_left=True)

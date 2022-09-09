@@ -968,6 +968,29 @@ def max_function():
                     ], is_instance=True)
 
 
+def zip_function():
+    return Function("Zip Function",
+                    Zip,
+                    [
+                        Option("builtin_Zip",
+                               Types.executable, Sides.left),
+                        Option("builtin_Zip_Data1",
+                               Types.array, Sides.left),
+                        Option("builtin_Zip_Data2",
+                               Types.array, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Zip",
+                               Types.executable, Sides.right),
+                        Option("builtin_Zip_Functionality",
+                               Types.executable, Sides.right),
+                        Option("builtin_Zip_Element",
+                               Types.array, Sides.right),
+                        Option("builtin_Zip_Index",
+                               Types.number, Sides.right),
+                    ], is_instance=True)
+
+
 def exit_function():
     return Function("Exit Function",
                     Exit,

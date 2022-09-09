@@ -414,3 +414,23 @@ Output0 : Execute After Calculation (Types.executable)
 Output1 : Maximum Element Between Elements That Specified. (Types.variable)
 Output2 : Index Of Maximum Element Between Elements. (Types.number)
 ```
+
+### Zip
+
+```
+Input0 : Execute (Types.executable)
+Input1 : First Element For Zipping Elements. (Types.array)
+Input2 : Second Element For Zipping Elements. (Types.array)
+# More Inputs Are Addable
+
+Output0 : Execute After Calculation (Types.executable)
+Output1 : The Functionallity Over Zipping Elements (Types.executable)
+Output2 : Elements That Are Zipped. (Types.array)
+Output3 : Index Of Elements That Are Zipped Over Output1 Function. (Types.number)
+```
+
+### Exit
+
+```
+Input0 : Execute (Types.executable)
+```

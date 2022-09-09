@@ -887,10 +887,11 @@ testMax.attach(None, 2, 268)
 testMax.execute_box()
 print(testMax.outputs[1].value)  # Maximum Element
 print(testMax.outputs[2].value)  # Maximum Index
+clearScreen()
 
 #                          Test Max                              #
 ##################################################################
-clearScreen()
+
 # -------------------------------------------------------------------------------------
 
 ##################################################################
@@ -904,4 +905,32 @@ print(testMax.outputs[1].value)  # Maximum Element
 print(testMax.outputs[2].value)  # Maximum Index
 
 #                          Test Max                              #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                          Test Zip                              #
+
+testZip = make_box(Boxfunctions.Zip, BoxTypes.Executable)
+testZip.attach(None, 1, [1,2,5,7])
+testZip.attach(None, 2, [0,9,4,1])
+variableToText.attach(testZip, 0, 1)
+variableToText.attach(testZip, 1, 2)
+_print.attach(variableToText, 0, 0)
+_print.attach(variableToText, 1, 2)
+testZip.execute_box()
+
+#                          Test Zip                              #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                         Test Exit                              #
+
+exitFunc = make_box(Boxfunctions.Exit, BoxTypes.Executable)
+exitFunc.execute_box()
+
+#                         Test Exit                              #
 ##################################################################

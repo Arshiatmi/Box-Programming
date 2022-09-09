@@ -124,6 +124,6 @@ class Boxfunctions(enum.Enum):
     Map = 6
     Min = 7
     Max = 8
-    Exit = 9  # TODO : Add This
-    Zip = 10  # TODO : Add This
+    Exit = 9
+    Zip = 10
     Abs = 11  # TODO : Add This
