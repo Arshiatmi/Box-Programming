@@ -1,4 +1,4 @@
-from Utils.enums import ArrayBuiltins, BoxTypes, CastBuiltins, ExecutableBuiltins, FileBuiltins, OperatorBuiltins, Others, TextBuiltins
+from Utils.enums import ArrayBuiltins, BoxTypes, Boxfunctions, CastBuiltins, ExecutableBuiltins, FileBuiltins, OperatorBuiltins, Others, TextBuiltins
 from Utils.blocks import Box
 from Utils.exceptions import BoxError
 from Utils.box_functions import *
@@ -149,3 +149,12 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
         elif builtin_Box_Type in Others:
             if builtin_Box_Type == Others.runOsCommand:
                 return Box("Run Os Command", BoxTypes.Executable, runOsCommand_function(), True)
+            elif builtin_Box_Type == Others.Eval:
+                return Box("Python Eval", BoxTypes.Executable, pythonEval_function(), True)
+
+        # Box Functions
+        elif builtin_Box_Type in Boxfunctions:
+            if builtin_Box_Type == Boxfunctions.Length:
+                return Box("Get Length", BoxTypes.Executable, getLength_function(), True)
+            if builtin_Box_Type == Boxfunctions.Sum:
+                return Box("Sum", BoxTypes.Executable, sum_function(), True, addable_left=True)

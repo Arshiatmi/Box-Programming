@@ -101,8 +101,7 @@ class TextBuiltins(enum.Enum):
 
 class Others(enum.Enum):
     runOsCommand = 1
-    Eval = 2  # TODO : Add This
-    Exec = 3  # TODO : Add This
+    Eval = 2
 
 
 class AdvancedNumbers(enum.Enum):  # TODO : Add This
@@ -115,7 +114,7 @@ class AdvancedNumbers(enum.Enum):  # TODO : Add This
 
 
 class Boxfunctions(enum.Enum):
-    Length = 1  # TODO : Add This
+    Length = 1
     Sum = 2  # TODO : Add This
     Range = 3  # TODO : Add This
     Ord = 4  # TODO : Add This
@@ -125,3 +124,4 @@ class Boxfunctions(enum.Enum):
     Max = 8  # TODO : Add This
     Exit = 9  # TODO : Add This
     Zip = 10  # TODO : Add This
+    Abs = 11  # TODO : Add This

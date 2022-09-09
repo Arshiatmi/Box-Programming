@@ -1,7 +1,7 @@
 import os
 from .global_vars import *
 from .variables import Variable, variables
-from .enums import BoxTypes
+from .enums import BoxTypes, Types
 
 
 def getExecutableFunctions():
@@ -377,6 +377,7 @@ def swapcase_text(function_id, inputs, outputs):
     text = inputs[0].get()
     outputs[0].value = text.swapcase()
 
+
 def zerofill_text(function_id, inputs, outputs):
     text = inputs[0].get()
     zeroCount = inputs[1].get(1)
@@ -429,6 +430,15 @@ def runOsCommand(function_id, inputs, outputs):
     return outputs[0]
 
 
+def pythonEvaluate(function_id, inputs, outputs):
+    text = inputs[1].value
+    try:
+        outputs[1].value = str(eval(text))
+    except:
+        outputs[2].value = False
+    return outputs[0]
+
+
 def for_loop(function_id, inputs, outputs):
     start = inputs[1].get(0)
     array = inputs[4].get()
@@ -470,3 +480,33 @@ def convert_to_list(inputs):
         return ans
     else:
         return [inputs]
+
+
+def get_length(function_id, inputs, outputs):
+    target_object = inputs[1].value
+    try:
+        outputs[1].value = len(target_object)
+    except:
+        outputs[2].value = False
+    return outputs[0]
+
+
+def sum_of_data(function_id, inputs, outputs):
+    target_objects = inputs[1:]
+    ans = 0
+    for i in target_objects:
+        try:
+            ans += float(i.value)
+        except:
+            try:
+                if i.Type == Types.array or i.Type == Types.variable:
+                    ans += sum(i.value)
+                else:
+                    outputs[2].value = False
+                    break
+            except:
+                outputs[2].value = False
+                break
+    else:
+        outputs[1].value = ans
+    return outputs[0]

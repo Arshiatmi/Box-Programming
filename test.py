@@ -754,3 +754,46 @@ print(zerofillText.outputs[0].value)
 
 #                      Test Zerofill Text                        #
 ##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                        Test Eval Text                          #
+
+
+evalText = make_box(Others.Eval, BoxTypes.Executable)
+evalText.attach(None, 1, "1 + 1")
+evalText.execute_box()
+print(evalText.outputs[1].value)
+
+#                        Test Eval Text                          #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                     Test Get Length Text                       #
+
+
+getLength = make_box(Boxfunctions.Length, BoxTypes.Executable)
+getLength.attach(get_data, 1, 0)
+getLength.execute_box()
+print(getLength.outputs[1].value)
+
+#                     Test Get Length Text                       #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                           Test Sum                             #
+
+sumData = make_box(Boxfunctions.Sum, BoxTypes.Executable)
+sumData.attach(get_data, 1, 0)
+sumData.addOption(Option("builtin_Number2", Types.number, Sides.left))
+sumData.attach(None, 2, 10)
+sumData.execute_box()
+print(sumData.outputs[1].value)
+
+#                           Test Sum                             #
+##################################################################

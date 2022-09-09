@@ -419,6 +419,7 @@ def for_loop_function():
                                Types.variable, Sides.right),
                     ], is_instance=True)
 
+
 def runOsCommand_function():
     return Function("Run Os Command Function",
                     runOsCommand,
@@ -428,7 +429,7 @@ def runOsCommand_function():
                         Option("builtin_Run_Os_Command_Text",
                                Types.text, Sides.left),
                         Option("builtin_Run_Os_Command_AsProcess",
-                               Types.boolean, Sides.left,default=True),
+                               Types.boolean, Sides.left, default=True),
                     ],
                     [
                         Option("builtin_Run_Os_Command",
@@ -437,8 +438,28 @@ def runOsCommand_function():
                                Types.text, Sides.right),
                     ], is_instance=True)
 
+
+def pythonEval_function():
+    return Function("Python Evaluate Function",
+                    pythonEvaluate,
+                    [
+                        Option("builtin_Python_Evaluate",
+                               Types.executable, Sides.left),
+                        Option("builtin_Python_Evaluate_Text",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Python_Evaluate",
+                               Types.executable, Sides.right),
+                        Option("builtin_Python_Evaluate_Output",
+                               Types.text, Sides.right),
+                        Option("builtin_Python_Evaluate_Success",
+                               Types.boolean, Sides.right, default=True),
+                    ], is_instance=True)
+
 ############################################################################################
 #                                        File                                              #
+
 
 def read_file_function():
     return Function("Read File Function",
@@ -527,6 +548,7 @@ def file_list_function():
 ############################################################################################
 #                                        Text                                              #
 
+
 def capitalize_text_function():
     return Function("Capitalize Text Function",
                     capitalize_text,
@@ -538,6 +560,7 @@ def capitalize_text_function():
                         Option("builtin_Text_Capitalize_Output",
                                Types.text, Sides.right),
                     ], is_instance=True)
+
 
 def find_text_function():
     return Function("Find Text Function",
@@ -555,6 +578,7 @@ def find_text_function():
                                Types.number, Sides.right),
                     ], is_instance=True)
 
+
 def join_text_function():
     return Function("Join Text Function",
                     join_text,
@@ -568,6 +592,7 @@ def join_text_function():
                         Option("builtin_Text_Join_Output",
                                Types.text, Sides.right),
                     ], is_instance=True)
+
 
 def replace_text_function():
     return Function("Replace Text Function",
@@ -585,6 +610,7 @@ def replace_text_function():
                                Types.text, Sides.right),
                     ], is_instance=True)
 
+
 def strip_text_function():
     return Function("Strip Text Function",
                     strip_text,
@@ -594,14 +620,15 @@ def strip_text_function():
                         Option("builtin_Text_Strip_Chars_To_Remove",
                                Types.text, Sides.left),
                         Option("builtin_Text_Strip_Left",
-                               Types.boolean, Sides.left,default=True),
+                               Types.boolean, Sides.left, default=True),
                         Option("builtin_Text_Strip_Right",
-                               Types.boolean, Sides.left,default=True),
+                               Types.boolean, Sides.left, default=True),
                     ],
                     [
                         Option("builtin_Text_Strip_Output",
                                Types.text, Sides.right),
                     ], is_instance=True)
+
 
 def split_text_function():
     return Function("Split Text Function",
@@ -623,6 +650,7 @@ def split_text_function():
                                Types.array, Sides.right),
                     ], is_instance=True)
 
+
 def swapcase_text_function():
     return Function("Swapcase Text Function",
                     swapcase_text,
@@ -634,6 +662,7 @@ def swapcase_text_function():
                         Option("builtin_Text_Swapcase_Output",
                                Types.text, Sides.right),
                     ], is_instance=True)
+
 
 def zerofill_text_function():
     return Function("ZeroFill Text Function",
@@ -649,6 +678,7 @@ def zerofill_text_function():
                                Types.text, Sides.right),
                     ], is_instance=True)
 
+
 def isalphabet_function():
     return Function("Is Alphabet Text Function",
                     isalphabet_text,
@@ -660,6 +690,7 @@ def isalphabet_function():
                         Option("builtin_Text_IsAlphabet_Output",
                                Types.boolean, Sides.right),
                     ], is_instance=True)
+
 
 def isalphabetnumber_function():
     return Function("Is Alphabet Or Number Or Both Text Function",
@@ -673,6 +704,7 @@ def isalphabetnumber_function():
                                Types.boolean, Sides.right),
                     ], is_instance=True)
 
+
 def isdigits_function():
     return Function("Is Digit Text Function",
                     isdigit_text,
@@ -684,6 +716,7 @@ def isdigits_function():
                         Option("builtin_Text_IsDigits_Output",
                                Types.boolean, Sides.right),
                     ], is_instance=True)
+
 
 def islower_function():
     return Function("Is Lower Text Function",
@@ -697,6 +730,7 @@ def islower_function():
                                Types.boolean, Sides.right),
                     ], is_instance=True)
 
+
 def isupper_function():
     return Function("Is Upper Text Function",
                     isuppercase_text,
@@ -708,6 +742,7 @@ def isupper_function():
                         Option("builtin_Text_IsUpper_Output",
                                Types.boolean, Sides.right),
                     ], is_instance=True)
+
 
 def toupper_function():
     return Function("To Upper Text Function",
@@ -721,6 +756,7 @@ def toupper_function():
                                Types.text, Sides.right),
                     ], is_instance=True)
 
+
 def tolower_function():
     return Function("To Lower Text Function",
                     tolowercase_text,
@@ -732,6 +768,7 @@ def tolower_function():
                         Option("builtin_Text_ToLower_Output",
                                Types.text, Sides.right),
                     ], is_instance=True)
+
 
 def count_text_function():
     return Function("Capitalize Text Function",
@@ -746,6 +783,7 @@ def count_text_function():
                         Option("builtin_Text_Count_Output",
                                Types.number, Sides.right),
                     ], is_instance=True)
+
 
 def endswith_text_function():
     return Function("Endswith Text Function",
@@ -762,4 +800,49 @@ def endswith_text_function():
                     ], is_instance=True)
 
 #                                        Text                                              #
+############################################################################################
+
+
+############################################################################################
+#                                    Box Functions                                         #
+
+def getLength_function():
+    return Function("Get Length Function",
+                    get_length,
+                    [
+                        Option("builtin_GetLength",
+                               Types.executable, Sides.left),
+                        Option("builtin_GetLength_Object",
+                               Types.variable, Sides.left),
+                    ],
+                    [
+                        Option("builtin_GetLength",
+                               Types.executable, Sides.right),
+                        Option("builtin_GetLength_Output",
+                               Types.number, Sides.right),
+                        Option("builtin_GetLength_Success",
+                               Types.boolean, Sides.right, default=True),
+                    ], is_instance=True)
+
+
+def sum_function():
+    return Function("Sum Function",
+                    sum_of_data,
+                    [
+                        Option("builtin_Sum",
+                               Types.executable, Sides.left),
+                        Option("builtin_Sum_Object",
+                               Types.variable, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Sum",
+                               Types.executable, Sides.right),
+                        Option("builtin_GetLength_Output",
+                               Types.number, Sides.right),
+                        Option("builtin_GetLength_Success",
+                               Types.boolean, Sides.right, default=True),
+                    ], is_instance=True)
+
+
+#                                    Box Functions                                         #
 ############################################################################################

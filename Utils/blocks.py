@@ -230,7 +230,7 @@ class Function:
 class Box:
     Index = 0
 
-    def __init__(self, name: str = "", Type: BoxTypes = BoxTypes.Executable, function: Function = Function("pass", lambda x: x), is_instance: bool = False, auto_run: bool = False):
+    def __init__(self, name: str = "", Type: BoxTypes = BoxTypes.Executable, function: Function = Function("pass", lambda x: x), is_instance: bool = False, auto_run: bool = False, addable_left: bool = False, addable_right: bool = False):
         global boxes
         if Type == BoxTypes.Start:
             boxes["start"] = self
@@ -265,6 +265,8 @@ class Box:
         self.x = None
         self.y = None
         self.auto_run = auto_run
+        self.addable_left = addable_left
+        self.addable_right = addable_right
         if Type == BoxTypes.Variable:
             # Set Variable Box
             if self.function.has_this_outputs({Types.executable: 1}) and self.function.has_this_inputs({Types.variable: 1, Types.executable: 1}):
@@ -332,12 +334,24 @@ class Box:
                 except Exception as e:
                     i.value = value[c]
 
-    def addOption(self, option: Option):
+    def addOption(self, option: Option, index=None):
         if self.Type == BoxTypes.Executable:
             if option.side == Sides.left:
-                self.inputs.append(option)
+                if index == None:
+                    index = len(self.inputs)
+                if self.addable_left:
+                    self.inputs.insert(index, option)
+                else:
+                    logger.warning(
+                        f"Box {self.name} Does Not Have AddOption On Left.")
             elif option.side == Sides.right:
-                self.outputs.append(option)
+                if index == None:
+                    index = len(self.outputs)
+                if self.addable_right:
+                    self.outputs.insert(index, option)
+                else:
+                    logger.warning(
+                        f"Box {self.name} Does Not Have AddOption On Right.")
             else:
                 raise OptionError(
                     "You Must Define Which Side The Option Is.")

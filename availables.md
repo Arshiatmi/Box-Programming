@@ -321,3 +321,27 @@ Output1 : Execute In Each Iteration (Types.executable)
 Output2 : Index Of Each Iteration (Types.number)
 Output3 : Element Of Array In Each Iteration ( If You Are Iterating Array ) (Types.variable)
 ```
+
+# Others
+
+### Run Os Command
+
+```
+Input0 : Execute (Types.executable)
+Input1 : The Text That You Want To Run It On Os (Types.text)
+Input2 : True If You Want To Run Os Command As Another Child Process ( To Run Some Commands Like 'clear', It Must Be False.) (Types.text)
+Output0 : Execute Next (Types.executable)
+Output1 : Output If You Run As Process. (Types.text)
+```
+
+# Box Functions
+
+### Length
+
+```
+Input0 : Execute (Types.executable)
+Input1 : Object That You Want To Get Length Of It. (Types.variable)
+Output0 : Execute Next If Loop Finished (Types.executable)
+Output1 : Length Of Input0. (Types.number)
+Output2 : True If Length Number Is Successfully Done (Types.boolean)
+```
