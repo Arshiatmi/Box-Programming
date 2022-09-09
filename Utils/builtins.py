@@ -145,6 +145,7 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
             elif builtin_Box_Type == TextBuiltins.ZeroFill:
                 return Box("Text Zerofill", BoxTypes.Executable, zerofill_text_function(), True, auto_run=True)
 
+        # Others
         elif builtin_Box_Type in Others:
             if builtin_Box_Type == Others.runOsCommand:
                 return Box("Run Os Command", BoxTypes.Executable, runOsCommand_function(), True)

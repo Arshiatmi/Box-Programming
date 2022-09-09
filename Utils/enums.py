@@ -38,6 +38,8 @@ class OperatorBuiltins(enum.Enum):
     Minus_Two_Numbers = 3
     AND = 4
     OR = 5
+    POW = 6
+    IN = 7
 
 
 class ExecutableBuiltins(enum.Enum):
@@ -99,3 +101,27 @@ class TextBuiltins(enum.Enum):
 
 class Others(enum.Enum):
     runOsCommand = 1
+    Eval = 2  # TODO : Add This
+    Exec = 3  # TODO : Add This
+
+
+class AdvancedNumbers(enum.Enum):  # TODO : Add This
+    ToBinary = 1  # TODO : Add This
+    FromBinary = 2  # TODO : Add This
+    ToOct = 3  # TODO : Add This
+    FromOct = 4  # TODO : Add This
+    ToHex = 5  # TODO : Add This
+    FromHex = 6  # TODO : Add This
+
+
+class Boxfunctions(enum.Enum):
+    Length = 1  # TODO : Add This
+    Sum = 2  # TODO : Add This
+    Range = 3  # TODO : Add This
+    Ord = 4  # TODO : Add This
+    Chr = 5  # TODO : Add This
+    Map = 6  # TODO : Add This
+    Min = 7  # TODO : Add This
+    Max = 8  # TODO : Add This
+    Exit = 9  # TODO : Add This
+    Zip = 10  # TODO : Add This
