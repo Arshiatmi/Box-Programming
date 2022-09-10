@@ -616,7 +616,7 @@ def Zip(function_id, inputs, outputs):
 
 
 def Abs(function_id, inputs, outputs):
-    number = inputs[0]
+    number = inputs[0].value
     outputs[0].value = abs(number)
 
 

@@ -42,6 +42,10 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
             return Box("AND", BoxTypes.Operator, AND_operator(), True)
         elif builtin_Box_Type == OperatorBuiltins.OR:
             return Box("OR", BoxTypes.Operator, OR_operator(), True)
+        elif builtin_Box_Type == OperatorBuiltins.IN:
+            return Box("IN", BoxTypes.Operator, IN_operator(), True)
+        elif builtin_Box_Type == OperatorBuiltins.POW:
+            return Box("POW", BoxTypes.Operator, POW_operator(), True)
         else:
             raise BoxError("The Operator Box Type Is Not Defined.")
 
@@ -178,3 +182,5 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Exit", BoxTypes.Executable, exit_function(), True)
             if builtin_Box_Type == Boxfunctions.Zip:
                 return Box("Zip", BoxTypes.Executable, zip_function(), True, addable_left=True)
+            if builtin_Box_Type == Boxfunctions.Abs:
+                return Box("Abs", BoxTypes.Executable, abs_function(), True)

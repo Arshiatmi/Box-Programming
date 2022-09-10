@@ -955,6 +955,45 @@ print(testMaxArray.outputs[1].value)  # Maximum Index
 # -------------------------------------------------------------------------------------
 
 ##################################################################
+#                          Test Abs                              #
+
+testAbs = make_box(Boxfunctions.Abs, BoxTypes.Executable)
+testAbs.attach(None, 0, -10)
+testAbs.execute_box()
+print(testAbs.outputs[0].value)
+
+#                          Test Abs                              #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                           Test IN                              #
+
+testIn = make_box(OperatorBuiltins.IN, BoxTypes.Operator)
+testIn.attach(None, 0, 10)
+testIn.attach(None, 1, [10, 20, 30])
+print(testIn.outputs[0].value)
+
+#                           Test IN                              #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                          Test POW                              #
+
+testPow = make_box(OperatorBuiltins.POW, BoxTypes.Operator)
+testPow.attach(None, 0, 10)
+testPow.attach(None, 1, 3)
+print(testPow.outputs[0].value)
+
+#                          Test POW                              #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
 #                         Test Exit                              #
 
 exitFunc = make_box(Boxfunctions.Exit, BoxTypes.Executable)

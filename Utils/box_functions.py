@@ -91,7 +91,7 @@ def IN_operator():
                                Sides.left),
                         Option(f"builtin_{make_id_from_name('IN')}_n2", Types.variable, Sides.left)],
                     [
-                        Option(f"builtin_{make_id_from_name('IN')}_n3", Types.variable,
+                        Option(f"builtin_{make_id_from_name('IN')}_n3", Types.boolean,
                                Sides.right),
                         Option(f"builtin_{make_id_from_name('IN')}_Success", Types.boolean,
                                Sides.right, default=True)
