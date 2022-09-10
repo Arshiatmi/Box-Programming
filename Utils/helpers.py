@@ -66,35 +66,36 @@ def setArrayVariable(function_id, inputs, outputs, value):
 
 
 def add2vars(function_id, inputs, outputs):
-    first_variable_name = inputs[0].id
-    second_variable_name = inputs[1].id
-    ans = variables[first_variable_name].value + \
-        variables[second_variable_name].value
+    ans = inputs[0].value + inputs[1].value
     outputs[0].value = ans
 
 
 def minus2Numbers(function_id, inputs, outputs):
-    first_variable_name = inputs[0].id
-    second_variable_name = inputs[1].id
-    ans = variables[first_variable_name].value - \
-        variables[second_variable_name].value
+    ans = inputs[0].value - inputs[1].value
     outputs[0].value = ans
 
 
 def AND(function_id, inputs, outputs):
-    first_variable_name = inputs[0].id
-    second_variable_name = inputs[1].id
-    ans = variables[first_variable_name].value and \
-        variables[second_variable_name].value
+    ans = inputs[0].value and inputs[1].value
     outputs[0].value = ans
 
 
 def OR(function_id, inputs, outputs):
-    first_variable_name = inputs[0].id
-    second_variable_name = inputs[1].id
-    ans = variables[first_variable_name].value or \
-        variables[second_variable_name].value
+    ans = inputs[0].value or inputs[1].value
     outputs[0].value = ans
+
+
+def POW(function_id, inputs, outputs):
+    ans = inputs[0].value ** inputs[1].value
+    outputs[0].value = ans
+
+
+def IN(function_id, inputs, outputs):
+    try:
+        ans = inputs[0].value in inputs[1].value
+        outputs[0].value = ans
+    except:
+        outputs[1].value = False
 
 
 def if_statement(function_id, inputs, outputs):
@@ -612,6 +613,11 @@ def Zip(function_id, inputs, outputs):
                 break
             next_box = next_box.execute_box()
     return outputs[0]
+
+
+def Abs(function_id, inputs, outputs):
+    number = inputs[0]
+    outputs[0].value = abs(number)
 
 
 def Exit(function_id, inputs, outputs):

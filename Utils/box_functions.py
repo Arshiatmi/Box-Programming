@@ -1,3 +1,4 @@
+from xmlrpc.client import boolean
 from Utils.blocks import Function, Option
 from Utils.enums import Types, Sides
 from Utils.functions import make_id_from_name
@@ -66,6 +67,34 @@ def OR_operator():
                     [
                         Option(f"builtin_{make_id_from_name('OR')}_n3", Types.boolean,
                                Sides.right)
+                    ], is_instance=True)
+
+
+def POW_operator():
+    return Function(f"POW Function",
+                    POW,
+                    [
+                        Option(f"builtin_{make_id_from_name('POW')}_n1", Types.number,
+                               Sides.left),
+                        Option(f"builtin_{make_id_from_name('POW')}_n2", Types.number, Sides.left)],
+                    [
+                        Option(f"builtin_{make_id_from_name('POW')}_n3", Types.number,
+                               Sides.right)
+                    ], is_instance=True)
+
+
+def IN_operator():
+    return Function(f"IN Function",
+                    IN,
+                    [
+                        Option(f"builtin_{make_id_from_name('IN')}_n1", Types.variable,
+                               Sides.left),
+                        Option(f"builtin_{make_id_from_name('IN')}_n2", Types.variable, Sides.left)],
+                    [
+                        Option(f"builtin_{make_id_from_name('IN')}_n3", Types.variable,
+                               Sides.right),
+                        Option(f"builtin_{make_id_from_name('IN')}_Success", Types.boolean,
+                               Sides.right, default=True)
                     ], is_instance=True)
 
 
@@ -1018,6 +1047,19 @@ def zip_function():
                                Types.array, Sides.right),
                         Option("builtin_Zip_Index",
                                Types.number, Sides.right, default=-1),
+                    ], is_instance=True)
+
+
+def abs_function():
+    return Function("Abs Function",
+                    Abs,
+                    [
+                        Option("builtin_Abs_Input",
+                               Types.number, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Abs_Output",
+                               Types.number, Sides.right),
                     ], is_instance=True)
 
 
