@@ -32,7 +32,7 @@ Output2 : Casted Object (Types.variable)
 
 # Array Functions
 
-### Parse
+### Array Parse
 
 ```
 Input0 : Array (Types.array)
@@ -41,7 +41,7 @@ Output1 : Array Elements (Types.array)
 Output2 : Reversed Array (Types.array)
 ```
 
-### Append
+### Array Append
 
 ```
 Input0 : Array (Types.array)
@@ -49,7 +49,7 @@ Input1 : Element To Append (Types.variable)
 Output0 : Output (Types.array)
 ```
 
-### Prepend
+### Array Prepend
 
 ```
 Input0 : Array (Types.array)
@@ -57,7 +57,7 @@ Input1 : Element To Prepend (Types.variable)
 Output0 : Output (Types.array)
 ```
 
-### Count
+### Array Count
 
 ```
 Input0 : Array (Types.array)
@@ -65,14 +65,14 @@ Input1 : Element To Count (Types.variable)
 Output0 : Output (Types.number)
 ```
 
-### Sort
+### Array Sort
 
 ```
 Input0 : Array (Types.array)
 Output0 : Sorted Array (Types.array)
 ```
 
-### Index
+### Array Index
 
 ```
 Input0 : Array (Types.array)
@@ -80,7 +80,7 @@ Input1 : Element To Get Index (Types.variable)
 Output0 : Output (Types.number)
 ```
 
-### Insert
+### Array Insert
 
 ```
 Input0 : Array (Types.array)
@@ -90,7 +90,7 @@ Output0 : Output (Types.array)
 Output1 : Success (Types.boolean)
 ```
 
-### Remove
+### Array Remove
 
 ```
 Input0 : Array (Types.array)
@@ -100,16 +100,34 @@ Output0 : Output (Types.array)
 Output1 : Success (Types.boolean)
 ```
 
+### Array Minimum Element
+
+```
+Input0 : Array (Types.array)
+Output0 : Minimum Element (Types.variable)
+Output1 : Index Of Minimum Element (Types.number)
+Output2 : True If Getting Minimum Was Successfull (Types.boolean)
+```
+
+### Array Maximum Element
+
+```
+Input0 : Array (Types.array)
+Output0 : Maximum Element (Types.variable)
+Output1 : Index Of Maximum Element (Types.number)
+Output2 : True If Getting Maximum Was Successfull (Types.boolean)
+```
+
 # Text Boxes
 
-### Capitalize
+### Text Capitalize
 
 ```
 Input0 : Text That You Want To Capitalize (Types.text)
 Output0 : Output Text (Types.text)
 ```
 
-### Count
+### Text Count
 
 ```
 Input0 : Full Text That You Want To Search Into (Types.text)
@@ -117,7 +135,7 @@ Input1 : Text That You Want To Search For And Get Count Of It (Types.text)
 Output0 : Count How Many Input1 Is In Input0 (Types.number)
 ```
 
-### EndsWith
+### Text EndsWith
 
 ```
 Input0 : Full Text That You Want To Search Into (Types.text)
@@ -125,7 +143,7 @@ Input1 : Text That You Want To Search And Check If Input0 Endswith (Types.text)
 Output0 : Checks if Input0 ends with Input1 Or Not (Types.boolean)
 ```
 
-### Find
+### Text Find
 
 ```
 Input0 : Full Text That You Want To Search Into (Types.text)
@@ -134,7 +152,7 @@ Input2 : Reverse Search That Will Count From Latest Character To First Character
 Output0 : Search And Get Input1 Index From Input0. ( Returns -1 If Not Found ) (Types.number)
 ```
 
-### Strip
+### Text Strip
 
 ```
 Input0 : Full Text That You Want To Strip It (Types.text)
@@ -144,7 +162,7 @@ Input3 : True If You Want To Strip Right.Default Is True. (Types.boolean)
 Output0 : Returns Output That Is Stripped Text. (Types.text)
 ```
 
-### Split
+### Text Split
 
 ```
 Input0 : Full Text That You Want To Split It (Types.text)
@@ -155,14 +173,14 @@ Input4 : End Index That Split Will End On That Index. Default Is Inpu0 Length (T
 Output0 : Returns Splitted Text. (Types.array)
 ```
 
-### SwapCase
+### Text SwapCase
 
 ```
 Input0 : Full Text That You Want To SwapCase It (Capital letters to Small letters and oposite of that) (Types.text)
 Output0 : Returns Swapcased Text. (Types.text)
 ```
 
-### ZeroFill
+### Text ZeroFill
 
 ```
 Input0 : Text That You Want To ZeroFill It. ( Fill Text With Zeros That You Specify ) (Types.text)
@@ -170,56 +188,56 @@ Input1 : Count Of Full Text That You Want To Output (Types.text)
 Output0 : Returns A Text With Length (max(Input0.length,Input1)) That Is Zerofilled Text (Types.text)
 ```
 
-### IsAlphabet
+### Text Is Alphabet
 
 ```
 Input0 : Full Text That You Want To Check If Its Alphabet Or Not. (Types.text)
 Output0 : Returns Output. (Types.boolean)
 ```
 
-### IsAlphabetNumber
+### Text Is Alphabet Or Number Or Both
 
 ```
 Input0 : Full Text That You Want To Check If Its (Alphabet Or Number Or Both) Or Not. (Types.text)
 Output0 : Returns Output. (Types.boolean)
 ```
 
-### IsDigit
+### Text Is Digits ( Number )
 
 ```
 Input0 : Full Text That You Want To Check If Its Digits(Number) Or Not. (Types.text)
 Output0 : Returns Output. (Types.boolean)
 ```
 
-### ToLower
+### Text To Lowercase
 
 ```
 Input0 : Full Text That You Want To Make Them LowerCase (Types.text)
 Output0 : Returns Output. (Types.text)
 ```
 
-### ToUpper
+### Text To Uppercase
 
 ```
 Input0 : Full Text That You Want To Make Them UpperCase (Types.text)
 Output0 : Returns Output. (Types.text)
 ```
 
-### IsLowerCase
+### Text Is Lowercase
 
 ```
 Input0 : Full Text That You Want To Check If They Are LowerCase (Types.text)
 Output0 : Returns Output. (Types.boolean)
 ```
 
-### IsUpperCase
+### Text Is Uppercase
 
 ```
 Input0 : Full Text That You Want To Check If They Are UpperCase (Types.text)
 Output0 : Returns Output. (Types.boolean)
 ```
 
-### Join
+### Text Join Array
 
 ```
 Input0 : Text That You Want To Join Array With It (Types.text)
@@ -227,7 +245,7 @@ Input1 : Array That You Want To Join Them (Types.array)
 Output0 : Input1 Elements Joined With Input0. (Types.boolean)
 ```
 
-### Replace
+### Text Replace
 
 ```
 Input0 : Full Text That You Want To Replace Data (Types.text)
@@ -238,7 +256,7 @@ Output0 : Replaced Text. (Types.text)
 
 # File Boxes
 
-### ReadFile
+### Read File
 
 ```
 Input0 : Execute (Types.executable)
@@ -248,7 +266,7 @@ Output1 : Full Text Of File (Types.text)
 Output2 : Lines Of File As Array (Types.array)
 ```
 
-### WriteFile
+### Write File
 
 ```
 Input0 : Execute (Types.executable)
@@ -259,7 +277,7 @@ Output0 : Execute Next (Types.executable)
 Output1 : Succsessful Or Not (Types.boolean)
 ```
 
-### RemoveFile
+### Remove File
 
 ```
 Input0 : Execute (Types.executable)
@@ -268,7 +286,7 @@ Output0 : Execute Next (Types.executable)
 Output1 : Succsessful Or Not (Types.boolean)
 ```
 
-### FileList
+### Get File List
 
 ```
 Input0 : Execute (Types.executable)
@@ -336,7 +354,7 @@ Output1 : Output If You Run As Process. (Types.text)
 
 # Box Functions
 
-### Length
+### Get Length
 
 ```
 Input0 : Execute (Types.executable)
@@ -378,7 +396,7 @@ Output1 : Output That Will Convert All Ascii Codes To Character Ans Concat Them 
 Output2 : True If Chr Of Arrays Successfully Done. (Types.boolean)
 ```
 
-### Map ( Like Python map Function )
+### Map -> ( Like Python map Function )
 
 ```
 Input0 : Execute (Types.executable)

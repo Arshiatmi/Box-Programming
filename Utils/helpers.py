@@ -254,6 +254,22 @@ def remove_element_array(function_id, inputs, outputs):
         outputs[1].value = False
 
 
+def minimum_element_in_array(function_id, inputs, outputs):
+    array = inputs[0].value.copy()
+    minimum_element = min(array)
+    minimum_index = array.index(minimum_element)
+    outputs[0].value = minimum_element
+    outputs[1].value = minimum_index
+
+
+def maximum_element_in_array(function_id, inputs, outputs):
+    array = inputs[0].value.copy()
+    maximum_element = max(array)
+    maximum_index = array.index(maximum_element)
+    outputs[0].value = maximum_element
+    outputs[1].value = maximum_index
+
+
 def read_file(function_id, inputs, outputs):
     file_name = inputs[1].value
     f = open(file_name, "r")

@@ -393,6 +393,36 @@ def remove_element_array_function():
                     ], is_instance=True)
 
 
+def get_minimum_in_array_function():
+    return Function("Get Minimum Element Of Array Function",
+                    minimum_element_in_array,
+                    [
+                        Option("builtin_Minimum_Element_In_Array_Data",
+                               Types.array, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Minimum_Element_In_Array_Minimum_Element",
+                               Types.variable, Sides.right),
+                        Option("builtin_Minimum_Element_In_Array_Minimum_Index",
+                               Types.number, Sides.right, default=-1),
+                    ], is_instance=True)
+
+
+def get_maximum_in_array_function():
+    return Function("Get Maximum Element Of Array Function",
+                    maximum_element_in_array,
+                    [
+                        Option("builtin_Maximum_Element_In_Array_Data",
+                               Types.array, Sides.left),
+                    ],
+                    [
+                        Option("builtin_Maximum_Element_In_Array_Maximum_Element",
+                               Types.variable, Sides.right),
+                        Option("builtin_Maximum_Element_In_Array_Maximum_Index",
+                               Types.number, Sides.right, default=-1),
+                    ], is_instance=True)
+
+
 def for_loop_function():
     return Function("For Loop Function",
                     for_loop,
@@ -641,9 +671,9 @@ def split_text_function():
                         Option("builtin_Text_Split_Max_Split_Count",
                                Types.number, Sides.left),
                         Option("builtin_Text_Split_Start_Index",
-                               Types.number, Sides.left),
+                               Types.number, Sides.left, default=-1),
                         Option("builtin_Text_Split_End_Index",
-                               Types.number, Sides.left),
+                               Types.number, Sides.left, default=-1),
                     ],
                     [
                         Option("builtin_Text_Split_Output",
@@ -922,7 +952,7 @@ def map_function():
                         Option("builtin_Map_Element",
                                Types.variable, Sides.right),
                         Option("builtin_Map_Index",
-                               Types.number, Sides.right),
+                               Types.number, Sides.right, default=-1),
                     ], is_instance=True)
 
 
@@ -943,7 +973,7 @@ def min_function():
                         Option("builtin_Min_Output",
                                Types.variable, Sides.right),
                         Option("builtin_Min_Index",
-                               Types.number, Sides.right),
+                               Types.number, Sides.right, default=-1),
                     ], is_instance=True)
 
 
@@ -964,7 +994,7 @@ def max_function():
                         Option("builtin_Max_Output",
                                Types.variable, Sides.right),
                         Option("builtin_Max_Index",
-                               Types.number, Sides.right),
+                               Types.number, Sides.right, default=-1),
                     ], is_instance=True)
 
 
@@ -987,7 +1017,7 @@ def zip_function():
                         Option("builtin_Zip_Element",
                                Types.array, Sides.right),
                         Option("builtin_Zip_Index",
-                               Types.number, Sides.right),
+                               Types.number, Sides.right, default=-1),
                     ], is_instance=True)
 
 

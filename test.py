@@ -913,8 +913,8 @@ print(testMax.outputs[2].value)  # Maximum Index
 #                          Test Zip                              #
 
 testZip = make_box(Boxfunctions.Zip, BoxTypes.Executable)
-testZip.attach(None, 1, [1,2,5,7])
-testZip.attach(None, 2, [0,9,4,1])
+testZip.attach(None, 1, [1, 2, 5, 7])
+testZip.attach(None, 2, [0, 9, 4, 1])
 variableToText.attach(testZip, 0, 1)
 variableToText.attach(testZip, 1, 2)
 _print.attach(variableToText, 0, 0)
@@ -922,6 +922,34 @@ _print.attach(variableToText, 1, 2)
 testZip.execute_box()
 
 #                          Test Zip                              #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                        Test MinArray                           #
+
+testMinArray = make_box(ArrayBuiltins.MinArray, BoxTypes.Executable)
+testMinArray.attach(None, 0, [1, 6, 5, 5, 8, 6, 4])
+testMinArray.execute_box()
+print(testMinArray.outputs[0].value)  # Minimum Element
+print(testMinArray.outputs[1].value)  # Minimum Index
+
+#                        Test MinArray                           #
+##################################################################
+
+# -------------------------------------------------------------------------------------
+
+##################################################################
+#                        Test MaxArray                           #
+
+testMaxArray = make_box(ArrayBuiltins.MaxArray, BoxTypes.Executable)
+testMaxArray.attach(None, 0, [1, 6, 5, 5, 8, 6, 4])
+testMaxArray.execute_box()
+print(testMaxArray.outputs[0].value)  # Maximum Element
+print(testMaxArray.outputs[1].value)  # Maximum Index
+
+#                        Test MaxArray                           #
 ##################################################################
 
 # -------------------------------------------------------------------------------------

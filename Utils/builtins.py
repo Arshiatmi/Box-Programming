@@ -96,6 +96,10 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Array Remove Element/Index", BoxTypes.Executable, remove_element_array_function(), True, auto_run=True)
             if builtin_Box_Type == ArrayBuiltins.Sort:
                 return Box("Array Sort", BoxTypes.Executable, sort_array_function(), True, auto_run=True)
+            if builtin_Box_Type == ArrayBuiltins.MinArray:
+                return Box("Array Minimum Element", BoxTypes.Executable, get_minimum_in_array_function(), True, auto_run=True)
+            if builtin_Box_Type == ArrayBuiltins.MaxArray:
+                return Box("Array Maximum Element", BoxTypes.Executable, get_maximum_in_array_function(), True, auto_run=True)
 
         # Files
         elif builtin_Box_Type in FileBuiltins:

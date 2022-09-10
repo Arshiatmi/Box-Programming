@@ -70,8 +70,8 @@ class ArrayBuiltins(enum.Enum):
     Insert = 6
     Remove = 7
     Sort = 8
-    MinArray = 9  # TODO : Add This
-    MaxArray = 9  # TODO : Add This
+    MinArray = 9
+    MaxArray = 10
 
 
 class FileBuiltins(enum.Enum):
