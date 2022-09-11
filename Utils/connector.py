@@ -90,6 +90,49 @@ def set_option_text(option_id, text):
 
 
 @eel.expose
+def define_variable_connector(name, Type):
+    if Type == 1:
+        Type = Types.boolean
+    elif Type == 2:
+        Type = Types.text
+    elif Type == 3:
+        Type = Types.number
+    elif Type == 4:
+        Type = Types.array
+    elif Type == 5:
+        Type = Types.empty
+    elif Type == 7:
+        Type = Types.variable
+    get_variable, set_variable = define_variable(name, Type)
+    return get_variable.id, set_variable.id
+
+
+@eel.expose
+def get_variable(var_id):
+    print(var_id)
+    try:
+        return variables[var_id]
+    except:
+        return None
+
+
+@eel.expose
+def run_box(box_id):
+    target_box = boxes[box_id]
+    print(target_box)
+    return boxes[box_id]()
+
+
+@eel.expose
+def set_variable(var_id, data):
+    try:
+        variables[var_id]
+        variables[var_id] = data
+    except:
+        logger.error(f"Variable {var_id} Is Not Defined :(")
+
+
+@eel.expose
 def box_details_connector(box_id):
     box: Box = boxes[box_id]
     ans = {
