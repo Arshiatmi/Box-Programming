@@ -230,7 +230,7 @@ class Function:
 class Box:
     Index = 0
 
-    def __init__(self, name: str = "", Type: BoxTypes = BoxTypes.Executable, function: Function = Function("pass", lambda x: x), is_instance: bool = False, auto_run: bool = False, addable_left: bool = False, addable_right: bool = False):
+    def __init__(self, name: str = "", Type: BoxTypes = BoxTypes.Executable, function: Function = Function("pass", lambda x: x), is_instance: bool = True, auto_run: bool = False, addable_left: bool = False, addable_right: bool = False):
         global boxes
         if Type == BoxTypes.Start:
             boxes["start"] = self
