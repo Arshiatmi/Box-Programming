@@ -184,3 +184,11 @@ def make_box(builtin_Box_Type, Type: BoxTypes):
                 return Box("Zip", BoxTypes.Executable, zip_function(), addable_left=True)
             if builtin_Box_Type == Boxfunctions.Abs:
                 return Box("Abs", BoxTypes.Executable, abs_function())
+
+
+def make_box_extention(extention_name, box_type, box_name):
+    target_box = extentions[extention_name][1][box_type][box_name]
+    if target_box[2] and type(target_box[2]) == dict:
+        return Box(box_name, target_box[1], target_box[0], **target_box[2])
+    else:
+        return Box(box_name, target_box[1], target_box[0])

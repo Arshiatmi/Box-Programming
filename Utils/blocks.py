@@ -128,7 +128,7 @@ class Option:
 class Function:
     Index = 0
 
-    def __init__(self, name: str, func: Callable, inputs: list = [], outputs: list = [], requirements: list = [], is_instance: bool = False) -> None:
+    def __init__(self, name: str, func: Callable, inputs: list = [], outputs: list = [], requirements: list = [], is_instance: bool = True) -> None:
         global functions
         self.id = make_id_from_name(name)
         try:

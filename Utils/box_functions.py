@@ -15,7 +15,7 @@ def add_two_numbers_operator():
                     [
                         Option(f"builtin_{make_id_from_name('Function Add Two Numbers')}_n3", Types.number,
                                Sides.right)
-                    ], is_instance=True)
+                    ])
 
 
 def add_two_text_operator():
@@ -28,7 +28,7 @@ def add_two_text_operator():
                     [
                         Option(f"builtin_{make_id_from_name('Function Add Two Text')}_n3", Types.text,
                                Sides.right)
-                    ], is_instance=True)
+                    ])
 
 
 def minus_two_numbers_operator():
@@ -41,7 +41,7 @@ def minus_two_numbers_operator():
                     [
                         Option(f"builtin_{make_id_from_name('Function Minus Two Numbers')}_n3", Types.number,
                                Sides.right)
-                    ], is_instance=True)
+                    ])
 
 
 def AND_operator():
@@ -54,7 +54,7 @@ def AND_operator():
                     [
                         Option(f"builtin_{make_id_from_name('AND')}_n3", Types.boolean,
                                Sides.right)
-                    ], is_instance=True)
+                    ])
 
 
 def OR_operator():
@@ -67,7 +67,7 @@ def OR_operator():
                     [
                         Option(f"builtin_{make_id_from_name('OR')}_n3", Types.boolean,
                                Sides.right)
-                    ], is_instance=True)
+                    ])
 
 
 def POW_operator():
@@ -80,7 +80,7 @@ def POW_operator():
                     [
                         Option(f"builtin_{make_id_from_name('POW')}_n3", Types.number,
                                Sides.right)
-                    ], is_instance=True)
+                    ])
 
 
 def IN_operator():
@@ -95,7 +95,7 @@ def IN_operator():
                                Sides.right),
                         Option(f"builtin_{make_id_from_name('IN')}_Success", Types.boolean,
                                Sides.right, default=True)
-                    ], is_instance=True)
+                    ])
 
 
 def if_statement_function():
@@ -110,7 +110,7 @@ def if_statement_function():
                                Sides.right, show_text=True),
                         Option("False", Types.executable,
                                Sides.right, show_text=True)
-                    ], is_instance=True)
+                    ])
 
 
 def get_input_function():
@@ -125,7 +125,7 @@ def get_input_function():
                                Types.executable, Sides.right),
                         Option("builtin_Input_text",
                                Types.text, Sides.right, optional=True)
-                    ], is_instance=True)
+                    ])
 
 
 def print_string_function():
@@ -138,7 +138,7 @@ def print_string_function():
                     [
                         Option("builtin_Print",
                                Types.executable, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def number_to_text_function():
@@ -155,7 +155,7 @@ def number_to_text_function():
                                Types.executable, Sides.right),
                         Option("builtin_Cast_NumberToText_output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def number_to_bool_function():
@@ -172,7 +172,7 @@ def number_to_bool_function():
                                Types.executable, Sides.right),
                         Option("builtin_Cast_NumberToBool_output",
                                Types.boolean, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def bool_to_number_function():
@@ -189,7 +189,7 @@ def bool_to_number_function():
                                Types.executable, Sides.right),
                         Option("builtin_Cast_BoolToNumber_output",
                                Types.number, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def bool_to_text_function():
@@ -206,7 +206,7 @@ def bool_to_text_function():
                                Types.executable, Sides.right),
                         Option("builtin_Cast_BoolToText_output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def text_to_number_function():
@@ -223,7 +223,7 @@ def text_to_number_function():
                                Types.executable, Sides.right),
                         Option("builtin_Cast_TextToNumber_output",
                                Types.number, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def text_to_bool_function():
@@ -240,7 +240,7 @@ def text_to_bool_function():
                                Types.executable, Sides.right),
                         Option("builtin_Cast_TextToBool_output",
                                Types.boolean, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def array_to_text_function():
@@ -257,7 +257,7 @@ def array_to_text_function():
                                Types.executable, Sides.right),
                         Option("builtin_Cast_ArrayToText_output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def text_to_array_function():
@@ -274,7 +274,7 @@ def text_to_array_function():
                                Types.executable, Sides.right),
                         Option("builtin_Cast_TextToArray_output",
                                Types.array, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def variable_to_text_function():
@@ -291,7 +291,7 @@ def variable_to_text_function():
                                Types.executable, Sides.right),
                         Option("builtin_Cast_VariableToText_output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def parse_array_function():
@@ -308,7 +308,7 @@ def parse_array_function():
                                Types.array, Sides.right),
                         Option("builtin_Array_Parse_Reversed",
                                Types.array, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def append_array_function():
@@ -323,7 +323,7 @@ def append_array_function():
                     [
                         Option("builtin_Array_Append_Output",
                                Types.array, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def prepend_array_function():
@@ -338,7 +338,7 @@ def prepend_array_function():
                     [
                         Option("builtin_Array_Prepend_Output",
                                Types.array, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def sort_array_function():
@@ -351,7 +351,7 @@ def sort_array_function():
                     [
                         Option("builtin_Array_Prepend_Output",
                                Types.array, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def count_elements_array_function():
@@ -366,7 +366,7 @@ def count_elements_array_function():
                     [
                         Option("builtin_Array_Count_Output",
                                Types.number, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def index_element_array_function():
@@ -381,7 +381,7 @@ def index_element_array_function():
                     [
                         Option("builtin_Array_Index_Output",
                                Types.number, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def insert_element_array_function():
@@ -400,7 +400,7 @@ def insert_element_array_function():
                                Types.array, Sides.right),
                         Option("builtin_Array_Insert_Success",
                                Types.boolean, Sides.right, default=True),
-                    ], is_instance=True)
+                    ])
 
 
 def remove_element_array_function():
@@ -419,7 +419,7 @@ def remove_element_array_function():
                                Types.array, Sides.right),
                         Option("builtin_Array_Remove_Success",
                                Types.boolean, Sides.right, default=True),
-                    ], is_instance=True)
+                    ])
 
 
 def get_minimum_in_array_function():
@@ -434,7 +434,7 @@ def get_minimum_in_array_function():
                                Types.variable, Sides.right),
                         Option("builtin_Minimum_Element_In_Array_Minimum_Index",
                                Types.number, Sides.right, default=-1),
-                    ], is_instance=True)
+                    ])
 
 
 def get_maximum_in_array_function():
@@ -449,7 +449,7 @@ def get_maximum_in_array_function():
                                Types.variable, Sides.right),
                         Option("builtin_Maximum_Element_In_Array_Maximum_Index",
                                Types.number, Sides.right, default=-1),
-                    ], is_instance=True)
+                    ])
 
 
 def for_loop_function():
@@ -476,7 +476,7 @@ def for_loop_function():
                                Types.number, Sides.right),
                         Option("builtin_For_Loop_Element",
                                Types.variable, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def runOsCommand_function():
@@ -495,7 +495,7 @@ def runOsCommand_function():
                                Types.executable, Sides.right),
                         Option("builtin_Run_Os_Command_Output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def pythonEval_function():
@@ -514,7 +514,7 @@ def pythonEval_function():
                                Types.text, Sides.right),
                         Option("builtin_Python_Evaluate_Success",
                                Types.boolean, Sides.right, default=True),
-                    ], is_instance=True)
+                    ])
 
 ############################################################################################
 #                                        File                                              #
@@ -536,7 +536,7 @@ def read_file_function():
                                Types.text, Sides.right),
                         Option("builtin_ReadFile_Data_List",
                                Types.array, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def write_file_function():
@@ -557,7 +557,7 @@ def write_file_function():
                                Types.executable, Sides.right),
                         Option("builtin_WriteFile_Success",
                                Types.boolean, Sides.right, default=True),
-                    ], is_instance=True)
+                    ])
 
 
 def delete_file_function():
@@ -574,7 +574,7 @@ def delete_file_function():
                                Types.executable, Sides.right),
                         Option("builtin_DeleteFile_Success",
                                Types.boolean, Sides.right, default=True),
-                    ], is_instance=True)
+                    ])
 
 
 def file_list_function():
@@ -597,7 +597,7 @@ def file_list_function():
                                Types.array, Sides.right),
                         Option("builtin_FileList_Success",
                                Types.boolean, Sides.right, default=True),
-                    ], is_instance=True)
+                    ])
 
 #                                        File                                              #
 ############################################################################################
@@ -618,7 +618,7 @@ def capitalize_text_function():
                     [
                         Option("builtin_Text_Capitalize_Output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def find_text_function():
@@ -635,7 +635,7 @@ def find_text_function():
                     [
                         Option("builtin_Text_Find_Output",
                                Types.number, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def join_text_function():
@@ -650,7 +650,7 @@ def join_text_function():
                     [
                         Option("builtin_Text_Join_Output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def replace_text_function():
@@ -667,7 +667,7 @@ def replace_text_function():
                     [
                         Option("builtin_Text_Replace_Output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def strip_text_function():
@@ -686,7 +686,7 @@ def strip_text_function():
                     [
                         Option("builtin_Text_Strip_Output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def split_text_function():
@@ -707,7 +707,7 @@ def split_text_function():
                     [
                         Option("builtin_Text_Split_Output",
                                Types.array, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def swapcase_text_function():
@@ -720,7 +720,7 @@ def swapcase_text_function():
                     [
                         Option("builtin_Text_Swapcase_Output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def zerofill_text_function():
@@ -735,7 +735,7 @@ def zerofill_text_function():
                     [
                         Option("builtin_Text_Zerofill_Output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def isalphabet_function():
@@ -748,7 +748,7 @@ def isalphabet_function():
                     [
                         Option("builtin_Text_IsAlphabet_Output",
                                Types.boolean, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def isalphabetnumber_function():
@@ -761,7 +761,7 @@ def isalphabetnumber_function():
                     [
                         Option("builtin_Text_IsAlphabetOrNumber_Output",
                                Types.boolean, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def isdigits_function():
@@ -774,7 +774,7 @@ def isdigits_function():
                     [
                         Option("builtin_Text_IsDigits_Output",
                                Types.boolean, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def islower_function():
@@ -787,7 +787,7 @@ def islower_function():
                     [
                         Option("builtin_Text_IsLower_Output",
                                Types.boolean, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def isupper_function():
@@ -800,7 +800,7 @@ def isupper_function():
                     [
                         Option("builtin_Text_IsUpper_Output",
                                Types.boolean, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def toupper_function():
@@ -813,7 +813,7 @@ def toupper_function():
                     [
                         Option("builtin_Text_ToUpper_Output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def tolower_function():
@@ -826,7 +826,7 @@ def tolower_function():
                     [
                         Option("builtin_Text_ToLower_Output",
                                Types.text, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def count_text_function():
@@ -841,7 +841,7 @@ def count_text_function():
                     [
                         Option("builtin_Text_Count_Output",
                                Types.number, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def endswith_text_function():
@@ -856,7 +856,7 @@ def endswith_text_function():
                     [
                         Option("builtin_Text_Endswith_Output",
                                Types.boolean, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 #                                        Text                                              #
 ############################################################################################
@@ -881,7 +881,7 @@ def getLength_function():
                                Types.number, Sides.right),
                         Option("builtin_GetLength_Success",
                                Types.boolean, Sides.right, default=True),
-                    ], is_instance=True)
+                    ])
 
 
 def sum_function():
@@ -900,7 +900,7 @@ def sum_function():
                                Types.number, Sides.right),
                         Option("builtin_GetLength_Success",
                                Types.boolean, Sides.right, default=True),
-                    ], is_instance=True)
+                    ])
 
 
 def range_function():
@@ -921,7 +921,7 @@ def range_function():
                                Types.executable, Sides.right),
                         Option("builtin_Range_Output",
                                Types.array, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def ord_function():
@@ -940,7 +940,7 @@ def ord_function():
                                Types.array, Sides.right),
                         Option("builtin_Ord_Success",
                                Types.boolean, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def chr_function():
@@ -961,7 +961,7 @@ def chr_function():
                                Types.variable, Sides.right),
                         Option("builtin_Chr_Success",
                                Types.boolean, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def map_function():
@@ -982,7 +982,7 @@ def map_function():
                                Types.variable, Sides.right),
                         Option("builtin_Map_Index",
                                Types.number, Sides.right, default=-1),
-                    ], is_instance=True)
+                    ])
 
 
 def min_function():
@@ -1003,7 +1003,7 @@ def min_function():
                                Types.variable, Sides.right),
                         Option("builtin_Min_Index",
                                Types.number, Sides.right, default=-1),
-                    ], is_instance=True)
+                    ])
 
 
 def max_function():
@@ -1024,7 +1024,7 @@ def max_function():
                                Types.variable, Sides.right),
                         Option("builtin_Max_Index",
                                Types.number, Sides.right, default=-1),
-                    ], is_instance=True)
+                    ])
 
 
 def zip_function():
@@ -1047,7 +1047,7 @@ def zip_function():
                                Types.array, Sides.right),
                         Option("builtin_Zip_Index",
                                Types.number, Sides.right, default=-1),
-                    ], is_instance=True)
+                    ])
 
 
 def abs_function():
@@ -1060,7 +1060,7 @@ def abs_function():
                     [
                         Option("builtin_Abs_Output",
                                Types.number, Sides.right),
-                    ], is_instance=True)
+                    ])
 
 
 def exit_function():
@@ -1070,7 +1070,7 @@ def exit_function():
                         Option("builtin_Exit",
                                Types.executable, Sides.left),
                     ],
-                    [], is_instance=True)
+                    [])
 
 
 #                                    Box Functions                                         #

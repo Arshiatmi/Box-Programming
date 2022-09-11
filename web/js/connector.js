@@ -28,3 +28,5 @@ createBox(2,2).then((box_id) => {
         console.log(result);
     });
 });
+
+// If You Want To Use An Extention Box, You Need To Have Box Names And Extention Name.

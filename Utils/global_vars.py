@@ -9,6 +9,7 @@ variables = {}
 images = {}
 locked_image_objects = []
 ALL_GLOBALS = {}
+extentions = {}
 
 executalbe_categories = [
     ExecutableBuiltins,
