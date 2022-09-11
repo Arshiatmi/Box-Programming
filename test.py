@@ -150,18 +150,6 @@ print(_if.execute_box())  # Returns Next Box
 # -------------------------------------------------------------------------------------
 
 ##################################################################
-#                        Test Array Type                         #
-array_test = Function("arrayTest", array_test, [
-    Option("arrayTest", Types.array, Sides.left)])
-bx = Box("arrayTest", BoxTypes.Executable, array_test)
-bx()
-
-#                        Test Array Type                         #
-##################################################################
-
-# -------------------------------------------------------------------------------------
-
-##################################################################
 #                       Test Get Input                           #
 #                   Get Name And Say Hello !                     #
 
@@ -368,7 +356,6 @@ writeFile = make_box(FileBuiltins.WriteFile, BoxTypes.Executable)
 writeFile.attach(None, 1, "test/test.txt")
 writeFile.attach(None, 2, "This Is Test Text To Write In A File\nYay :)")
 next_box = writeFile.execute_box()
-print(writeFile.outputs[1].value)
 
 #                       Test Write File                          #
 ##################################################################
@@ -394,7 +381,6 @@ print(readFile.outputs[1].value)
 removeFile = make_box(FileBuiltins.RemoveFile, BoxTypes.Executable)
 removeFile.attach(None, 1, "test/test.txt")
 next_box = removeFile.execute_box()
-print(removeFile.outputs[1].value)
 
 #                      Test Remove File                          #
 ##################################################################
@@ -406,7 +392,7 @@ print(removeFile.outputs[1].value)
 
 fileList = make_box(FileBuiltins.FileList, BoxTypes.Executable)
 next_box = fileList.execute_box()
-print(fileList.outputs[1].value)
+print(fileList.outputs[2].value)
 
 #                     Test FileList Box                          #
 ##################################################################
@@ -769,7 +755,7 @@ print(zerofillText.outputs[0].value)
 evalText = make_box(Others.Eval, BoxTypes.Executable)
 evalText.attach(None, 1, "1 + 1")
 evalText.execute_box()
-print(evalText.outputs[1].value)
+print(evalText.outputs[2].value)
 
 #                        Test Eval Text                          #
 ##################################################################
@@ -783,7 +769,7 @@ print(evalText.outputs[1].value)
 getLength = make_box(Boxfunctions.Length, BoxTypes.Executable)
 getLength.attach(get_data, 1, 0)
 getLength.execute_box()
-print(getLength.outputs[1].value)
+print(getLength.outputs[2].value)
 
 #                     Test Get Length Text                       #
 ##################################################################
@@ -798,7 +784,7 @@ sumData.attach(get_data, 1, 0)
 sumData.addOption(Option("builtin_Number2", Types.number, Sides.left))
 sumData.attach(None, 2, 10)
 sumData.execute_box()
-print(sumData.outputs[1].value)
+print(sumData.outputs[2].value)
 
 #                           Test Sum                             #
 ##################################################################
@@ -826,7 +812,7 @@ print(getRange.outputs[1].value)
 getOrd = make_box(Boxfunctions.Ord, BoxTypes.Executable)
 getOrd.attach(None, 1, "Yo :)")
 getOrd.execute_box()
-print(getOrd.outputs[1].value)
+print(getOrd.outputs[2].value)
 
 #                          Test Ord                              #
 ##################################################################
@@ -837,10 +823,10 @@ print(getOrd.outputs[1].value)
 #                          Test Chr                              #
 
 getChr = make_box(Boxfunctions.Chr, BoxTypes.Executable)
-getChr.attach(getOrd, 1, 1)
+getChr.attach(getOrd, 1, 2)
 getChr.attach(None, 2, True)
 getChr.execute_box()
-print(getChr.outputs[1].value)
+print(getChr.outputs[2].value)
 
 #                          Test Chr                              #
 ##################################################################

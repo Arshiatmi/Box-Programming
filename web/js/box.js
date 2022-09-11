@@ -1,6 +1,5 @@
 // Example Of Creating Box
 createBox(2,2).then((box_id) => {
-    console.log(box_id);
     attachBox(box_id,null,0,2);
     return box_id;
 }).then((box_id) => {

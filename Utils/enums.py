@@ -123,13 +123,13 @@ class Others(customEnum):
     Eval = 2
 
 
-class AdvancedNumbers(customEnum):  # TODO : Add This
-    ToBinary = 1  # TODO : Add This
-    FromBinary = 2  # TODO : Add This
-    ToOct = 3  # TODO : Add This
-    FromOct = 4  # TODO : Add This
-    ToHex = 5  # TODO : Add This
-    FromHex = 6  # TODO : Add This
+class AdvancedNumbers(customEnum):
+    ToBinary = 1
+    FromBinary = 2
+    ToOct = 3
+    FromOct = 4
+    ToHex = 5
+    FromHex = 6
 
 
 class Boxfunctions(customEnum):

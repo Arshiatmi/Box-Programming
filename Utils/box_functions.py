@@ -930,13 +930,13 @@ def ord_function():
                     [
                         Option("builtin_Ord",
                                Types.executable, Sides.left),
-                        Option("builtin_Ord_Failed",
-                               Types.executable, Sides.left),
                         Option("builtin_Ord_Text",
                                Types.text, Sides.left),
                     ],
                     [
                         Option("builtin_Ord",
+                               Types.executable, Sides.right),
+                        Option("builtin_Ord_Failed",
                                Types.executable, Sides.right),
                         Option("builtin_Ord_Output",
                                Types.array, Sides.right),
@@ -1111,6 +1111,82 @@ def from_binary_function():
                         Option("builtin_From_Binary_Failed",
                                Types.executable, Sides.left),
                         Option("builtin_From_Binary_Output",
+                               Types.number, Sides.right),
+                    ])
+
+
+def to_octal_function():
+    return Function("To Octal Function",
+                    ToOct,
+                    [
+                        Option("builtin_To_Octal",
+                               Types.executable, Sides.left),
+                        Option("builtin_To_Octal_Input",
+                               Types.number, Sides.left),
+                    ],
+                    [
+                        Option("builtin_To_Octal",
+                               Types.executable, Sides.left),
+                        Option("builtin_To_Octal_Failed",
+                               Types.executable, Sides.left),
+                        Option("builtin_To_Octal_Output",
+                               Types.text, Sides.right),
+                    ])
+
+
+def from_octal_function():
+    return Function("From Octal Function",
+                    FromOct,
+                    [
+                        Option("builtin_From_Octal",
+                               Types.executable, Sides.left),
+                        Option("builtin_From_Octal_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_From_Octal",
+                               Types.executable, Sides.left),
+                        Option("builtin_From_Octal_Failed",
+                               Types.executable, Sides.left),
+                        Option("builtin_From_Octal_Output",
+                               Types.number, Sides.right),
+                    ])
+
+
+def to_hex_function():
+    return Function("To Hex Function",
+                    ToHex,
+                    [
+                        Option("builtin_To_Hexadecimal",
+                               Types.executable, Sides.left),
+                        Option("builtin_To_Hexadecimal_Input",
+                               Types.number, Sides.left),
+                    ],
+                    [
+                        Option("builtin_To_Hexadecimal",
+                               Types.executable, Sides.left),
+                        Option("builtin_To_Hexadecimal_Failed",
+                               Types.executable, Sides.left),
+                        Option("builtin_To_Hexadecimal_Output",
+                               Types.text, Sides.right),
+                    ])
+
+
+def from_hex_function():
+    return Function("From Hex Function",
+                    FromHex,
+                    [
+                        Option("builtin_From_Hexadecimal",
+                               Types.executable, Sides.left),
+                        Option("builtin_From_Hexadecimal_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_From_Hexadecimal",
+                               Types.executable, Sides.left),
+                        Option("builtin_From_Hexadecimal_Failed",
+                               Types.executable, Sides.left),
+                        Option("builtin_From_Hexadecimal_Output",
                                Types.number, Sides.right),
                     ])
 

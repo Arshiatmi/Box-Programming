@@ -634,3 +634,39 @@ def FromBinary(function_id, inputs, outputs):
     except:
         return outputs[1]
     return outputs[0]
+
+
+def ToOct(function_id, inputs, outputs):
+    number = inputs[1].value
+    try:
+        outputs[2].value = oct(number)[2:]
+    except:
+        return outputs[1]
+    return outputs[0]
+
+
+def FromOct(function_id, inputs, outputs):
+    number = inputs[1].value
+    try:
+        outputs[2].value = int(number, 8)
+    except:
+        return outputs[1]
+    return outputs[0]
+
+
+def FromHex(function_id, inputs, outputs):
+    number = inputs[1].value
+    try:
+        outputs[2].value = int(number, 16)
+    except:
+        return outputs[1]
+    return outputs[0]
+
+
+def ToHex(function_id, inputs, outputs):
+    number = inputs[1].value
+    try:
+        outputs[2].value = hex(number)
+    except:
+        return outputs[1]
+    return outputs[0]
