@@ -114,6 +114,11 @@ async function get_outputs(box_id) {
     return n;
 }
 
+async function box_details(box_id) {
+    let n = await eel.box_details_connector(box_id)();
+    return n;
+}
+
 async function define_variable(name,type) {
     let n = await eel.define_variable_connector(name,type)();
     return n;

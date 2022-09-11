@@ -63,7 +63,7 @@ def detach_connector(box_id, box_to_detach, self_index, target_option_or_value, 
 
 
 @eel.expose
-def execute_box_connector(box_id, box_to_attach, self_index, target_option_or_value, side=Sides.left.value):
+def execute_box_connector(box_id):
     next_box = boxes[box_id].execute_box()
     return next_box.id
 

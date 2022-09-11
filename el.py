@@ -2,11 +2,9 @@ from Utils.connector import *
 import eel
 
 eel.init("web")
-eel.start("index.html", size=(1080, 720))
+eel.start("index.html", size=(1080, 720), block=False)
 
-# executableFunctions = getExecutableFunctions()
-# variableFunctions = getVariableFunctions()
-# allFunctions = getAllFunctions()
+allFunctions = getAllFunctions()
 
-# while True:
-#     eel.sleep(1.0)
+while True:
+    eel.sleep(1.0)

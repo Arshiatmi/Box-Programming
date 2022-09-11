@@ -2,13 +2,13 @@ from loguru import logger
 
 from Utils.enums import AdvancedNumbers, ArrayBuiltins, BoxTypes, Boxfunctions, CastBuiltins, ExecutableBuiltins, FileBuiltins, MainBoxTypes, OperatorBuiltins, Others, TextBuiltins
 
+reserved_box_names = ["start", "end"]
+reserved_function_names = []
+
 functions = {}
 boxes = {}
 options = {}
 variables = {}
-images = {}
-locked_image_objects = []
-ALL_GLOBALS = {}
 extentions = {}
 
 executalbe_categories = [

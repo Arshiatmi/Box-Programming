@@ -233,16 +233,33 @@ class Box:
     def __init__(self, name: str = "", Type: BoxTypes = BoxTypes.Executable, function: Function = Function("pass", lambda x: x), is_instance: bool = True, auto_run: bool = False, addable_left: bool = False, addable_right: bool = False):
         global boxes
         if Type == BoxTypes.Start:
+            try:
+                boxes["start"]
+                logger.error(
+                    f"You Initialized Another Start Box. You Can Not Create It Again")
+                return
+            except:
+                pass
             boxes["start"] = self
             name = "start"
             function = Function("start", lambda x: x, [], [
                                 Option("StartExecute", Types.executable)])
         elif Type == BoxTypes.End:
+            try:
+                boxes["end"]
+                logger.error(
+                    f"You Initialized Another End Box. You Can Not Create It Again")
+                return
+            except:
+                pass
             boxes["end"] = self
             name = "end"
             function = Function("end", lambda x: x, [
                 Option("EndExecute", Types.executable)], [])
         elif name:
+            if name in reserved_box_names:
+                logger.error(f"The {name} Is Reserved. You Can Not Use It.")
+                return
             self.id = make_id_from_name(name)
             try:
                 boxes[self.id]
@@ -255,7 +272,8 @@ class Box:
             except:
                 boxes[self.id] = self
         else:
-            raise ValueError("Box Must Have A Name.")
+            logger.error(f"The {name} Is Reserved. You Can Not Use It.")
+            return
         self.name = name
         self.function = function
         self.function_args = None

@@ -6,7 +6,7 @@ createBox(2,2).then((box_id) => {
     attachBox(box_id,null,1,1);
     return box_id;
 }).then((box_id) => {
-    get_outputs(box_id).then((result) => {
+    box_details(box_id).then((result) => {
         console.log(result);
     });
 });
