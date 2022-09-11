@@ -1,7 +1,19 @@
 import enum
 
 
-class Types(enum.Enum):
+class customEnum(enum.Enum):
+    @classmethod
+    def by_value(cls, key):
+        attrs = ({j.value: i for i, j in cls.__dict__[
+                 '_member_map_'].items()})
+        try:
+            return getattr(cls, attrs[key])
+        except:
+            raise
+            return None
+
+
+class Types(customEnum):
     boolean = bool
     text = str
     number = float
@@ -11,14 +23,14 @@ class Types(enum.Enum):
     variable = [bool, str, float, list]
 
 
-class InputTypes(enum.Enum):
+class InputTypes(customEnum):
     checkbox = 0
     numberField = 1
     textField = 2
     executeButton = 3
 
 
-class BoxTypes(enum.Enum):
+class BoxTypes(customEnum):
     Variable = 0
     Executable = 1
     Operator = 2
@@ -27,12 +39,12 @@ class BoxTypes(enum.Enum):
     End = 5
 
 
-class Sides(enum.Enum):
+class Sides(customEnum):
     left = 0
     right = 1
 
 
-class OperatorBuiltins(enum.Enum):
+class OperatorBuiltins(customEnum):
     Add_Two_Numbers = 1
     Add_Two_Text = 2
     Minus_Two_Numbers = 3
@@ -42,14 +54,14 @@ class OperatorBuiltins(enum.Enum):
     IN = 7
 
 
-class ExecutableBuiltins(enum.Enum):
+class ExecutableBuiltins(customEnum):
     If = 1
     Input = 2
     Print = 3
     For = 4
 
 
-class CastBuiltins(enum.Enum):
+class CastBuiltins(customEnum):
     Number_To_Text = 1
     Number_To_Bool = 2
     Bool_To_Number = 3
@@ -61,7 +73,7 @@ class CastBuiltins(enum.Enum):
     Variable_To_Text = 9
 
 
-class ArrayBuiltins(enum.Enum):
+class ArrayBuiltins(customEnum):
     Parse = 1
     Append = 2
     Prepend = 3
@@ -74,14 +86,14 @@ class ArrayBuiltins(enum.Enum):
     MaxArray = 10
 
 
-class FileBuiltins(enum.Enum):
+class FileBuiltins(customEnum):
     ReadFile = 1
     WriteFile = 2
     RemoveFile = 3
     FileList = 4
 
 
-class TextBuiltins(enum.Enum):
+class TextBuiltins(customEnum):
     Capitalize = 1
     Count = 2
     EndsWith = 3
@@ -101,12 +113,12 @@ class TextBuiltins(enum.Enum):
     ZeroFill = 17
 
 
-class Others(enum.Enum):
+class Others(customEnum):
     runOsCommand = 1
     Eval = 2
 
 
-class AdvancedNumbers(enum.Enum):  # TODO : Add This
+class AdvancedNumbers(customEnum):  # TODO : Add This
     ToBinary = 1  # TODO : Add This
     FromBinary = 2  # TODO : Add This
     ToOct = 3  # TODO : Add This
@@ -115,7 +127,7 @@ class AdvancedNumbers(enum.Enum):  # TODO : Add This
     FromHex = 6  # TODO : Add This
 
 
-class Boxfunctions(enum.Enum):
+class Boxfunctions(customEnum):
     Length = 1
     Sum = 2
     Range = 3

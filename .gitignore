@@ -31,3 +31,4 @@ fonts/
 img/
 
 test/
+.prettierignore
