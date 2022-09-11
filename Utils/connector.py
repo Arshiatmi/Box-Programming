@@ -109,7 +109,6 @@ def define_variable_connector(name, Type):
 
 @eel.expose
 def get_variable(var_id):
-    print(var_id)
     try:
         return variables[var_id]
     except:
@@ -119,8 +118,7 @@ def get_variable(var_id):
 @eel.expose
 def run_box(box_id):
     target_box = boxes[box_id]
-    print(target_box)
-    return boxes[box_id]()
+    return target_box()
 
 
 @eel.expose
