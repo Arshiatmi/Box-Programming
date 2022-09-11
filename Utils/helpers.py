@@ -292,7 +292,7 @@ def write_file(function_id, inputs, outputs):
         f.write(text)
         f.close()
     except:
-        outputs[1].value = False
+        return outputs[1]
     return outputs[0]
 
 
@@ -301,7 +301,7 @@ def delete_file(function_id, inputs, outputs):
     try:
         os.remove(file_name)
     except:
-        outputs[1].value = False
+        return outputs[1]
     return outputs[0]
 
 
@@ -311,13 +311,13 @@ def file_list(function_id, inputs, outputs):
     contains_directories = inputs[3].value
     try:
         if contains_files and contains_directories:
-            outputs[1].value = os.listdir(path)
+            outputs[2].value = os.listdir(path)
         elif contains_files:
-            outputs[1].value = [i for i in os.scandir(path) if i.is_file()]
+            outputs[2].value = [i for i in os.scandir(path) if i.is_file()]
         elif contains_directories:
-            outputs[1].value = [i for i in os.scandir(path) if i.is_dir()]
+            outputs[2].value = [i for i in os.scandir(path) if i.is_dir()]
     except:
-        outputs[2].value = False
+        return outputs[1]
     return outputs[0]
 
 
@@ -451,9 +451,9 @@ def runOsCommand(function_id, inputs, outputs):
 def pythonEvaluate(function_id, inputs, outputs):
     text = inputs[1].value
     try:
-        outputs[1].value = str(eval(text))
+        outputs[2].value = str(eval(text))
     except:
-        outputs[2].value = False
+        return outputs[1]
     return outputs[0]
 
 
@@ -503,9 +503,9 @@ def convert_to_list(inputs):
 def get_length(function_id, inputs, outputs):
     target_object = inputs[1].value
     try:
-        outputs[1].value = len(target_object)
+        outputs[2].value = len(target_object)
     except:
-        outputs[2].value = False
+        return outputs[1]
     return outputs[0]
 
 
@@ -520,13 +520,11 @@ def sum_of_data(function_id, inputs, outputs):
                 if i.Type == Types.array or i.Type == Types.variable:
                     ans += sum(i.value)
                 else:
-                    outputs[2].value = False
-                    break
+                    return outputs[1]
             except:
-                outputs[2].value = False
-                break
+                return outputs[1]
     else:
-        outputs[1].value = ans
+        outputs[2].value = ans
     return outputs[0]
 
 
@@ -543,13 +541,13 @@ def Ord(function_id, inputs, outputs):
     ans = []
     try:
         if len(text) == 1:
-            outputs[1].value = ord(text)
+            outputs[2].value = ord(text)
         else:
             for i in text:
                 ans.append(ord(i))
-            outputs[1].value = ans
+            outputs[2].value = ans
     except:
-        outputs[2].value = False
+        return outputs[1]
     return outputs[0]
 
 
@@ -561,11 +559,11 @@ def Chr(function_id, inputs, outputs):
         for i in inp:
             ans.append(chr(i))
         if as_string:
-            outputs[1].value = ''.join(ans)
+            outputs[2].value = ''.join(ans)
         else:
-            outputs[1].value = ans
+            outputs[2].value = ans
     except:
-        outputs[2].value = False
+        return outputs[1]
     return outputs[0]
 
 
@@ -622,3 +620,17 @@ def Abs(function_id, inputs, outputs):
 
 def Exit(function_id, inputs, outputs):
     sys.exit(0)
+
+
+def ToBinary(function_id, inputs, outputs):
+    number = inputs[1].value
+    outputs[1].value = bin(number)[2:]
+
+
+def FromBinary(function_id, inputs, outputs):
+    number = inputs[1].value
+    try:
+        outputs[2].value = int(number, 2)
+    except:
+        return outputs[1]
+    return outputs[0]

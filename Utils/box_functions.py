@@ -510,10 +510,10 @@ def pythonEval_function():
                     [
                         Option("builtin_Python_Evaluate",
                                Types.executable, Sides.right),
+                        Option("builtin_Python_Evaluate_Failed",
+                               Types.executable, Sides.right),
                         Option("builtin_Python_Evaluate_Output",
                                Types.text, Sides.right),
-                        Option("builtin_Python_Evaluate_Success",
-                               Types.boolean, Sides.right, default=True),
                     ])
 
 ############################################################################################
@@ -555,8 +555,8 @@ def write_file_function():
                     [
                         Option("builtin_WriteFile",
                                Types.executable, Sides.right),
-                        Option("builtin_WriteFile_Success",
-                               Types.boolean, Sides.right, default=True),
+                        Option("builtin_WriteFile_Failed",
+                               Types.executable, Sides.right),
                     ])
 
 
@@ -572,8 +572,8 @@ def delete_file_function():
                     [
                         Option("builtin_DeleteFile",
                                Types.executable, Sides.right),
-                        Option("builtin_DeleteFile_Success",
-                               Types.boolean, Sides.right, default=True),
+                        Option("builtin_DeleteFile_Failed",
+                               Types.executable, Sides.right),
                     ])
 
 
@@ -593,10 +593,10 @@ def file_list_function():
                     [
                         Option("builtin_FileList",
                                Types.executable, Sides.right),
+                        Option("builtin_FileList_Failed",
+                               Types.executable, Sides.right),
                         Option("builtin_FileList_Files",
                                Types.array, Sides.right),
-                        Option("builtin_FileList_Success",
-                               Types.boolean, Sides.right, default=True),
                     ])
 
 #                                        File                                              #
@@ -877,10 +877,10 @@ def getLength_function():
                     [
                         Option("builtin_GetLength",
                                Types.executable, Sides.right),
+                        Option("builtin_GetLength_Failed",
+                               Types.executable, Sides.right),
                         Option("builtin_GetLength_Output",
                                Types.number, Sides.right),
-                        Option("builtin_GetLength_Success",
-                               Types.boolean, Sides.right, default=True),
                     ])
 
 
@@ -896,10 +896,10 @@ def sum_function():
                     [
                         Option("builtin_Sum",
                                Types.executable, Sides.right),
+                        Option("builtin_Sum_Failed",
+                               Types.executable, Sides.right),
                         Option("builtin_GetLength_Output",
                                Types.number, Sides.right),
-                        Option("builtin_GetLength_Success",
-                               Types.boolean, Sides.right, default=True),
                     ])
 
 
@@ -930,6 +930,8 @@ def ord_function():
                     [
                         Option("builtin_Ord",
                                Types.executable, Sides.left),
+                        Option("builtin_Ord_Failed",
+                               Types.executable, Sides.left),
                         Option("builtin_Ord_Text",
                                Types.text, Sides.left),
                     ],
@@ -938,8 +940,6 @@ def ord_function():
                                Types.executable, Sides.right),
                         Option("builtin_Ord_Output",
                                Types.array, Sides.right),
-                        Option("builtin_Ord_Success",
-                               Types.boolean, Sides.right),
                     ])
 
 
@@ -957,10 +957,10 @@ def chr_function():
                     [
                         Option("builtin_Chr",
                                Types.executable, Sides.right),
+                        Option("builtin_Chr_Failed",
+                               Types.executable, Sides.right),
                         Option("builtin_Chr_Output",
                                Types.variable, Sides.right),
-                        Option("builtin_Chr_Success",
-                               Types.boolean, Sides.right),
                     ])
 
 
@@ -1074,4 +1074,45 @@ def exit_function():
 
 
 #                                    Box Functions                                         #
+############################################################################################
+
+
+############################################################################################
+#                                   Advanced Numbers                                       #
+def to_binary_function():
+    return Function("To Binary Function",
+                    ToBinary,
+                    [
+                        Option("builtin_To_Binary",
+                               Types.executable, Sides.left),
+                        Option("builtin_To_Binary_Input",
+                               Types.number, Sides.left),
+                    ],
+                    [
+                        Option("builtin_To_Binary",
+                               Types.executable, Sides.left),
+                        Option("builtin_To_Binary_Output",
+                               Types.text, Sides.right),
+                    ])
+
+
+def from_binary_function():
+    return Function("From Binary Function",
+                    FromBinary,
+                    [
+                        Option("builtin_From_Binary",
+                               Types.executable, Sides.left),
+                        Option("builtin_From_Binary_Input",
+                               Types.text, Sides.left),
+                    ],
+                    [
+                        Option("builtin_From_Binary",
+                               Types.executable, Sides.left),
+                        Option("builtin_From_Binary_Failed",
+                               Types.executable, Sides.left),
+                        Option("builtin_From_Binary_Output",
+                               Types.number, Sides.right),
+                    ])
+
+#                                   Advanced Numbers                                       #
 ############################################################################################
