@@ -293,8 +293,6 @@ class Box:
             self.Type = Type
         self.inputs = self.function.inputs
         self.outputs = self.function.outputs
-        self.block_input_connected = [None] * len(self.inputs)
-        self.block_output_connected = [None] * len(self.outputs)
         for i in self.inputs:
             i.parent = self
         for i in self.outputs:
@@ -444,10 +442,6 @@ class Box:
         else:
             raise FunctionError(
                 "BoxType Must Be Executable To Be Called")
-
-    def get_connected_option(self):
-        ans = self()
-        return ans.target_option
 
     def execute_box(self):
         ans = self()

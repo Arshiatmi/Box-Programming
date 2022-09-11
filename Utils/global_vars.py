@@ -1,6 +1,6 @@
 from loguru import logger
 
-from Utils.enums import AdvancedNumbers, ArrayBuiltins, BoxTypes, Boxfunctions, CastBuiltins, ExecutableBuiltins, FileBuiltins, OperatorBuiltins, Others, TextBuiltins
+from Utils.enums import AdvancedNumbers, ArrayBuiltins, BoxTypes, Boxfunctions, CastBuiltins, ExecutableBuiltins, FileBuiltins, MainBoxTypes, OperatorBuiltins, Others, TextBuiltins
 
 functions = {}
 boxes = {}
@@ -23,26 +23,28 @@ executalbe_categories = [
 
 box_categories = {
     BoxTypes.Operator:
-        [
-            OperatorBuiltins.Add_Two_Numbers,
-            OperatorBuiltins.Add_Two_Text,
-            OperatorBuiltins.Minus_Two_Numbers,
-            OperatorBuiltins.AND,
-            OperatorBuiltins.OR,
-            OperatorBuiltins.IN,
-            OperatorBuiltins.POW,
-        ],
+        {
+            MainBoxTypes.Builtins: [
+                OperatorBuiltins.Add_Two_Numbers,
+                OperatorBuiltins.Add_Two_Text,
+                OperatorBuiltins.Minus_Two_Numbers,
+                OperatorBuiltins.AND,
+                OperatorBuiltins.OR,
+                OperatorBuiltins.IN,
+                OperatorBuiltins.POW
+            ],
+            MainBoxTypes.Extentions: []
+        },
     BoxTypes.Executable:
         {
-            ExecutableBuiltins:
-                [
+            MainBoxTypes.Builtins: {
+                ExecutableBuiltins: [
                     ExecutableBuiltins.If,
                     ExecutableBuiltins.Input,
                     ExecutableBuiltins.Print,
                     ExecutableBuiltins.For,
                 ],
-            CastBuiltins:
-                [
+                CastBuiltins: [
                     CastBuiltins.Number_To_Text,
                     CastBuiltins.Number_To_Bool,
                     CastBuiltins.Bool_To_Number,
@@ -53,8 +55,7 @@ box_categories = {
                     CastBuiltins.Text_To_Array,
                     CastBuiltins.Variable_To_Text,
                 ],
-            ArrayBuiltins:
-                [
+                ArrayBuiltins: [
                     ArrayBuiltins.Parse,
                     ArrayBuiltins.Append,
                     ArrayBuiltins.Prepend,
@@ -66,15 +67,13 @@ box_categories = {
                     ArrayBuiltins.MinArray,
                     ArrayBuiltins.MaxArray,
                 ],
-            FileBuiltins:
-                [
+                FileBuiltins: [
                     FileBuiltins.ReadFile,
                     FileBuiltins.WriteFile,
                     FileBuiltins.RemoveFile,
                     FileBuiltins.FileList,
                 ],
-            TextBuiltins:
-                [
+                TextBuiltins: [
                     TextBuiltins.Capitalize,
                     TextBuiltins.Count,
                     TextBuiltins.EndsWith,
@@ -86,13 +85,11 @@ box_categories = {
                     TextBuiltins.ToUpper,
                     TextBuiltins.ToLower,
                 ],
-            Others:
-                [
+                Others: [
                     Others.runOsCommand,
                     Others.Eval
                 ],
-            AdvancedNumbers:
-                [
+                AdvancedNumbers: [
                     AdvancedNumbers.ToBinary,
                     AdvancedNumbers.FromBinary,
                     AdvancedNumbers.ToOct,
@@ -100,8 +97,7 @@ box_categories = {
                     AdvancedNumbers.ToHex,
                     AdvancedNumbers.FromHex,
                 ],
-            Boxfunctions:
-                [
+                Boxfunctions: [
                     Boxfunctions.Length,
                     Boxfunctions.Sum,
                     Boxfunctions.Range,
@@ -114,5 +110,7 @@ box_categories = {
                     Boxfunctions.Zip,
                     Boxfunctions.Abs,
                 ],
+            },
+            MainBoxTypes.Extentions: {}
         }
 }

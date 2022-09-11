@@ -39,6 +39,11 @@ class BoxTypes(customEnum):
     End = 5
 
 
+class MainBoxTypes(customEnum):
+    Builtins = 0
+    Extentions = 1
+
+
 class Sides(customEnum):
     left = 0
     right = 1

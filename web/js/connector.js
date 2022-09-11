@@ -1,7 +1,7 @@
 var boxes = [];
 
-async function createBox(box_type,first_index,second_index) {
-    let n = await eel.make_box_connector(box_type, first_index,second_index)();
+async function createBox(box_type,first_index,second_index,from_extention=false) {
+    let n = await eel.make_box_connector(box_type, first_index,second_index,from_extention)();
     boxes.push(n);
     return n;
 }
