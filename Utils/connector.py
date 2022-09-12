@@ -104,7 +104,7 @@ def define_variable_connector(name, Type):
     elif Type == 7:
         Type = Types.variable
     get_variable, set_variable = define_variable(name, Type)
-    return get_variable.id, set_variable.id
+    return {"get": get_variable.id, "set": set_variable.id}
 
 
 @eel.expose
@@ -116,9 +116,12 @@ def get_variable(var_id):
 
 
 @eel.expose
-def run_box(box_id):
+def run_box(box_id, *arguments):
     target_box = boxes[box_id]
-    return target_box()
+    if arguments:
+        return target_box(*arguments)
+    else:
+        return target_box()
 
 
 @eel.expose

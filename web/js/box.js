@@ -13,7 +13,10 @@ createBox(2,2).then((box_id) => {
 
 // If You Want To Use An Extention Box, You Need To Have Box Names And Extention Name.
 define_variable("test",Types["boolean"]).then((variable) => {
-    run_box(variable[0]).then((val) => {
-        console.log(val);
+    run_box(variable["set"],true)
+    .then(() => {
+        run_box(variable["get"]).then((val) => {
+            console.log(val);
+        });
     });
 });

@@ -124,8 +124,12 @@ async function define_variable(name,type) {
     return n;
 }
 
-async function run_box(name) {
-    let n = await eel.run_box(name)();
+async function run_box(name,...args) {
+    let n;
+    if(args)
+        n = await eel.run_box(name,...args)();
+    else
+        n = await eel.run_box(name)();
     return n;
 }
 
